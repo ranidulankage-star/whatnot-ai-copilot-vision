@@ -1,0 +1,3230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whatnot AI Analytics — design system & specification</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-deep: #f3f1ec;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.16);
+    --text: #1a1a1a;
+    --text-secondary: #5a5a58;
+    --text-tertiary: #8a8a85;
+    --whatnot-yellow: #FFE817;
+    --whatnot-yellow-soft: #FAC775;
+    --amber-50: #FAEEDA;
+    --amber-100: #FAC775;
+    --amber-200: #EF9F27;
+    --amber-400: #BA7517;
+    --amber-600: #854F0B;
+    --amber-900: #412402;
+    --teal-50: #E1F5EE;
+    --teal-600: #0F6E56;
+    --teal-800: #085041;
+    --coral-50: #FAECE7;
+    --coral-600: #993C1D;
+    --coral-800: #712B13;
+    --blue-50: #E6F1FB;
+    --blue-600: #185FA5;
+    --blue-800: #0C447C;
+    --purple-50: #EEEDFE;
+    --purple-600: #534AB7;
+    --purple-800: #3C3489;
+    --pink-50: #FBEAF0;
+    --pink-800: #72243E;
+    --gray-100: #F1EFE8;
+    --gray-200: #D3D1C7;
+    --gray-600: #5F5E5A;
+    --gray-800: #2C2C2A;
+    --red-50: #FCEBEB;
+    --red-600: #A32D2D;
+    --green-50: #EAF3DE;
+    --green-600: #3B6D11;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  a { color: inherit; }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 32px 80px;
+  }
+  .sidenav {
+    position: sticky;
+    top: 32px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 16px 0;
+  }
+  .sidenav .brand {
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sidenav .brand .mark {
+    width: 22px; height: 22px;
+    background: var(--whatnot-yellow);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: #000;
+  }
+  .sidenav .group { margin-bottom: 18px; }
+  .sidenav .group-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    padding: 0 8px;
+    margin-bottom: 6px;
+  }
+  .sidenav a {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 5px;
+    line-height: 1.4;
+  }
+  .sidenav a:hover { background: var(--surface); color: var(--text); }
+  .sidenav a .ix {
+    color: var(--text-tertiary);
+    font-size: 10px;
+    margin-right: 8px;
+    min-width: 14px;
+  }
+
+  .content { min-width: 0; }
+
+  /* Hero */
+  header.hero {
+    padding: 32px 0 28px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #000; color: var(--whatnot-yellow);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 36px; font-weight: 500;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .lede { font-size: 16px; color: var(--text-secondary); max-width: 640px; margin: 0; }
+  .meta-row {
+    display: flex; gap: 24px; margin-top: 18px;
+    font-size: 12px; color: var(--text-tertiary);
+  }
+  .meta-row b { color: var(--text-secondary); font-weight: 500; }
+
+  /* Sections */
+  section { margin: 64px 0; scroll-margin-top: 24px; }
+  section > .section-header { margin-bottom: 24px; }
+  .section-header h2 {
+    font-size: 24px; font-weight: 500;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-header h2 .num {
+    font-size: 12px; font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+  .section-header .section-lede {
+    font-size: 14px; color: var(--text-secondary);
+    max-width: 680px; margin: 4px 0 0;
+  }
+
+  /* Priority badges */
+  .pri {
+    display: inline-flex; align-items: center;
+    font-size: 10px; font-weight: 500;
+    padding: 2px 7px; border-radius: 4px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .pri-v1 { background: var(--teal-50); color: var(--teal-800); }
+  .pri-v2 { background: var(--amber-50); color: var(--amber-900); }
+  .pri-v3 { background: var(--purple-50); color: var(--purple-800); }
+  .pri-skip { background: var(--gray-100); color: var(--gray-800); }
+
+  /* Principles */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .principle {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .principle .num {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .principle h4 {
+    font-size: 15px; font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .principle p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* Critique grid */
+  .critique-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .critique-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .critique-card h4 { font-size: 14px; font-weight: 500; margin: 0 0 6px; }
+  .critique-card p { font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.55; }
+
+  /* Mock frames */
+  .mock { margin-bottom: 40px; }
+  .mock-label {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 10px; flex-wrap: wrap;
+  }
+  .mock-title { font-size: 14.5px; font-weight: 500; }
+  .mock-sub { font-size: 12px; color: var(--text-secondary); }
+  .mock-frame {
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .mock-note {
+    font-size: 12.5px; color: var(--text-secondary);
+    margin-top: 10px; line-height: 1.55;
+    padding-left: 14px; border-left: 2px solid var(--border);
+  }
+
+  /* Browser & app chrome */
+  .browser-bar {
+    background: #f3eff5;
+    padding: 8px 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .browser-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #d4c4d8; }
+  .browser-bar .url {
+    flex: 1; font-size: 11px; color: var(--text-tertiary);
+    background: #fff; padding: 4px 12px; border-radius: 4px; margin-left: 6px;
+  }
+  .app-header {
+    padding: 12px 18px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    background: #fff; position: relative;
+  }
+  .logo-block { display: flex; align-items: center; gap: 8px; }
+  .logo-mark {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: var(--whatnot-yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 13px; color: #000;
+  }
+  .pill-dark {
+    background: #000; color: #fff;
+    padding: 4px 10px; border-radius: 5px;
+    font-size: 12px; font-weight: 500;
+  }
+  .header-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+  .header-actions i { font-size: 17px; color: var(--text-secondary); cursor: pointer; }
+  .avatar-circle {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue-50); color: var(--blue-800);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 500;
+  }
+  .command-pill {
+    flex: 1; max-width: 380px; margin: 0 auto;
+    background: var(--bg);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 20px;
+    padding: 7px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .command-pill.highlight { border: 1.5px solid var(--amber-400); }
+  .command-pill .ph { flex: 1; font-size: 13px; color: var(--text-secondary); }
+  .command-pill .kbd {
+    font-size: 11px; color: var(--text-tertiary);
+    background: #fff; padding: 2px 6px;
+    border-radius: 3px; border: 0.5px solid var(--border);
+  }
+  .command-pill .spark { font-size: 14px; color: var(--amber-600); }
+
+  .app-body { display: flex; min-height: 220px; }
+  .left-nav {
+    width: 168px;
+    background: var(--bg);
+    border-right: 0.5px solid var(--border);
+    padding: 10px 8px;
+  }
+  .left-nav .item {
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex; align-items: center; gap: 8px;
+    border-radius: 5px;
+  }
+  .left-nav .item.active { background: #000; color: #fff; font-weight: 500; }
+  .left-nav .item.ai-active {
+    background: #000; color: #fff; font-weight: 500;
+    border: 1.5px solid var(--amber-400);
+  }
+  .left-nav .item i { font-size: 14px; }
+  .left-nav .ai-active i.spark { color: var(--amber-100); }
+  .left-nav .badge-new {
+    margin-left: auto; background: var(--amber-200); color: var(--amber-900);
+    padding: 1px 5px; border-radius: 3px;
+    font-size: 9px; font-weight: 500;
+  }
+  .main-area { flex: 1; padding: 18px 24px; position: relative; }
+  .greeting { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .greeting-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 18px; }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .metric { background: var(--bg); border-radius: 8px; padding: 10px 12px; }
+  .metric .label { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+  .metric .value { font-size: 18px; font-weight: 500; }
+  .metric .delta { font-size: 11px; margin-top: 2px; }
+  .delta-up { color: var(--teal-600); }
+  .delta-down { color: var(--coral-600); }
+
+  /* Answer card components */
+  .answer-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .answer-header { padding: 14px 16px; }
+  .answer-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 3px; }
+  .answer-headline { font-size: 26px; font-weight: 500; line-height: 1.1; }
+  .answer-headline .unit { font-size: 14px; color: var(--text-secondary); font-weight: 400; margin-left: 6px; }
+  .answer-sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.5; }
+  .answer-sub .up { color: var(--teal-600); font-weight: 500; }
+  .answer-sub .down { color: var(--coral-600); font-weight: 500; }
+
+  .answer-viz { padding: 0 16px 12px; }
+  .bar-row {
+    display: flex; align-items: end; gap: 10px;
+    height: 80px;
+  }
+  .bar-row .col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .bar-row .v { font-size: 10px; font-weight: 500; margin-bottom: 4px; }
+  .bar-row .bar { width: 100%; border-radius: 4px 4px 0 0; }
+  .bar-row .label { font-size: 10px; color: var(--text-secondary); margin-top: 4px; }
+
+  .answer-provenance {
+    padding: 8px 16px;
+    border-top: 0.5px solid var(--border);
+    background: var(--bg);
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--text-secondary);
+  }
+  .answer-provenance i { font-size: 12px; color: var(--text-tertiary); }
+  .answer-provenance .meta { color: var(--text-tertiary); }
+  .answer-provenance .chev { margin-left: auto; color: var(--text-tertiary); cursor: pointer; }
+
+  .answer-actions {
+    padding: 10px 16px;
+    border-top: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-action {
+    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-strong);
+    background: transparent;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 5px;
+    color: var(--text);
+  }
+  .btn-action:hover { background: var(--bg); }
+  .btn-action i { font-size: 12px; }
+  .feedback-row { margin-left: auto; display: flex; gap: 6px; }
+  .feedback-row i { font-size: 14px; color: var(--text-tertiary); cursor: pointer; }
+
+  /* Side panel */
+  .side-panel {
+    width: 340px;
+    background: #fff;
+    border-left: 0.5px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .side-panel .panel-header {
+    padding: 10px 14px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .side-panel .panel-header .title-block {
+    flex: 1; min-width: 0;
+  }
+  .side-panel .panel-header .title {
+    font-size: 12px; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .side-panel .panel-header .sub {
+    font-size: 10px; color: var(--text-tertiary);
+  }
+  .side-panel .panel-header i {
+    font-size: 13px; color: var(--text-tertiary); cursor: pointer;
+  }
+  .side-panel .panel-body { flex: 1; padding: 14px; overflow-y: hidden; }
+  .side-panel .panel-composer {
+    padding: 10px 14px;
+    border-top: 0.5px solid var(--border);
+  }
+  .composer-input {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg);
+    border-radius: 18px;
+    padding: 6px 12px;
+  }
+  .composer-input .ph { flex: 1; font-size: 11px; color: var(--text-tertiary); }
+  .composer-input i.send-icon { font-size: 11px; color: var(--amber-900); }
+  .composer-input .send-btn {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--whatnot-yellow-soft);
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .composer-input .stop-btn {
+    background: var(--whatnot-yellow-soft); color: var(--amber-900);
+    border: none; padding: 4px 10px; border-radius: 12px;
+    font-size: 10px; font-weight: 500; cursor: pointer;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .user-msg {
+    display: flex; justify-content: flex-end;
+    margin-bottom: 14px;
+  }
+  .user-msg .bubble {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    padding: 7px 11px;
+    border-radius: 14px;
+    font-size: 12px;
+    max-width: 80%;
+  }
+
+  /* Progress block */
+  .progress-block {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .progress-step {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11.5px;
+    margin-bottom: 8px;
+  }
+  .progress-step:last-of-type { margin-bottom: 0; }
+  .progress-step .done {
+    font-size: 12px; color: var(--teal-600);
+  }
+  .progress-step.done span.text {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    text-decoration-color: var(--text-tertiary);
+  }
+  .progress-step .time {
+    margin-left: auto; font-size: 10px; color: var(--text-tertiary);
+  }
+  .spinner-mini {
+    width: 12px; height: 12px;
+    border: 1.5px solid var(--amber-400);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .progress-bar {
+    background: #fff;
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .progress-bar .fill {
+    background: var(--amber-400);
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  /* Follow-up chips */
+  .followups { margin-top: 12px; }
+  .followups .label { font-size: 10px; color: var(--text-secondary); margin-bottom: 6px; letter-spacing: 0.04em; }
+  .chip {
+    font-size: 11px; padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 14px;
+    display: inline-block;
+    margin: 0 4px 4px 0;
+    cursor: pointer;
+  }
+
+  /* Pros/cons */
+  .pros-cons {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    display: flex; flex-wrap: wrap; gap: 16px;
+  }
+  .pros-cons .pros { color: var(--teal-600); }
+  .pros-cons .cons { color: var(--coral-600); }
+  .pros-cons i { font-size: 13px; }
+
+  /* FAB */
+  .fab-round {
+    position: absolute; bottom: 16px; right: 16px;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #000;
+    border: 1.5px solid var(--amber-400);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fab-round i { color: var(--amber-100); font-size: 22px; }
+  .fab-pill {
+    position: absolute; bottom: 16px; right: 16px;
+    padding: 11px 16px 11px 14px;
+    border-radius: 26px;
+    background: #000;
+    border: 1.5px solid var(--amber-400);
+    display: flex; align-items: center; gap: 8px;
+    color: #fff;
+  }
+  .fab-pill i.spark { color: var(--amber-100); font-size: 15px; }
+  .fab-pill .label { font-size: 13px; font-weight: 500; }
+  .fab-pill .kbd { font-size: 10px; background: rgba(255,255,255,0.14); padding: 1px 6px; border-radius: 3px; }
+
+  /* Peek (proactive) */
+  .peek {
+    position: absolute; bottom: 16px; right: 16px;
+    width: 280px;
+    background: #000;
+    border-radius: 14px;
+    padding: 12px 14px;
+  }
+  .peek .heading {
+    display: flex; align-items: center; gap: 7px; margin-bottom: 7px;
+  }
+  .peek .heading i.spark { font-size: 13px; color: var(--whatnot-yellow); }
+  .peek .heading .tag { font-size: 11px; color: var(--whatnot-yellow); font-weight: 500; }
+  .peek .heading i.close { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.4); }
+  .peek .body { font-size: 12px; color: #fff; line-height: 1.5; margin-bottom: 10px; }
+  .peek .body b { color: var(--whatnot-yellow); font-weight: 500; }
+  .peek .actions { display: flex; gap: 6px; }
+  .peek .btn-primary {
+    font-size: 11px; padding: 5px 10px;
+    background: var(--whatnot-yellow); color: var(--amber-900);
+    border: none; border-radius: 5px; font-weight: 500;
+  }
+  .peek .btn-ghost {
+    font-size: 11px; padding: 5px 10px;
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+    border: none; border-radius: 5px;
+  }
+
+  /* Thread rail */
+  .thread-rail {
+    width: 220px;
+    background: var(--bg);
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .thread-rail .rail-header {
+    padding: 12px 12px 8px;
+  }
+  .thread-rail .rail-title {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .thread-rail .rail-title i.spark { font-size: 14px; color: var(--amber-600); }
+  .thread-rail .rail-search {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .thread-rail .rail-search i { font-size: 11px; color: var(--text-tertiary); }
+  .thread-rail .rail-search .ph { font-size: 10px; color: var(--text-tertiary); }
+  .thread-rail .rail-group { padding: 0 8px 6px; }
+  .thread-rail .group-label {
+    font-size: 9px; color: var(--text-tertiary);
+    font-weight: 500; padding: 8px 4px 4px;
+    letter-spacing: 0.05em;
+  }
+  .thread-rail .thread-row {
+    padding: 6px 8px;
+    border-radius: 5px;
+  }
+  .thread-rail .thread-row.active {
+    background: #fff;
+    border: 0.5px solid var(--border);
+  }
+  .thread-rail .thread-row .row-1 {
+    display: flex; align-items: center; gap: 5px;
+  }
+  .thread-rail .thread-row .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--teal-600);
+  }
+  .thread-rail .thread-row i.pin { font-size: 10px; color: var(--amber-600); }
+  .thread-rail .thread-row i.sched { font-size: 10px; color: var(--text-tertiary); margin-left: auto; }
+  .thread-rail .thread-row .title { font-size: 11.5px; font-weight: 500; }
+  .thread-rail .thread-row .title.dim { color: var(--text-secondary); font-weight: 400; }
+  .thread-rail .thread-row .sub {
+    font-size: 10px; color: var(--text-secondary);
+    padding-left: 9px; margin-top: 1px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .thread-rail .new-btn-wrap {
+    margin-top: auto; padding: 10px 12px;
+    border-top: 0.5px solid var(--border);
+  }
+  .thread-rail .new-btn {
+    width: 100%;
+    background: #000; color: #fff;
+    border: none; padding: 7px;
+    border-radius: 6px; font-size: 11px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .thread-rail .new-btn i { font-size: 12px; }
+
+  /* Annotation callouts */
+  .annotation {
+    background: var(--amber-50);
+    color: var(--amber-900);
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .annotation i { font-size: 10px; }
+
+  /* Generic */
+  .stub { background: var(--bg); height: 50px; border-radius: 6px; }
+  .stub.short { height: 36px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+
+  /* Tables */
+  .answer-table { width: 100%; font-size: 11.5px; border-collapse: collapse; }
+  .answer-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 0.5px solid var(--border);
+    background: var(--bg);
+    font-size: 11px;
+  }
+  .answer-table td {
+    padding: 8px 12px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .answer-table tr:last-child td { border: none; }
+  .answer-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .avatar-sm {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--blue-50); color: var(--blue-800);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 500;
+    margin-right: 6px;
+    vertical-align: -4px;
+  }
+
+  /* Roadmap */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .phase {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .phase.v1 { border: 1.5px solid var(--teal-600); }
+  .phase-label {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .phase-name { font-size: 15px; font-weight: 500; }
+  .phase-when { font-size: 11px; color: var(--text-tertiary); }
+  .phase ul {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .phase li { padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .phase li i { font-size: 13px; color: var(--teal-600); margin-top: 4px; flex-shrink: 0; }
+  .phase.v2 li i { color: var(--amber-600); }
+  .phase.v3 li i { color: var(--purple-600); }
+
+  /* Risks */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .risk {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 3px solid var(--coral-600);
+  }
+  .risk h4 { font-size: 13.5px; font-weight: 500; margin: 0 0 6px; }
+  .risk p { font-size: 12.5px; color: var(--text-secondary); margin: 0; line-height: 1.55; }
+  .risk .mitig {
+    font-size: 12px; color: var(--text); margin-top: 8px;
+    padding-top: 8px; border-top: 0.5px solid var(--border);
+  }
+  .risk .mitig b { font-weight: 500; color: var(--teal-600); }
+
+  /* Mobile mock */
+  .phone-frame {
+    width: 220px;
+    background: #000;
+    border-radius: 24px;
+    padding: 8px;
+  }
+  .phone-screen {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 380px;
+  }
+  .phone-row {
+    display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+  }
+
+  /* Memory card */
+  .memory-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    max-width: 480px;
+  }
+  .memory-card h4 {
+    font-size: 14px; font-weight: 500; margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .memory-card h4 i { color: var(--amber-600); }
+  .memory-card .fact {
+    display: flex; gap: 12px; padding: 8px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+  }
+  .memory-card .fact:last-child { border: none; }
+  .memory-card .fact .key { color: var(--text-secondary); min-width: 110px; }
+  .memory-card .fact .val { color: var(--text); flex: 1; }
+  .memory-card .fact .edit { color: var(--text-tertiary); font-size: 12px; cursor: pointer; }
+
+  /* Footer */
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--border);
+    font-size: 12px; color: var(--text-tertiary);
+    text-align: center;
+  }
+
+  /* Highlight box */
+  .ship-box {
+    background: #000; color: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 28px;
+  }
+  .ship-box .title {
+    font-size: 14px; font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--whatnot-yellow);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ship-box .body { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.85); }
+  .ship-box .body b { color: #fff; font-weight: 500; }
+
+  /* Schedule modal */
+  .modal-mock {
+    max-width: 380px;
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  .modal-mock .head {
+    padding: 14px 16px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .modal-mock .head .title { font-size: 14px; font-weight: 500; flex: 1; }
+  .modal-mock .body { padding: 14px 16px; }
+  .form-row { margin-bottom: 12px; }
+  .form-row .form-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+  .form-row .form-value {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+  .modal-mock .foot {
+    padding: 12px 16px;
+    border-top: 0.5px solid var(--border);
+    display: flex; gap: 8px; justify-content: flex-end;
+  }
+  .btn-primary {
+    background: #000; color: #fff;
+    border: none; padding: 7px 14px;
+    border-radius: 6px; font-size: 12px; font-weight: 500;
+  }
+  .btn-secondary {
+    background: transparent; border: 0.5px solid var(--border-strong);
+    padding: 7px 14px; border-radius: 6px;
+    font-size: 12px; color: var(--text);
+  }
+
+  /* Bar chart with single color */
+  .bar-amber { background: var(--amber-100); }
+  .bar-amber-strong { background: var(--amber-200); }
+  .bar-teal { background: var(--teal-600); }
+  .bar-gray { background: var(--gray-200); }
+
+  /* Insight strip */
+  .insight-strip {
+    background: var(--amber-50);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px;
+    color: var(--amber-900);
+    margin-bottom: 10px;
+  }
+  .insight-strip i { font-size: 14px; color: var(--amber-600); }
+  .insight-strip b { font-weight: 500; }
+
+  /* Alert banner */
+  .alert-banner {
+    background: var(--coral-50);
+    border-left: 3px solid var(--coral-600);
+    border-radius: 4px 8px 8px 4px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--coral-800);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .alert-banner i { color: var(--coral-600); font-size: 14px; }
+
+  /* Compact mock styles for entry-point grid */
+  .ep-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ep-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .ep-compact { background: var(--surface); border: 0.5px solid var(--border-strong); border-radius: 8px; overflow: hidden; }
+  .ep-compact .browser-bar { padding: 5px 8px; }
+  .ep-compact .browser-bar .dot { width: 6px; height: 6px; }
+  .ep-compact .browser-bar .url { font-size: 9px; padding: 2px 7px; }
+  .ep-compact .app-header { padding: 7px 10px; min-height: 30px; }
+  .ep-compact .logo-mark { width: 18px; height: 18px; font-size: 11px; border-radius: 4px; }
+  .ep-compact .pill-dark { font-size: 9px; padding: 2px 6px; }
+  .ep-compact .header-actions { gap: 7px; }
+  .ep-compact .header-actions i { font-size: 12px; }
+  .ep-compact .avatar-circle { width: 18px; height: 18px; font-size: 9px; }
+  .ep-compact .command-pill { padding: 4px 9px; border-radius: 14px; max-width: 200px; }
+  .ep-compact .command-pill .ph { font-size: 10px; }
+  .ep-compact .command-pill .kbd { font-size: 8px; padding: 1px 4px; }
+  .ep-compact .command-pill .spark { font-size: 10px; }
+  .ep-compact .left-nav { width: 90px; padding: 6px 4px; }
+  .ep-compact .left-nav .item { padding: 3px 6px; font-size: 9px; gap: 4px; }
+  .ep-compact .left-nav .item i { font-size: 10px; }
+  .ep-compact .left-nav .badge-new { font-size: 7px; padding: 1px 3px; }
+  .ep-compact .main-area { padding: 8px 10px; }
+  .ep-compact .greeting { font-size: 11px; }
+  .ep-compact .greeting-sub { font-size: 9px; margin-bottom: 6px; }
+  .ep-compact .stub { height: 24px; }
+  .ep-compact .stub.short { height: 18px; }
+  .ep-compact .app-body { min-height: 130px; }
+  .ep-compact .fab-round { width: 34px; height: 34px; bottom: 8px; right: 8px; border-width: 1px; }
+  .ep-compact .fab-round i { font-size: 15px; }
+  .ep-compact .fab-pill { bottom: 8px; right: 8px; padding: 6px 10px 6px 8px; border-width: 1px; gap: 5px; }
+  .ep-compact .fab-pill i.spark { font-size: 11px; }
+  .ep-compact .fab-pill .label { font-size: 9px; }
+  .ep-compact .fab-pill .kbd { font-size: 7px; padding: 1px 3px; }
+  .ep-compact .peek { width: 160px; padding: 7px 9px; bottom: 8px; right: 8px; border-radius: 9px; }
+  .ep-compact .peek .heading { gap: 4px; margin-bottom: 4px; }
+  .ep-compact .peek .heading i.spark { font-size: 9px; }
+  .ep-compact .peek .heading .tag { font-size: 8px; }
+  .ep-compact .peek .body { font-size: 9px; margin-bottom: 5px; line-height: 1.3; }
+  .ep-compact .peek .btn-primary { font-size: 8px; padding: 3px 6px; }
+  .ep-compact .peek .btn-ghost { font-size: 8px; padding: 3px 6px; }
+  .ep-compact .right-dock { width: 80px; }
+  .ep-compact .right-dock .header { padding: 5px 6px; }
+  .ep-compact .right-dock .body { padding: 5px 6px; }
+  .ep-compact .insight-card { font-size: 8px; padding: 4px 5px; margin-bottom: 4px; }
+  .ep-compact .right-dock .label-tag { font-size: 7px; margin-bottom: 3px; }
+  .ep-compact .suggested { font-size: 8px; padding: 3px 4px; margin-bottom: 2px; }
+  .ep-compact .right-dock .composer { padding: 5px 6px; }
+  .ep-compact .composer-pill { font-size: 8px; padding: 3px 6px; border-radius: 8px; }
+  .ep-compact .ep-label {
+    display: flex; align-items: baseline; gap: 6px;
+    padding: 8px 10px; border-top: 0.5px solid var(--border);
+    background: var(--bg);
+    font-size: 11px;
+  }
+  .ep-compact .ep-label .letter { font-weight: 500; color: var(--text); }
+  .ep-compact .ep-label .desc { color: var(--text-secondary); }
+  .pri-mini {
+    font-size: 8px; padding: 1px 4px; border-radius: 3px;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .pri-mini.v1 { background: var(--teal-50); color: var(--teal-800); }
+  .pri-mini.v2 { background: var(--amber-50); color: var(--amber-900); }
+  .pri-mini.v3 { background: var(--purple-50); color: var(--purple-800); }
+  .pri-mini.skip { background: var(--gray-100); color: var(--gray-800); }
+  .pri-mini.kill { background: var(--red-50); color: var(--red-600); }
+
+  .ep-section-title {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 28px 0 12px;
+  }
+
+  /* Inline ask widget */
+  .ask-on-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 8px;
+    padding: 2px 5px;
+    border-radius: 8px;
+    border: 0.5px solid var(--border-strong);
+    background: #fff;
+    color: var(--text);
+  }
+  .ask-on-widget i { font-size: 8px; color: var(--amber-600); }
+
+  /* Slash command popover */
+  .slash-popover {
+    position: absolute;
+    background: #fff;
+    border: 0.5px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 4px;
+    min-width: 140px;
+    z-index: 5;
+  }
+  .slash-popover .item-slash {
+    padding: 4px 6px;
+    font-size: 9px;
+    border-radius: 3px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .slash-popover .item-slash.active { background: var(--bg); }
+  .slash-popover .item-slash i { font-size: 9px; color: var(--amber-600); }
+
+  /* Mobile small */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; padding: 24px 18px; }
+    .sidenav { display: none; }
+    .principles, .critique-grid, .risk-grid { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .ep-grid-2 { grid-template-columns: 1fr; }
+    .ep-grid-3 { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<aside class="sidenav">
+  <div class="brand"><div class="mark">W</div> AI Analytics design</div>
+
+  <div class="group">
+    <div class="group-label">Foundation</div>
+    <a href="#overview"><span class="ix">00</span> Overview</a>
+    <a href="#principles"><span class="ix">01</span> Design principles</a>
+    <a href="#critique"><span class="ix">02</span> Current state critique</a>
+  </div>
+
+  <div class="group">
+    <div class="group-label">Surface</div>
+    <a href="#entrypoints"><span class="ix">03</span> Entry points</a>
+    <a href="#openstate"><span class="ix">04</span> When you open it</a>
+    <a href="#answer"><span class="ix">05</span> The answer card</a>
+    <a href="#variants"><span class="ix">06</span> Answer variants</a>
+  </div>
+
+  <div class="group">
+    <div class="group-label">Behavior</div>
+    <a href="#running"><span class="ix">07</span> Running & feedback</a>
+    <a href="#threads"><span class="ix">08</span> Threads workspace</a>
+    <a href="#proactive"><span class="ix">09</span> Proactive intelligence</a>
+    <a href="#scheduled"><span class="ix">10</span> Scheduled & memory</a>
+  </div>
+
+  <div class="group">
+    <div class="group-label">Trust & reach</div>
+    <a href="#honesty"><span class="ix">11</span> Trust & honesty</a>
+    <a href="#sharing"><span class="ix">12</span> Sharing</a>
+    <a href="#mobile"><span class="ix">13</span> Mobile</a>
+  </div>
+
+  <div class="group">
+    <div class="group-label">Plan</div>
+    <a href="#roadmap"><span class="ix">14</span> Roadmap</a>
+    <a href="#risks"><span class="ix">15</span> Risks</a>
+  </div>
+</aside>
+
+<div class="content">
+
+<!-- ============================================================ -->
+<!-- HERO                                                          -->
+<!-- ============================================================ -->
+<header class="hero" id="overview">
+  <span class="eyebrow"><i class="ti ti-sparkles"></i> Design system & specification</span>
+  <h1>Whatnot AI Analytics —<br>the complete design</h1>
+  <p class="lede">From entry points to answer cards, from progress states to scheduled digests. A full specification of how a top-tier seller analytics bot should look, feel, and behave.</p>
+  <div class="meta-row">
+    <span><b>15</b> sections</span>
+    <span><b>6</b> entry-point variants</span>
+    <span><b>6</b> open-state surfaces</span>
+    <span><b>v1 / v2 / v3</b> priority</span>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- 01 PRINCIPLES                                                 -->
+<!-- ============================================================ -->
+<section id="principles">
+  <div class="section-header">
+    <h2><span class="num">01</span> Design principles</h2>
+    <p class="section-lede">Six rules that resolve most design questions before they reach a debate. When in doubt, pick the principle.</p>
+  </div>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="num">01</div>
+      <h4>Answers, not chats</h4>
+      <p>Every response is a durable, pinnable, shareable card — never a chat bubble that scrolls away. The chat input is the keyboard; the answer is the product.</p>
+    </div>
+    <div class="principle">
+      <div class="num">02</div>
+      <h4>Streaming over spinners</h4>
+      <p>Show partial data the moment it arrives. Name each step in seller language. No generic "loading" — sellers should always know what's happening and why it's slow.</p>
+    </div>
+    <div class="principle">
+      <div class="num">03</div>
+      <h4>Proactive by default</h4>
+      <p>The bot opens with insights worth a seller's attention, not a blank "ask anything." It earns its place by showing value before it's asked.</p>
+    </div>
+    <div class="principle">
+      <div class="num">04</div>
+      <h4>Show your work</h4>
+      <p>Every number cites its source, row count, freshness, and method. Sellers will make revenue decisions on these answers — they need to be able to verify.</p>
+    </div>
+    <div class="principle">
+      <div class="num">05</div>
+      <h4>Threads are analyses</h4>
+      <p>Threads aren't chat history. They're saved workspaces — pinnable, schedulable, shareable, comment-able. A thread is the smallest unit of repeatable work.</p>
+    </div>
+    <div class="principle">
+      <div class="num">06</div>
+      <h4>Honest about uncertainty</h4>
+      <p>Confidence is labeled. "I don't know" is a valid answer. Low-data answers are flagged. The bot never fabricates a number to seem helpful.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 02 CRITIQUE                                                   -->
+<!-- ============================================================ -->
+<section id="critique">
+  <div class="section-header">
+    <h2><span class="num">02</span> Current state critique</h2>
+    <p class="section-lede">The bot today is buried, blank, and brittle. Four failures compound into a feature sellers won't return to.</p>
+  </div>
+
+  <div class="critique-grid">
+    <div class="critique-card">
+      <h4>Burial</h4>
+      <p>Two clicks deep behind Analytics &gt; Chat. The most powerful thing in the product is treated as a side feature of a side feature.</p>
+    </div>
+    <div class="critique-card">
+      <h4>Empty state</h4>
+      <p>Opens to "Ask about your business" — a chat product, not an analytics product. No data, no insights, no signal of what's possible.</p>
+    </div>
+    <div class="critique-card">
+      <h4>No persistence</h4>
+      <p>Navigate away and the question vanishes. Questions must be durable objects from the moment of submission, not transient UI state.</p>
+    </div>
+    <div class="critique-card">
+      <h4>Weak feedback</h4>
+      <p>A spinner says "something is happening." Sellers need to know what's happening, how long it will take, and whether they can leave.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 03 ENTRY POINTS                                               -->
+<!-- ============================================================ -->
+<section id="entrypoints">
+  <div class="section-header">
+    <h2><span class="num">03</span> Entry points</h2>
+    <p class="section-lede">Six placements on the same home page. Two ship in v1, one comes in v2, three get skipped.</p>
+  </div>
+
+  <!-- A: Command bar -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1 — ship</span>
+      <span class="mock-title">A. Top header command bar</span>
+      <span class="mock-sub">— ⌘K from anywhere · Linear, Glean, Sidekick pattern</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill highlight">
+          <i class="ti ti-sparkles spark"></i>
+          <span class="ph">Ask Whatnot anything…</span>
+          <span class="kbd">⌘K</span>
+        </div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-package"></i> Inventory</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> One keystroke · always reachable · signals primary feature</span>
+      <span class="cons"><i class="ti ti-x"></i> Eats header real estate</span>
+    </div>
+  </div>
+
+  <!-- C: Left nav -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1 — ship</span>
+      <span class="mock-title">B. Left nav top-level item</span>
+      <span class="mock-sub">— Notion AI pattern · briefing home, thread workspace</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/ask</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-shield-check"></i> Account Health</div>
+          <div class="item"><i class="ti ti-package"></i> Inventory</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item ai-active"><i class="ti ti-sparkles spark"></i> Ask Whatnot <span class="badge-new">NEW</span></div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="greeting-sub">3 insights worth a look this morning.</div>
+          <div class="insight-strip"><i class="ti ti-sparkles"></i><span>Tuesday shows convert <b>2.3× higher</b> — add another Tuesday slot?</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> First-class product · briefing home · discoverable</span>
+      <span class="cons"><i class="ti ti-x"></i> Requires navigating from current task</span>
+    </div>
+  </div>
+
+  <!-- C (was P): Proactive peek -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 — add</span>
+      <span class="mock-title">C. Proactive peek (home only)</span>
+      <span class="mock-sub">— earns attention with a real insight, dismisses to a labeled pill</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-package"></i> Inventory</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="greeting-sub">Here's what's worth your attention today.</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+          <div class="peek">
+            <div class="heading">
+              <i class="ti ti-sparkles spark"></i>
+              <span class="tag">Insight worth a look</span>
+              <i class="ti ti-x close"></i>
+            </div>
+            <div class="body">Tuesday shows convert <b>2.3× higher</b> than other slots. Add another Tuesday?</div>
+            <div class="actions">
+              <button class="btn-primary">Show me why</button>
+              <button class="btn-ghost">Later</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Demonstrates value before user asks · home page only</span>
+      <span class="cons"><i class="ti ti-x"></i> Risks fatigue if shown daily</span>
+    </div>
+  </div>
+
+  <!-- D: Round FAB - skip -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-skip">skip</span>
+      <span class="mock-title">D. Round FAB — bottom right</span>
+      <span class="mock-sub">— Intercom, Drift pattern</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+          <button class="fab-round" aria-label="Ask Whatnot"><i class="ti ti-sparkles"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="cons"><i class="ti ti-x"></i> Reads as support chat · banner-blind after a week · blocks content</span>
+    </div>
+  </div>
+
+  <!-- E: Labeled pill FAB - skip -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-skip">skip</span>
+      <span class="mock-title">E. Labeled pill FAB</span>
+      <span class="mock-sub">— Arc, Raycast pattern</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+          <button class="fab-pill"><i class="ti ti-sparkles spark"></i><span class="label">Ask Whatnot</span><span class="kbd">⌘K</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Branded, labeled, clearer than D</span>
+      <span class="cons"><i class="ti ti-x"></i> Still corner-anchored · weak importance signal · redundant with A</span>
+    </div>
+  </div>
+
+  <!-- F: Persistent right sidebar - defer -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v3">v3 — defer</span>
+      <span class="mock-title">F. Persistent right sidebar</span>
+      <span class="mock-sub">— Cursor pattern · always docked, always proactive</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+        </div>
+        <div class="main-area" style="padding: 18px 16px;">
+          <div class="greeting" style="font-size: 16px;">Good morning, Ranidu</div>
+          <div class="metric-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="metric"><div class="label">GMV</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Viewers</div><div class="value">347</div></div>
+          </div>
+        </div>
+        <div class="right-dock">
+          <div class="header">
+            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <span class="title">Ask Whatnot</span>
+            <i class="ti ti-layout-sidebar-right-collapse" style="margin-left: auto; color: var(--text-tertiary);"></i>
+          </div>
+          <div class="body">
+            <div class="insight-card"><b>Insight:</b> Tuesday shows convert 2.3× higher.</div>
+            <div class="label-tag">SUGGESTED</div>
+            <div class="suggested">Why did viewers drop 8%?</div>
+            <div class="suggested">Top buyers last 30 days</div>
+          </div>
+          <div class="composer">
+            <div class="composer-pill">Ask anything…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Always visible · always proactive · highest engagement</span>
+      <span class="cons"><i class="ti ti-x"></i> Eats 25% of screen · ship only after v1 usage proves demand</span>
+    </div>
+  </div>
+
+  <div class="ship-box" style="background: var(--surface); color: var(--text); border: 0.5px solid var(--border-strong); margin-top: 28px;">
+    <div class="title" style="color: var(--teal-600);"><i class="ti ti-target"></i> The two-surface principle</div>
+    <div class="body" style="color: var(--text);">
+      <b>One product, two doors.</b> The header command bar (A) and the left-nav item (B) point to the same threads, the same memory, the same dashboard. A question started in the command bar continues in the nav home. The peek (C) is an accelerator — it pre-fills the input and routes to the same backend.<br><br>
+      <span style="color: var(--text-secondary);">Avoid two parallel experiences. One bot, multiple doors.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 04 OPEN STATE — WHAT HAPPENS WHEN YOU CLICK                   -->
+<!-- ============================================================ -->
+<section id="openstate">
+  <div class="section-header">
+    <h2><span class="num">04</span> When you open it</h2>
+    <p class="section-lede">Every entry point routes to one of six "opened" surfaces. Picking the right surface for the context is half the design.</p>
+  </div>
+
+  <!-- 1. Side panel (default) -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1 · default</span>
+      <span class="mock-title">1. Side panel — slides in from the right</span>
+      <span class="mock-sub">— main content stays visible · the page you're on is preserved</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/shows</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill"><i class="ti ti-sparkles spark"></i><span class="ph">Ask Whatnot…</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body" style="min-height: 360px;">
+        <div class="left-nav">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item active"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area" style="background: var(--bg);">
+          <div style="font-size: 13px; font-weight: 500; margin-bottom: 8px;">Your shows</div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; font-size: 11px;">
+            <div style="font-weight: 500;">Tuesday Pokémon Drop</div>
+            <div style="color: var(--text-secondary); margin-top: 2px;">$4,210 · 412 viewers</div>
+          </div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; font-size: 11px;">
+            <div style="font-weight: 500;">Friday Sports Cards</div>
+            <div style="color: var(--text-secondary); margin-top: 2px;">$2,840 · 287 viewers</div>
+          </div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 11px;">
+            <div style="font-weight: 500;">Sunday Marketplace</div>
+            <div style="color: var(--text-secondary); margin-top: 2px;">$5,420 · 392 viewers</div>
+          </div>
+        </div>
+        <div class="side-panel" style="border-left: 1.5px solid var(--amber-400);">
+          <div class="panel-header">
+            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <div class="title-block">
+              <div class="title">Ask Whatnot</div>
+              <div class="sub">New thread</div>
+            </div>
+            <i class="ti ti-arrows-diagonal" title="Expand to full page"></i>
+            <i class="ti ti-x"></i>
+          </div>
+          <div class="panel-body">
+            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.04em;">SUGGESTED FOR THIS PAGE</div>
+            <div class="chip" style="display: block; margin-bottom: 4px;">Why did Tuesday outperform Friday?</div>
+            <div class="chip" style="display: block; margin-bottom: 4px;">Compare these 3 shows by GMV</div>
+            <div class="chip" style="display: block; margin-bottom: 12px;">Who bought the most last week?</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.04em;">RECENT THREADS</div>
+            <div style="padding: 6px 8px; border-radius: 5px; background: var(--bg); margin-bottom: 4px;">
+              <div style="font-size: 11px; font-weight: 500;">Top buyers last 90 days</div>
+              <div style="font-size: 10px; color: var(--text-secondary);">42 repeat · 2h ago</div>
+            </div>
+            <div style="padding: 6px 8px; border-radius: 5px;">
+              <div style="font-size: 11px;">SKUs about to stock out</div>
+              <div style="font-size: 10px; color: var(--text-secondary);">14 items · yesterday</div>
+            </div>
+          </div>
+          <div class="panel-composer">
+            <div class="composer-input">
+              <i class="ti ti-sparkles" style="font-size: 13px; color: var(--amber-600);"></i>
+              <span class="ph">Ask about your business…</span>
+              <i class="ti ti-microphone" style="font-size: 13px; color: var(--text-tertiary);"></i>
+              <button class="send-btn"><i class="ti ti-arrow-up send-icon"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">The default landing. Page stays where it was — Shows list still visible on the left. Panel opens with context-aware suggestions ("for this page") and a recent threads list, so the seller can either start fresh or resume. Two doors out: collapse to close, expand-arrow to go full-page.</div>
+  </div>
+
+  <!-- 2. Command palette modal -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1 · ⌘K</span>
+      <span class="mock-title">2. Command palette — ⌘K spotlight</span>
+      <span class="mock-sub">— centered, keyboard-driven, fastest path to a question</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/shows</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill highlight"><i class="ti ti-sparkles spark"></i><span class="ph">Ask Whatnot…</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body" style="min-height: 320px; position: relative;">
+        <div class="left-nav" style="opacity: 0.4;">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+        </div>
+        <div class="main-area" style="opacity: 0.4;">
+          <div class="stub"></div>
+          <div class="stub short" style="margin-top: 8px;"></div>
+        </div>
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: flex-start; justify-content: center; padding-top: 28px;">
+          <div style="width: 420px; background: #fff; border-radius: 12px; border: 0.5px solid var(--border-strong); overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.12);">
+            <div style="padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+              <i class="ti ti-sparkles" style="font-size: 15px; color: var(--amber-600);"></i>
+              <span style="font-size: 14px; color: var(--text-secondary); flex: 1;">Ask about your business…</span>
+              <span style="font-size: 11px; color: var(--text-tertiary); background: var(--bg); padding: 2px 6px; border-radius: 3px;">esc</span>
+            </div>
+            <div style="padding: 6px 8px 4px 16px; font-size: 10px; color: var(--text-tertiary); font-weight: 500; letter-spacing: 0.04em; border-top: 0.5px solid var(--border);">SUGGESTED FOR THIS PAGE</div>
+            <div style="padding: 0 8px;">
+              <div style="padding: 7px 10px; border-radius: 5px; background: var(--bg); display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-trending-up" style="font-size: 13px; color: var(--text-secondary);"></i>
+                <span style="font-size: 13px;">Why did Tuesday's show outperform Friday's?</span>
+                <span style="margin-left: auto; font-size: 11px; color: var(--text-tertiary);">↵</span>
+              </div>
+              <div style="padding: 7px 10px; border-radius: 5px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-users" style="font-size: 13px; color: var(--text-secondary);"></i>
+                <span style="font-size: 13px;">Who bought the most last week?</span>
+              </div>
+              <div style="padding: 7px 10px; border-radius: 5px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-calendar" style="font-size: 13px; color: var(--text-secondary);"></i>
+                <span style="font-size: 13px;">Best time slot for Pokémon shows</span>
+              </div>
+            </div>
+            <div style="padding: 6px 8px 4px 16px; font-size: 10px; color: var(--text-tertiary); font-weight: 500; letter-spacing: 0.04em; border-top: 0.5px solid var(--border); margin-top: 4px;">RECENT THREADS</div>
+            <div style="padding: 0 8px 10px;">
+              <div style="padding: 7px 10px; border-radius: 5px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-message" style="font-size: 13px; color: var(--text-secondary);"></i>
+                <span style="font-size: 13px;">Top buyers last 90 days</span>
+                <span style="margin-left: auto; font-size: 11px; color: var(--text-tertiary);">2h</span>
+              </div>
+              <div style="padding: 7px 10px; border-radius: 5px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-message" style="font-size: 13px; color: var(--text-secondary);"></i>
+                <span style="font-size: 13px;">SKUs about to stock out</span>
+                <span style="margin-left: auto; font-size: 11px; color: var(--text-tertiary);">1d</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Modal pops centered. Up/down arrow keys navigate suggestions. Enter submits and transitions to side panel (state 1) with the question already streaming. Esc returns to the page. Pure keyboard — never requires a mouse.</div>
+  </div>
+
+  <!-- 3. Mini dropdown -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 · lightweight</span>
+      <span class="mock-title">3. Mini dropdown — quick lookup, no commitment</span>
+      <span class="mock-sub">— for one-off queries that don't need a full thread</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header" style="position: relative;">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill highlight"><i class="ti ti-sparkles spark"></i><span class="ph" style="color: var(--text);">What was my GMV last week?</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+        <div style="position: absolute; top: 56px; left: 50%; transform: translateX(-50%); width: 380px; background: #fff; border-radius: 12px; border: 0.5px solid var(--border-strong); overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.1); z-index: 10;">
+          <div style="padding: 14px 16px;">
+            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 3px;">GMV · last 7 days</div>
+            <div style="font-size: 22px; font-weight: 500;">$18,420</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 2px;"><span style="color: var(--teal-600); font-weight: 500;">+23%</span> vs prior week. Highest in 90 days.</div>
+          </div>
+          <div style="padding: 8px 14px; border-top: 0.5px solid var(--border); background: var(--bg); display: flex; align-items: center; gap: 6px;">
+            <button class="btn-action" style="font-size: 10px; padding: 4px 8px;"><i class="ti ti-pin" style="font-size: 10px;"></i> Pin</button>
+            <button class="btn-action" style="font-size: 10px; padding: 4px 8px;"><i class="ti ti-arrows-diagonal" style="font-size: 10px;"></i> Open thread</button>
+            <span style="margin-left: auto; font-size: 10px; color: var(--text-tertiary);">↵ to ask follow-up</span>
+          </div>
+        </div>
+      </div>
+      <div class="app-body" style="opacity: 0.5;">
+        <div class="left-nav"><div class="item active"><i class="ti ti-home"></i> Home</div></div>
+        <div class="main-area"><div class="stub"></div></div>
+      </div>
+    </div>
+    <div class="mock-note">Answer appears inline below the command bar without leaving the page. Perfect for "what's my GMV right now?" — no thread, no panel, no friction. Press Enter to convert into a full thread; click away to dismiss.</div>
+  </div>
+
+  <!-- 4. Full-page takeover -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1 · nav route</span>
+      <span class="mock-title">4. Full-page workspace — for deep work</span>
+      <span class="mock-sub">— what "Ask Whatnot" in the nav opens · briefing home + thread rail</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/ask</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill"><i class="ti ti-sparkles spark"></i><span class="ph">Ask Whatnot…</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body" style="min-height: 420px;">
+        <div class="left-nav">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item ai-active"><i class="ti ti-sparkles spark"></i> Ask Whatnot</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="thread-rail" style="background: var(--bg-deep); width: 200px;">
+          <div class="rail-header">
+            <div class="rail-search"><i class="ti ti-search"></i><span class="ph">Search threads…</span></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">PINNED</div>
+            <div class="thread-row"><div class="row-1"><i class="ti ti-pin pin"></i><span class="title">Weekly review</span></div><div class="sub">$18,420 · +23%</div></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">TODAY</div>
+            <div class="thread-row"><div class="row-1"><span class="dot"></span><span class="title">Compare last 3 shows</span></div><div class="sub">$12,470</div></div>
+            <div class="thread-row"><div class="row-1"><span class="title">Top buyers 90d</span></div><div class="sub">42 repeat</div></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">THIS WEEK</div>
+            <div class="thread-row"><div class="row-1"><span class="title dim">SKUs stocking out</span></div></div>
+          </div>
+          <div class="new-btn-wrap">
+            <button class="new-btn"><i class="ti ti-plus"></i> New thread</button>
+          </div>
+        </div>
+        <div style="flex: 1; padding: 20px 24px;">
+          <div style="font-size: 20px; font-weight: 500; margin-bottom: 4px;">Good morning, Ranidu</div>
+          <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 16px;">3 insights worth a look · updated 4 min ago</div>
+          <div class="metric-grid" style="margin-bottom: 14px;">
+            <div class="metric"><div class="label">GMV</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-thru</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat</div><div class="value">42</div></div>
+          </div>
+          <div class="insight-strip"><i class="ti ti-sparkles"></i><span><b>Opportunity:</b> Tuesday shows convert 2.3× higher. Add another slot?</span></div>
+          <div class="insight-strip" style="background: var(--coral-50); color: var(--coral-800);"><i class="ti ti-alert-triangle" style="color: var(--coral-600);"></i><span><b>Anomaly:</b> Avg viewers down 8% — 3 days running.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Clicking "Ask Whatnot" in the nav opens this — a full workspace with thread rail (search, grouping, pinning), morning briefing, and metric overview. Same threads as the side panel — open the same thread from either surface and it picks up where it left off.</div>
+  </div>
+
+  <!-- 5. Persistent docked sidebar -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v3">v3 · power user</span>
+      <span class="mock-title">5. Persistent dock — always visible</span>
+      <span class="mock-sub">— opt-in via "Pin sidebar" · stays on every page</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/orders</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill"><i class="ti ti-sparkles spark"></i><span class="ph">Ask Whatnot…</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body" style="min-height: 340px;">
+        <div class="left-nav">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item active"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area" style="background: var(--bg);">
+          <div style="font-size: 13px; font-weight: 500; margin-bottom: 8px;">Orders · today</div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 4px; font-size: 11px;"><b>#1042</b> · @kai_collects · $87</div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 4px; font-size: 11px;"><b>#1043</b> · @mintymarcus · $124</div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 4px; font-size: 11px;"><b>#1044</b> · @dani_drops · $54</div>
+          <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 11px;"><b>#1045</b> · @slabsuperstar · $210</div>
+        </div>
+        <div style="width: 260px; background: #fff; border-left: 1.5px solid var(--amber-400); display: flex; flex-direction: column;">
+          <div style="padding: 10px 12px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 8px;">
+            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <span style="font-size: 12px; font-weight: 500;">Ask Whatnot</span>
+            <i class="ti ti-pin-filled" style="font-size: 12px; color: var(--amber-600); margin-left: auto;" title="Pinned"></i>
+            <i class="ti ti-x" style="font-size: 12px; color: var(--text-tertiary);"></i>
+          </div>
+          <div style="flex: 1; padding: 12px;">
+            <div class="insight-strip" style="padding: 7px 9px; font-size: 11px; margin-bottom: 10px;"><i class="ti ti-sparkles" style="font-size: 12px;"></i><span>3 orders from @kai_collects — VIP buyer this month</span></div>
+            <div style="font-size: 10px; color: var(--text-secondary); margin-bottom: 6px; letter-spacing: 0.04em;">RELATED</div>
+            <div class="chip" style="display: block; margin-bottom: 4px;">Profile @kai_collects</div>
+            <div class="chip" style="display: block; margin-bottom: 4px;">Today's GMV by buyer</div>
+            <div class="chip" style="display: block; margin-bottom: 4px;">Repeat buyers this week</div>
+          </div>
+          <div style="padding: 10px 12px; border-top: 0.5px solid var(--border);">
+            <div class="composer-input">
+              <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 12px;"></i>
+              <span class="ph">Ask…</span>
+              <button class="send-btn" style="width: 20px; height: 20px;"><i class="ti ti-arrow-up send-icon" style="font-size: 10px;"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Pin the sidebar and it stays across every page. The bot becomes ambient — reads the page context (Orders, Shows, Inventory) and offers relevant suggestions. Defer to v3: only ship when telemetry shows sellers want this docked.</div>
+  </div>
+
+  <!-- 6. Expanded side panel with inner thread list -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 · expanded</span>
+      <span class="mock-title">6. Side panel with thread history visible</span>
+      <span class="mock-sub">— hamburger toggle reveals an inner rail without leaving the panel</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/shows</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body" style="min-height: 380px;">
+        <div class="left-nav">
+          <div class="item"><i class="ti ti-home"></i> Home</div>
+          <div class="item active"><i class="ti ti-broadcast"></i> Shows</div>
+        </div>
+        <div class="main-area" style="background: var(--bg); padding: 12px 14px;">
+          <div style="font-size: 12px; color: var(--text-secondary);">Shows page (visible behind)</div>
+          <div class="stub" style="margin-top: 8px;"></div>
+          <div class="stub short" style="margin-top: 6px;"></div>
+        </div>
+        <!-- Expanded panel: inner rail + conversation -->
+        <div style="display: flex; border-left: 1.5px solid var(--amber-400);">
+          <div style="width: 140px; background: var(--bg-deep); border-right: 0.5px solid var(--border); padding: 8px 6px;">
+            <div style="display: flex; align-items: center; gap: 4px; padding: 4px 6px; margin-bottom: 8px;">
+              <i class="ti ti-layout-sidebar" style="font-size: 12px; color: var(--text-secondary);"></i>
+              <span style="font-size: 10px; font-weight: 500;">Threads</span>
+              <i class="ti ti-plus" style="font-size: 11px; color: var(--text-tertiary); margin-left: auto;"></i>
+            </div>
+            <div style="font-size: 8px; color: var(--text-tertiary); padding: 4px 6px; letter-spacing: 0.05em;">TODAY</div>
+            <div style="padding: 5px 6px; border-radius: 4px; background: #fff; border: 0.5px solid var(--border); margin-bottom: 2px;">
+              <div style="font-size: 10px; font-weight: 500;">Compare 3 shows</div>
+              <div style="font-size: 9px; color: var(--text-secondary);">$12,470</div>
+            </div>
+            <div style="padding: 5px 6px; border-radius: 4px;">
+              <div style="font-size: 10px;">Top buyers</div>
+              <div style="font-size: 9px; color: var(--text-secondary);">42 repeat</div>
+            </div>
+            <div style="font-size: 8px; color: var(--text-tertiary); padding: 8px 6px 4px; letter-spacing: 0.05em;">EARLIER</div>
+            <div style="padding: 5px 6px; border-radius: 4px;">
+              <div style="font-size: 10px; color: var(--text-secondary);">May GMV</div>
+            </div>
+          </div>
+          <div style="width: 280px; display: flex; flex-direction: column;">
+            <div style="padding: 10px 12px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 6px;">
+              <div style="flex: 1;">
+                <div style="font-size: 12px; font-weight: 500;">Compare last 3 shows by GMV</div>
+                <div style="font-size: 10px; color: var(--text-tertiary);">11:42am · complete</div>
+              </div>
+              <i class="ti ti-pin" style="font-size: 12px; color: var(--text-tertiary);"></i>
+              <i class="ti ti-share" style="font-size: 12px; color: var(--text-tertiary);"></i>
+              <i class="ti ti-arrows-diagonal" style="font-size: 12px; color: var(--text-tertiary);"></i>
+              <i class="ti ti-x" style="font-size: 12px; color: var(--text-tertiary);"></i>
+            </div>
+            <div style="flex: 1; padding: 12px;">
+              <div class="user-msg"><div class="bubble">Compare my last 3 shows</div></div>
+              <div class="answer-card">
+                <div class="answer-header" style="padding: 10px 12px;">
+                  <div class="answer-label" style="font-size: 10px;">Total GMV</div>
+                  <div class="answer-headline" style="font-size: 18px;">$12,470</div>
+                </div>
+                <div class="answer-viz" style="padding: 0 12px 10px;">
+                  <div class="bar-row" style="height: 50px;">
+                    <div class="col"><div class="v" style="font-size: 9px;">$4.2K</div><div class="bar bar-amber" style="height: 65%;"></div></div>
+                    <div class="col"><div class="v" style="font-size: 9px;">$2.8K</div><div class="bar bar-amber-strong" style="height: 44%;"></div></div>
+                    <div class="col"><div class="v" style="font-size: 9px;">$5.4K</div><div class="bar bar-amber" style="height: 84%;"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="padding: 8px 12px; border-top: 0.5px solid var(--border);">
+              <div class="composer-input" style="padding: 5px 10px;"><i class="ti ti-message-circle" style="font-size: 11px; color: var(--text-tertiary);"></i><span class="ph" style="font-size: 10px;">Follow-up…</span><button class="send-btn" style="width: 18px; height: 18px;"><i class="ti ti-arrow-up send-icon" style="font-size: 9px;"></i></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Click the hamburger inside the side panel header to expose an inner thread list. Now the panel is a mini workspace — switch between threads without leaving the page you're working on. Closes back to a single-column panel.</div>
+  </div>
+
+  <div class="ship-box" style="margin-top: 20px;">
+    <div class="title"><i class="ti ti-route"></i> Routing logic — which surface opens?</div>
+    <div class="body">
+      <b>From the command bar (A):</b> click opens the side panel (1) on the current page.<br>
+      <b>From ⌘K keyboard:</b> opens the command palette (2) → enter routes to the side panel.<br>
+      <b>From the nav item (B):</b> opens the full-page workspace (4).<br>
+      <b>From the peek (C) "Show me why":</b> opens the side panel (1) with that question already streaming.<br>
+      <b>Pinned sidebar (5):</b> a seller preference, opt-in, persists across sessions.<br><br>
+      <span style="color: rgba(255,255,255,0.65);">The mini dropdown (3) is the only surface that doesn't create a thread — it's a peek-and-pin pattern for instant lookups.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 05 ANSWER CARD                                                -->
+<!-- ============================================================ -->
+<section id="answer">
+  <div class="section-header">
+    <h2><span class="num">05</span> The answer card</h2>
+    <p class="section-lede">The smallest unit of the product. Every other surface is a way to produce, find, or share one of these.</p>
+  </div>
+
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Anatomy</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: start;">
+      <div class="answer-card">
+        <div class="answer-header">
+          <div class="answer-label">Total GMV across 3 most recent shows</div>
+          <div class="answer-headline">$12,470 <span class="unit">across 3 shows</span></div>
+          <div class="answer-sub">Tuesday's show drove <span class="up">48% more</span> than Friday's.</div>
+        </div>
+        <div class="answer-viz">
+          <div class="bar-row">
+            <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
+            <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
+            <div class="col"><div class="v">$5,420</div><div class="bar bar-amber" style="height:84%;"></div><div class="label">Sun</div></div>
+          </div>
+        </div>
+        <div class="answer-provenance">
+          <i class="ti ti-database"></i>
+          <span>Orders · last 3 shows · paid · 14,213 rows · 6.2s</span>
+          <i class="ti ti-chevron-down chev"></i>
+        </div>
+        <div class="answer-actions">
+          <button class="btn-action"><i class="ti ti-pin"></i> Pin</button>
+          <button class="btn-action"><i class="ti ti-clock"></i> Schedule</button>
+          <button class="btn-action"><i class="ti ti-share"></i> Share</button>
+          <button class="btn-action"><i class="ti ti-download"></i> CSV</button>
+          <div class="feedback-row">
+            <i class="ti ti-thumb-up"></i>
+            <i class="ti ti-thumb-down"></i>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">1. Headline</b><br>Confident number, no hedging.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">2. Plain-English finding</b><br>One sentence. Color-coded if directional.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">3. Right viz</b><br>Bar, line, table, or stat — never an empty chart.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">4. Provenance</b><br>Source, rows, time. Expand for query.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">5. Durable actions</b><br>Pin, schedule, share, export — labeled.</div>
+        <div><b style="font-weight:500; color:var(--text);">6. Feedback</b><br>Secondary, right-aligned.</div>
+      </div>
+    </div>
+    <div class="mock-note">Every answer in the product follows this six-zone structure. Chat bubbles get replaced by this card. The card is what gets pinned, shared, scheduled, and embedded.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 05 ANSWER VARIANTS                                            -->
+<!-- ============================================================ -->
+<section id="variants">
+  <div class="section-header">
+    <h2><span class="num">06</span> Answer variants</h2>
+    <p class="section-lede">The same anatomy renders as the right primitive for the question. Six variants cover ~95% of seller queries.</p>
+  </div>
+
+  <!-- Big number -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">a. Single big number</span>
+      <span class="mock-sub">— "How much did I make last week?"</span>
+    </div>
+    <div class="answer-card" style="max-width: 480px;">
+      <div class="answer-header">
+        <div class="answer-label">GMV · last 7 days</div>
+        <div class="answer-headline">$18,420</div>
+        <div class="answer-sub"><span class="up">+23%</span> vs the prior week. Highest weekly total in the last 90 days.</div>
+      </div>
+      <div class="answer-provenance">
+        <i class="ti ti-database"></i>
+        <span>Orders · paid · last 7 days · 412 orders</span>
+        <i class="ti ti-chevron-down chev"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">b. Comparison</span>
+      <span class="mock-sub">— "Compare last 3 shows"</span>
+    </div>
+    <div class="answer-card" style="max-width: 480px;">
+      <div class="answer-header">
+        <div class="answer-label">GMV by show</div>
+        <div class="answer-headline">$12,470 <span class="unit">across 3 shows</span></div>
+        <div class="answer-sub">Tuesday drove <span class="up">48% more</span> than Friday.</div>
+      </div>
+      <div class="answer-viz">
+        <div class="bar-row">
+          <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
+          <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
+          <div class="col"><div class="v">$5,420</div><div class="bar bar-amber" style="height:84%;"></div><div class="label">Sun</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ranking / Leaderboard -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">c. Ranking / leaderboard</span>
+      <span class="mock-sub">— "Who are my top buyers?"</span>
+    </div>
+    <div class="answer-card" style="max-width: 540px;">
+      <div class="answer-header">
+        <div class="answer-label">Top buyers · last 90 days</div>
+        <div class="answer-headline">42 <span class="unit">repeat buyers</span></div>
+        <div class="answer-sub">Top 5 buyers account for <span class="up">31%</span> of GMV.</div>
+      </div>
+      <table class="answer-table">
+        <thead><tr><th>Buyer</th><th class="num">Orders</th><th class="num">Spent</th></tr></thead>
+        <tbody>
+          <tr><td><span class="avatar-sm">K</span>@kai_collects</td><td class="num">14</td><td class="num">$2,840</td></tr>
+          <tr><td><span class="avatar-sm">M</span>@mintymarcus</td><td class="num">11</td><td class="num">$2,210</td></tr>
+          <tr><td><span class="avatar-sm">D</span>@dani_drops</td><td class="num">9</td><td class="num">$1,840</td></tr>
+          <tr><td><span class="avatar-sm">S</span>@slabsuperstar</td><td class="num">8</td><td class="num">$1,520</td></tr>
+          <tr><td><span class="avatar-sm">P</span>@pikaprinces</td><td class="num">7</td><td class="num">$1,210</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Trend -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">d. Trend over time</span>
+      <span class="mock-sub">— "Show me sales over the last 30 days"</span>
+    </div>
+    <div class="answer-card" style="max-width: 540px;">
+      <div class="answer-header">
+        <div class="answer-label">Daily GMV · last 30 days</div>
+        <div class="answer-headline">$48,240</div>
+        <div class="answer-sub">Trending <span class="up">up 14%</span> month over month. Peak day: $4,210 on May 28.</div>
+      </div>
+      <div class="answer-viz">
+        <svg viewBox="0 0 480 90" style="width:100%; height:90px;" preserveAspectRatio="none">
+          <polyline fill="none" stroke="#BA7517" stroke-width="2"
+            points="0,72 16,64 32,68 48,52 64,58 80,48 96,38 112,44 128,30 144,40 160,28 176,22 192,32 208,18 224,28 240,12 256,22 272,16 288,28 304,18 320,24 336,8 352,18 368,14 384,22 400,16 416,28 432,20 448,32 464,24 480,30"/>
+          <polyline fill="#FAEEDA" stroke="none" opacity="0.5"
+            points="0,72 16,64 32,68 48,52 64,58 80,48 96,38 112,44 128,30 144,40 160,28 176,22 192,32 208,18 224,28 240,12 256,22 272,16 288,28 304,18 320,24 336,8 352,18 368,14 384,22 400,16 416,28 432,20 448,32 464,24 480,30 480,90 0,90"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- No data -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">e. No data — honest, useful</span>
+      <span class="mock-sub">— don't draw an empty chart</span>
+    </div>
+    <div class="answer-card" style="max-width: 480px;">
+      <div class="answer-header">
+        <div class="answer-label">Sales · last 10 days</div>
+        <div class="answer-headline">$0</div>
+        <div class="answer-sub">No orders in this window. Your store opened today (June 10), so this is expected.</div>
+      </div>
+      <div class="answer-provenance" style="background: var(--surface);">
+        <i class="ti ti-info-circle" style="color: var(--blue-600);"></i>
+        <span style="color: var(--text);">Suggested: try "Show me sales since the store opened" or "What should I do first to drive sales?"</span>
+      </div>
+    </div>
+    <div class="mock-note">No empty line chart. No "It looks like there were no sales." Just the number, the reason, and a useful next step.</div>
+  </div>
+
+  <!-- Low confidence -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">f. Low confidence — flagged</span>
+      <span class="mock-sub">— sparse data or outlier-heavy</span>
+    </div>
+    <div class="answer-card" style="max-width: 480px;">
+      <div class="answer-header">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <div class="answer-label" style="margin: 0;">Forecast · next month's GMV</div>
+          <span class="pri" style="background: var(--amber-50); color: var(--amber-900);">Low confidence</span>
+        </div>
+        <div class="answer-headline">~$22,000</div>
+        <div class="answer-sub">Range: $16K–$31K. Based on 6 weeks of data — short history makes this forecast wide. More precise after 12+ weeks.</div>
+      </div>
+      <div class="answer-provenance">
+        <i class="ti ti-alert-triangle" style="color: var(--amber-600);"></i>
+        <span>6 weeks history · model confidence 54%</span>
+        <i class="ti ti-chevron-down chev"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 06 RUNNING & FEEDBACK                                         -->
+<!-- ============================================================ -->
+<section id="running">
+  <div class="section-header">
+    <h2><span class="num">07</span> Running queries & feedback</h2>
+    <p class="section-lede">The single biggest fix to today's product. Six states, each designed to keep the seller informed and in control.</p>
+  </div>
+
+  <!-- Submitted -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">State 1 — Submitted (under 200ms)</span>
+      <span class="mock-sub">— question echoed back, thread row created</span>
+    </div>
+    <div class="side-panel" style="border: 0.5px solid var(--border-strong); border-radius: 10px; max-width: 360px;">
+      <div class="panel-header">
+        <div class="title-block">
+          <div class="title">Compare last 3 shows by GMV</div>
+          <div class="sub">Just now · 0 of 3 steps</div>
+        </div>
+        <i class="ti ti-arrows-diagonal"></i>
+        <i class="ti ti-x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="user-msg"><div class="bubble">Compare my last 3 shows by GMV</div></div>
+        <div class="progress-block">
+          <div class="progress-step">
+            <div class="spinner-mini"></div>
+            <span class="text" style="font-weight: 500;">Submitted — preparing query…</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-composer">
+        <div class="composer-input">
+          <i class="ti ti-message-circle" style="font-size: 13px; color: var(--text-tertiary);"></i>
+          <span class="ph">Ask a follow-up…</span>
+          <button class="stop-btn"><i class="ti ti-square-filled" style="font-size: 9px;"></i> Stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Streaming progress -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">State 2 — Streaming progress with named steps</span>
+      <span class="mock-sub">— each step named in seller language, with elapsed and remaining time</span>
+    </div>
+    <div class="side-panel" style="border: 0.5px solid var(--border-strong); border-radius: 10px; max-width: 360px;">
+      <div class="panel-header">
+        <div class="title-block">
+          <div class="title">Compare last 3 shows by GMV</div>
+          <div class="sub">Running · 2 of 3 steps</div>
+        </div>
+        <i class="ti ti-arrows-diagonal"></i>
+        <i class="ti ti-x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="user-msg"><div class="bubble">Compare my last 3 shows by GMV</div></div>
+        <div class="progress-block">
+          <div class="progress-step done">
+            <i class="ti ti-check done"></i>
+            <span class="text">Found 3 most recent shows</span>
+            <span class="time">0.4s</span>
+          </div>
+          <div class="progress-step done">
+            <i class="ti ti-check done"></i>
+            <span class="text">Pulled GMV from orders table</span>
+            <span class="time">1.2s</span>
+          </div>
+          <div class="progress-step">
+            <div class="spinner-mini"></div>
+            <span class="text" style="font-weight: 500;">Scanning 14,213 orders…</span>
+            <span class="time">~3s left</span>
+          </div>
+          <div class="progress-bar"><div class="fill" style="width: 65%;"></div></div>
+        </div>
+      </div>
+      <div class="panel-composer">
+        <div class="composer-input">
+          <i class="ti ti-message-circle" style="font-size: 13px; color: var(--text-tertiary);"></i>
+          <span class="ph">Ask a follow-up…</span>
+          <button class="stop-btn"><i class="ti ti-square-filled" style="font-size: 9px;"></i> Stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partial streaming result -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">State 3 — Partial result streams before complete</span>
+      <span class="mock-sub">— headline number arrives first, chart fills in, prose finalizes last</span>
+    </div>
+    <div class="side-panel" style="border: 0.5px solid var(--border-strong); border-radius: 10px; max-width: 360px;">
+      <div class="panel-header">
+        <div class="title-block">
+          <div class="title">Compare last 3 shows by GMV</div>
+          <div class="sub">Finalizing…</div>
+        </div>
+        <i class="ti ti-arrows-diagonal"></i>
+        <i class="ti ti-x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="user-msg"><div class="bubble">Compare my last 3 shows by GMV</div></div>
+        <div class="answer-card">
+          <div class="answer-header">
+            <div class="answer-label" style="display:flex; align-items:center; gap: 6px;">
+              <span style="background: var(--amber-50); color: var(--amber-900); padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 500;">STREAMING</span>
+              Total GMV
+            </div>
+            <div class="answer-headline">$12,470</div>
+            <div class="answer-sub" style="opacity: 0.5;">Writing finding…</div>
+          </div>
+          <div class="answer-viz">
+            <div class="bar-row">
+              <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
+              <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
+              <div class="col"><div class="v" style="opacity:0.4;">…</div><div class="bar bar-gray" style="height:20%; opacity:0.5;"></div><div class="label">Sun</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Partial streaming reduces perceived wait by 60-80%. The seller is reading the headline number while the chart is still rendering.</div>
+  </div>
+
+  <!-- Cancelled -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">State 4 — Cancelled</span>
+      <span class="mock-sub">— durable, resumable</span>
+    </div>
+    <div class="side-panel" style="border: 0.5px solid var(--border-strong); border-radius: 10px; max-width: 360px;">
+      <div class="panel-header">
+        <div class="title-block">
+          <div class="title">Compare last 3 shows by GMV</div>
+          <div class="sub" style="color: var(--coral-600);">Cancelled · 2 of 3 steps</div>
+        </div>
+        <i class="ti ti-arrows-diagonal"></i>
+        <i class="ti ti-x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="user-msg"><div class="bubble">Compare my last 3 shows by GMV</div></div>
+        <div class="progress-block" style="background: var(--coral-50);">
+          <div class="progress-step done">
+            <i class="ti ti-check done"></i>
+            <span class="text">Found 3 most recent shows</span>
+            <span class="time">0.4s</span>
+          </div>
+          <div class="progress-step">
+            <i class="ti ti-x" style="color: var(--coral-600); font-size: 12px;"></i>
+            <span class="text" style="color: var(--coral-600);">Stopped by you</span>
+            <span class="time">at 1.6s</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="btn-action" style="background: #000; color: #fff; border: none;"><i class="ti ti-refresh"></i> Resume</button>
+          <button class="btn-action"><i class="ti ti-edit"></i> Edit question</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">State 5 — Error with a real reason</span>
+      <span class="mock-sub">— no "Something went wrong"</span>
+    </div>
+    <div class="side-panel" style="border: 0.5px solid var(--border-strong); border-radius: 10px; max-width: 360px;">
+      <div class="panel-header">
+        <div class="title-block">
+          <div class="title">Compare last 3 shows by GMV</div>
+          <div class="sub" style="color: var(--coral-600);">Failed · retrying in 5s</div>
+        </div>
+        <i class="ti ti-x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="user-msg"><div class="bubble">Compare my last 3 shows by GMV</div></div>
+        <div class="alert-banner">
+          <i class="ti ti-alert-circle"></i>
+          <div>
+            <div style="font-weight: 500; margin-bottom: 2px;">Couldn't reach the orders table</div>
+            <div>Retry will run in <b>5s</b>. Other queries are unaffected.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="btn-action" style="background: #000; color: #fff; border: none;"><i class="ti ti-refresh"></i> Retry now</button>
+          <button class="btn-action"><i class="ti ti-message"></i> Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Long-running -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">State 6 — Long-running (&gt;30s) backgrounded</span>
+      <span class="mock-sub">— "I'll notify you when it's done"</span>
+    </div>
+    <div class="answer-card" style="max-width: 480px;">
+      <div class="answer-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="spinner-mini"></div>
+          <div>
+            <div style="font-size: 13px; font-weight: 500;">Forecasting next month's GMV</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">Running in the background · est. 2 minutes left</div>
+          </div>
+          <div style="margin-left: auto; display: flex; gap: 6px;">
+            <button class="btn-action"><i class="ti ti-bell"></i> Notify me</button>
+            <button class="btn-action"><i class="ti ti-x"></i> Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Sellers shouldn't sit and watch a slow query. After 30s, the bot offers to run in the background and ping when done.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 07 THREADS WORKSPACE                                          -->
+<!-- ============================================================ -->
+<section id="threads">
+  <div class="section-header">
+    <h2><span class="num">08</span> Threads workspace</h2>
+    <p class="section-lede">Threads are saved analyses, not chat logs. The rail is a workspace browser, and each thread is a stateful sequence of answers.</p>
+  </div>
+
+  <!-- Thread rail + canvas -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Full-page workspace</span>
+      <span class="mock-sub">— rail with search, grouping, pinning, status</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/ask/t_abc123</span>
+      </div>
+      <div class="app-body" style="min-height: 460px;">
+        <div class="thread-rail">
+          <div class="rail-header">
+            <div class="rail-title"><i class="ti ti-sparkles spark"></i> Ask Whatnot <i class="ti ti-edit" style="font-size: 12px; color: var(--text-tertiary); margin-left: auto;"></i></div>
+            <div class="rail-search"><i class="ti ti-search"></i><span class="ph">Search threads…</span></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">PINNED</div>
+            <div class="thread-row">
+              <div class="row-1"><i class="ti ti-pin pin"></i><span class="title">Weekly review</span><i class="ti ti-clock sched" title="Scheduled"></i></div>
+              <div class="sub">GMV $18,420 · +23%</div>
+            </div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">TODAY</div>
+            <div class="thread-row active">
+              <div class="row-1"><span class="dot"></span><span class="title">Compare last 3 shows by GMV</span></div>
+              <div class="sub">$12,470 · 3 shows</div>
+            </div>
+            <div class="thread-row">
+              <div class="row-1"><span class="title">Top buyers last 90 days</span></div>
+              <div class="sub">42 repeat · top: @kai_collects</div>
+            </div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">THIS WEEK</div>
+            <div class="thread-row">
+              <div class="row-1"><span class="title">SKUs about to stock out</span></div>
+              <div class="sub">14 items flagged</div>
+            </div>
+            <div class="thread-row">
+              <div class="row-1"><span class="title">Why did viewers drop 8%?</span></div>
+              <div class="sub">3 hypotheses</div>
+            </div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">EARLIER</div>
+            <div class="thread-row">
+              <div class="row-1"><span class="title dim">Best time slot analysis</span></div>
+            </div>
+            <div class="thread-row">
+              <div class="row-1"><span class="title dim">May GMV breakdown</span></div>
+            </div>
+          </div>
+          <div class="new-btn-wrap">
+            <button class="new-btn"><i class="ti ti-plus"></i> New thread</button>
+          </div>
+        </div>
+
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          <div style="padding: 14px 20px; border-bottom: 0.5px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 15px; font-weight: 500;">Compare last 3 shows by GMV</span>
+              <i class="ti ti-pencil" style="font-size: 13px; color: var(--text-tertiary);"></i>
+              <div style="margin-left: auto; display: flex; gap: 12px;">
+                <i class="ti ti-pin" style="font-size: 14px; color: var(--text-tertiary);"></i>
+                <i class="ti ti-clock" style="font-size: 14px; color: var(--text-tertiary);"></i>
+                <i class="ti ti-share" style="font-size: 14px; color: var(--text-tertiary);"></i>
+                <i class="ti ti-dots" style="font-size: 14px; color: var(--text-tertiary);"></i>
+              </div>
+            </div>
+            <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">2 questions · created 11:42am · data as of 11:38am</div>
+          </div>
+
+          <div style="flex: 1; padding: 18px 22px; background: var(--bg);">
+            <!-- Q1 -->
+            <div style="margin-bottom: 14px;">
+              <div class="user-msg"><div class="bubble" style="background: #fff;">Compare my last 3 shows by GMV</div></div>
+              <div class="answer-card">
+                <div class="answer-header">
+                  <div class="answer-label">Total GMV across 3 shows</div>
+                  <div class="answer-headline">$12,470</div>
+                  <div class="answer-sub">Tuesday's show drove <span class="up">48% more</span> than Friday's.</div>
+                </div>
+                <div class="answer-viz">
+                  <div class="bar-row">
+                    <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
+                    <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
+                    <div class="col"><div class="v">$5,420</div><div class="bar bar-amber" style="height:84%;"></div><div class="label">Sun</div></div>
+                  </div>
+                </div>
+                <div class="answer-provenance">
+                  <i class="ti ti-database"></i>
+                  <span class="meta">Orders · 14,213 rows · 6.2s</span>
+                  <i class="ti ti-chevron-down chev"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 follow-up -->
+            <div>
+              <div class="user-msg"><div class="bubble" style="background: #fff;">Why did Tuesday outperform?</div></div>
+              <div class="answer-card">
+                <div class="answer-header">
+                  <div style="font-size: 12.5px; line-height: 1.55; margin-bottom: 10px;">Three signals stand out for Tuesday's show:</div>
+                  <div style="display:flex; flex-direction:column; gap: 7px;">
+                    <div style="display:flex; gap: 8px; align-items: flex-start;">
+                      <div style="width:18px; height:18px; background: var(--teal-50); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink: 0;"><span style="font-size:10px; font-weight:500; color:var(--teal-600);">1</span></div>
+                      <div style="font-size: 12px;"><b style="font-weight:500;">2.1× more viewers</b> at peak (412 vs 196) — drove more bids per item.</div>
+                    </div>
+                    <div style="display:flex; gap: 8px; align-items: flex-start;">
+                      <div style="width:18px; height:18px; background: var(--teal-50); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink: 0;"><span style="font-size:10px; font-weight:500; color:var(--teal-600);">2</span></div>
+                      <div style="font-size: 12px;">Pokémon listings sold at <b style="font-weight:500;">$87 avg</b> vs $54 for Sports Cards on Friday.</div>
+                    </div>
+                    <div style="display:flex; gap: 8px; align-items: flex-start;">
+                      <div style="width:18px; height:18px; background: var(--teal-50); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink: 0;"><span style="font-size:10px; font-weight:500; color:var(--teal-600);">3</span></div>
+                      <div style="font-size: 12px;">8pm Tuesday slot historically converts <b style="font-weight:500;">2.3× better</b> for you.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="followups" style="padding: 10px 16px 12px;">
+                  <div class="label">FOLLOW-UPS</div>
+                  <span class="chip">Schedule another Tuesday show</span>
+                  <span class="chip">Compare to last month</span>
+                  <span class="chip">Forecast next Tuesday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 12px 20px; border-top: 0.5px solid var(--border); background: #fff;">
+            <div class="composer-input" style="background: var(--bg); border: 0.5px solid var(--border);">
+              <i class="ti ti-message-circle" style="font-size: 13px; color: var(--text-tertiary);"></i>
+              <span class="ph">Ask a follow-up in this thread…</span>
+              <i class="ti ti-microphone" style="font-size: 13px; color: var(--text-tertiary);"></i>
+              <button class="send-btn"><i class="ti ti-arrow-up send-icon"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Three rail features Shopify Sidekick is missing: grouping by recency, search, headline-metric previews under each thread. Status dots (green = new since last view) and clock icons (scheduled) make state visible without clicking.</div>
+  </div>
+
+  <!-- Thread status indicators -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Status indicators</span>
+      <span class="mock-sub">— scanned from the rail without clicking</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 720px;">
+      <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px;">
+        <div style="display:flex; align-items:center; gap: 5px; margin-bottom: 4px;">
+          <span style="width:6px; height:6px; border-radius:50%; background: var(--teal-600);"></span>
+          <span style="font-size: 11.5px; font-weight: 500;">New result</span>
+        </div>
+        <div style="font-size: 11px; color: var(--text-secondary);">Scheduled re-run completed</div>
+      </div>
+      <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px;">
+        <div style="display:flex; align-items:center; gap: 5px; margin-bottom: 4px;">
+          <div class="spinner-mini" style="width:8px; height:8px;"></div>
+          <span style="font-size: 11.5px; font-weight: 500;">Running</span>
+        </div>
+        <div style="font-size: 11px; color: var(--text-secondary);">Query in progress</div>
+      </div>
+      <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px;">
+        <div style="display:flex; align-items:center; gap: 5px; margin-bottom: 4px;">
+          <i class="ti ti-clock" style="font-size: 11px; color: var(--amber-600);"></i>
+          <span style="font-size: 11.5px; font-weight: 500;">Scheduled</span>
+        </div>
+        <div style="font-size: 11px; color: var(--text-secondary);">Re-runs Mon 7am</div>
+      </div>
+      <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px;">
+        <div style="display:flex; align-items:center; gap: 5px; margin-bottom: 4px;">
+          <i class="ti ti-alert-triangle" style="font-size: 11px; color: var(--coral-600);"></i>
+          <span style="font-size: 11.5px; font-weight: 500;">Threshold hit</span>
+        </div>
+        <div style="font-size: 11px; color: var(--text-secondary);">Viewers down &gt;15%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 08 PROACTIVE INTELLIGENCE                                     -->
+<!-- ============================================================ -->
+<section id="proactive">
+  <div class="section-header">
+    <h2><span class="num">09</span> Proactive intelligence</h2>
+    <p class="section-lede">The bot doesn't wait to be asked. Three surfaces: morning briefing, anomaly cards, threshold alerts.</p>
+  </div>
+
+  <!-- Morning briefing -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">Morning briefing — the "Ask Whatnot" home</span>
+      <span class="mock-sub">— what the seller sees when they click the nav item</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/ask</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill">
+          <i class="ti ti-sparkles spark"></i>
+          <span class="ph">Ask Whatnot anything…</span>
+          <span class="kbd">⌘K</span>
+        </div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="thread-rail" style="border-right: 0.5px solid var(--border);">
+          <div class="rail-header">
+            <div class="rail-title"><i class="ti ti-sparkles spark"></i> Ask Whatnot</div>
+            <div class="rail-search"><i class="ti ti-search"></i><span class="ph">Search threads…</span></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">PINNED</div>
+            <div class="thread-row"><div class="row-1"><i class="ti ti-pin pin"></i><span class="title">Weekly review</span></div></div>
+          </div>
+          <div class="rail-group">
+            <div class="group-label">TODAY</div>
+            <div class="thread-row"><div class="row-1"><span class="title dim">No threads yet</span></div></div>
+          </div>
+        </div>
+        <div style="flex: 1; padding: 22px 28px;">
+          <div style="font-size: 22px; font-weight: 500; margin-bottom: 4px;">Good morning, Ranidu</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 18px;">3 insights worth a look · updated 4 min ago</div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px;">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div><div class="delta delta-up"><i class="ti ti-trending-up"></i> +23%</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div><div class="delta delta-down"><i class="ti ti-trending-down"></i> −8%</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div><div class="delta delta-up"><i class="ti ti-trending-up"></i> +4 pts</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div><div class="delta delta-up"><i class="ti ti-trending-up"></i> +11</div></div>
+          </div>
+
+          <!-- Insight cards -->
+          <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+            <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+              <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 6px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--amber-50); display:flex; align-items:center; justify-content:center;"><i class="ti ti-sparkles" style="font-size: 13px; color: var(--amber-600);"></i></span>
+                <span style="font-size: 12.5px; font-weight: 500;">Opportunity · high impact</span>
+                <span style="margin-left:auto; font-size: 11px; color: var(--text-tertiary);">est. +$3,200 GMV</span>
+              </div>
+              <div style="font-size: 13px; line-height: 1.55;">Tuesday shows convert <b style="font-weight: 500;">2.3× higher</b> than other slots. Adding a second Tuesday slot could add ~$3.2K weekly GMV.</div>
+              <div style="margin-top: 10px; display: flex; gap: 6px;">
+                <button class="btn-action" style="background: #000; color: #fff; border: none;">Show me the data</button>
+                <button class="btn-action">Schedule a show</button>
+                <button class="btn-action" style="margin-left: auto;"><i class="ti ti-x"></i> Dismiss</button>
+              </div>
+            </div>
+            <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+              <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 6px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--coral-50); display:flex; align-items:center; justify-content:center;"><i class="ti ti-alert-triangle" style="font-size: 13px; color: var(--coral-600);"></i></span>
+                <span style="font-size: 12.5px; font-weight: 500;">Anomaly · attention needed</span>
+                <span style="margin-left:auto; font-size: 11px; color: var(--text-tertiary);">3 days running</span>
+              </div>
+              <div style="font-size: 13px; line-height: 1.55;">Avg viewers down <b style="font-weight: 500;">8%</b> WoW. Sports Cards shows are losing the most — viewer drop coincides with NBA finals.</div>
+              <div style="margin-top: 10px; display: flex; gap: 6px;">
+                <button class="btn-action" style="background: #000; color: #fff; border: none;">Investigate</button>
+                <button class="btn-action" style="margin-left: auto;"><i class="ti ti-x"></i> Dismiss</button>
+              </div>
+            </div>
+            <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+              <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 6px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--blue-50); display:flex; align-items:center; justify-content:center;"><i class="ti ti-package" style="font-size: 13px; color: var(--blue-600);"></i></span>
+                <span style="font-size: 12.5px; font-weight: 500;">Inventory · plan ahead</span>
+              </div>
+              <div style="font-size: 13px; line-height: 1.55;"><b style="font-weight: 500;">14 SKUs</b> will stock out in the next 7 days based on velocity. Top: Charizard PSA 10 (2 left, ~3 days).</div>
+              <div style="margin-top: 10px; display: flex; gap: 6px;">
+                <button class="btn-action" style="background: #000; color: #fff; border: none;">See the list</button>
+                <button class="btn-action" style="margin-left: auto;"><i class="ti ti-x"></i> Dismiss</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggested questions -->
+          <div style="margin-top: 22px;">
+            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.04em;">SUGGESTED QUESTIONS</div>
+            <div>
+              <span class="chip">Forecast next month's GMV</span>
+              <span class="chip">Top buyers last 90 days</span>
+              <span class="chip">Why did Friday's show underperform?</span>
+              <span class="chip">Best time slot for Pokémon shows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">Insights are ranked by impact, not chronology. Each has a clear next action ("Show me the data," "Investigate") that opens a thread, plus dismiss. Sellers see value before typing.</div>
+  </div>
+
+  <!-- Threshold alert -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">Threshold alert — when a watched metric crosses</span>
+      <span class="mock-sub">— in-product notification, email, or push depending on severity</span>
+    </div>
+    <div style="max-width: 480px; background: #fff; border: 0.5px solid var(--border-strong); border-radius: 12px; overflow: hidden;">
+      <div style="padding: 14px 16px; background: var(--coral-50); border-bottom: 0.5px solid var(--coral-600); display: flex; align-items: center; gap: 10px;">
+        <i class="ti ti-bell-ringing" style="font-size: 18px; color: var(--coral-600);"></i>
+        <div style="flex: 1;">
+          <div style="font-size: 13px; font-weight: 500; color: var(--coral-800);">Avg viewers dropped below 300</div>
+          <div style="font-size: 11.5px; color: var(--coral-800); opacity: 0.8; margin-top: 2px;">Your weekly average fell to 287 (-17% WoW). Threshold set at 300.</div>
+        </div>
+      </div>
+      <div style="padding: 14px 16px;">
+        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Suggested investigation:</div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div class="chip">What changed in my Sports Cards shows?</div>
+          <div class="chip">Compare promotion spend to last week</div>
+          <div class="chip">Are my Tuesday viewers also dropping?</div>
+        </div>
+      </div>
+      <div style="padding: 10px 16px; border-top: 0.5px solid var(--border); display: flex; gap: 6px;">
+        <button class="btn-action" style="background: #000; color: #fff; border: none;">Investigate now</button>
+        <button class="btn-action"><i class="ti ti-bell-off"></i> Snooze 1 week</button>
+        <button class="btn-action" style="margin-left: auto;"><i class="ti ti-settings"></i> Edit threshold</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 09 SCHEDULED & MEMORY                                         -->
+<!-- ============================================================ -->
+<section id="scheduled">
+  <div class="section-header">
+    <h2><span class="num">10</span> Scheduled, saved, memory</h2>
+    <p class="section-lede">Three power features that turn the bot from a question-answer machine into a working analyst.</p>
+  </div>
+
+  <!-- Schedule modal -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">Schedule a thread to re-run</span>
+      <span class="mock-sub">— any answer becomes a recurring digest</span>
+    </div>
+    <div class="modal-mock">
+      <div class="head">
+        <i class="ti ti-clock" style="color: var(--amber-600);"></i>
+        <span class="title">Schedule this thread</span>
+        <i class="ti ti-x" style="color: var(--text-tertiary);"></i>
+      </div>
+      <div class="body">
+        <div class="form-row">
+          <div class="form-label">Re-run</div>
+          <div class="form-value" style="display: flex; justify-content: space-between;">Every Monday <span style="color: var(--text-secondary);">▾</span></div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">At</div>
+          <div class="form-value" style="display: flex; justify-content: space-between;">7:00 AM <span style="color: var(--text-secondary);">PST ▾</span></div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Notify me via</div>
+          <div style="display:flex; gap: 6px;">
+            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--amber-400); padding: 6px 12px;"><i class="ti ti-check" style="font-size:11px;"></i> In-app</span>
+            <span class="chip" style="padding: 6px 12px;">Email</span>
+            <span class="chip" style="padding: 6px 12px;">Push</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Alert if</div>
+          <div class="form-value" style="display: flex; justify-content: space-between;">GMV drops more than 15% <span style="color: var(--text-secondary);">▾</span></div>
+        </div>
+      </div>
+      <div class="foot">
+        <button class="btn-secondary">Cancel</button>
+        <button class="btn-primary">Save schedule</button>
+      </div>
+    </div>
+    <div class="mock-note">Schedule lives on every answer card via the Schedule button. Threshold alerts piggyback on the schedule — if the recurring run triggers a condition, the seller gets pinged.</div>
+  </div>
+
+  <!-- Memory panel -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">"What I know about you" — editable memory</span>
+      <span class="mock-sub">— context the bot uses on every question, visible and removable</span>
+    </div>
+    <div class="memory-card">
+      <h4><i class="ti ti-brain"></i> What I know about your business</h4>
+      <div class="fact">
+        <div class="key">Categories</div>
+        <div class="val">Pokémon TCG, Sports Cards (NBA)</div>
+        <div class="edit"><i class="ti ti-pencil"></i></div>
+      </div>
+      <div class="fact">
+        <div class="key">Typical cadence</div>
+        <div class="val">3 shows/week — Tue 8pm, Fri 7pm, Sun 6pm</div>
+        <div class="edit"><i class="ti ti-pencil"></i></div>
+      </div>
+      <div class="fact">
+        <div class="key">Fiscal year</div>
+        <div class="val">Calendar (Jan-Dec)</div>
+        <div class="edit"><i class="ti ti-pencil"></i></div>
+      </div>
+      <div class="fact">
+        <div class="key">Time zone</div>
+        <div class="val">America/Los_Angeles</div>
+        <div class="edit"><i class="ti ti-pencil"></i></div>
+      </div>
+      <div class="fact">
+        <div class="key">Custom rule</div>
+        <div class="val">Treat returns over 14 days as defective</div>
+        <div class="edit"><i class="ti ti-pencil"></i></div>
+      </div>
+      <div style="margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--border);">
+        <button class="btn-action"><i class="ti ti-plus"></i> Add custom context</button>
+      </div>
+    </div>
+    <div class="mock-note">Memory is visible and removable, not opaque. Sellers can correct misunderstandings ("No, my fiscal year ends June") and add rules. The bot uses these as defaults on every question.</div>
+  </div>
+
+  <!-- Pinned dashboard -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v3">v3</span>
+      <span class="mock-title">Pinned dashboard — answers as cards</span>
+      <span class="mock-sub">— pin any answer to a custom dashboard</span>
+    </div>
+    <div style="max-width: 600px; background: #fff; border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 20px;">
+      <div style="display:flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span style="font-size: 14px; font-weight: 500;">My dashboard</span>
+        <span style="font-size: 11px; color: var(--text-tertiary);">5 pinned · auto-refreshing</span>
+        <button class="btn-action" style="margin-left: auto;"><i class="ti ti-plus"></i> Pin a thread</button>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="background: var(--bg); border-radius: 8px; padding: 10px 12px;">
+          <div style="font-size: 11px; color: var(--text-secondary);">GMV this week</div>
+          <div style="font-size: 18px; font-weight: 500;">$18,420</div>
+          <div style="font-size: 10px; color: var(--text-tertiary); margin-top: 2px;">refreshed 4m ago</div>
+        </div>
+        <div style="background: var(--bg); border-radius: 8px; padding: 10px 12px;">
+          <div style="font-size: 11px; color: var(--text-secondary);">Repeat buyers (90d)</div>
+          <div style="font-size: 18px; font-weight: 500;">42</div>
+          <div style="font-size: 10px; color: var(--text-tertiary); margin-top: 2px;">refreshed 1h ago</div>
+        </div>
+        <div style="background: var(--bg); border-radius: 8px; padding: 10px 12px; grid-column: span 2;">
+          <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">GMV trend</div>
+          <svg viewBox="0 0 320 50" style="width:100%; height:40px;" preserveAspectRatio="none">
+            <polyline fill="none" stroke="#BA7517" stroke-width="2"
+              points="0,40 32,32 64,36 96,24 128,28 160,16 192,22 224,12 256,18 288,8 320,14"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10 TRUST & HONESTY                                            -->
+<!-- ============================================================ -->
+<section id="honesty">
+  <div class="section-header">
+    <h2><span class="num">11</span> Trust, errors & honesty</h2>
+    <p class="section-lede">A bot that gets one number wrong loses a seller's trust forever. Honesty is the design feature.</p>
+  </div>
+
+  <!-- Provenance expanded -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Show your work — expanded provenance</span>
+      <span class="mock-sub">— plain English, not pseudo-SQL</span>
+    </div>
+    <div class="answer-card" style="max-width: 540px;">
+      <div class="answer-header" style="padding-bottom: 0;">
+        <div class="answer-label">Total GMV across 3 most recent shows</div>
+        <div class="answer-headline">$12,470</div>
+      </div>
+      <div style="padding: 12px 16px; background: var(--bg); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);">
+        <div style="display:flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+          <i class="ti ti-chevron-up" style="font-size: 13px; color: var(--text-tertiary);"></i>
+          <span style="font-size: 11px; font-weight: 500; color: var(--text-secondary);">HOW I GOT THIS</span>
+        </div>
+        <div style="font-size: 12px; line-height: 1.65;">
+          <div style="margin-bottom: 6px;">
+            <span style="color: var(--text-tertiary); font-weight: 500; margin-right: 8px;">1.</span>
+            Found your 3 most recent live shows: Tue Pokémon Drop, Fri Sports Cards, Sun Marketplace.
+          </div>
+          <div style="margin-bottom: 6px;">
+            <span style="color: var(--text-tertiary); font-weight: 500; margin-right: 8px;">2.</span>
+            Pulled all orders where <code style="font-family: monospace; background: #fff; padding: 1px 5px; border-radius: 3px; font-size: 11px;">status = paid</code> and <code style="font-family: monospace; background: #fff; padding: 1px 5px; border-radius: 3px; font-size: 11px;">show_id IN (last 3)</code> — 14,213 rows.
+          </div>
+          <div>
+            <span style="color: var(--text-tertiary); font-weight: 500; margin-right: 8px;">3.</span>
+            Summed <code style="font-family: monospace; background: #fff; padding: 1px 5px; border-radius: 3px; font-size: 11px;">gross_amount</code> grouped by show. Excluded refunds. Excluded shipping.
+          </div>
+        </div>
+        <div style="margin-top: 10px; padding-top: 10px; border-top: 0.5px solid var(--border); font-size: 11px; color: var(--text-secondary);">
+          Data as of 11:38am · run time 6.2s · <a href="#" style="color: var(--blue-600); text-decoration: none;">View SQL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- I don't know -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">"I can't answer that yet" — honest about scope</span>
+      <span class="mock-sub">— never fabricate, always suggest the closest answerable thing</span>
+    </div>
+    <div class="answer-card" style="max-width: 540px;">
+      <div class="answer-header">
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <i class="ti ti-help-circle" style="font-size: 20px; color: var(--text-tertiary); margin-top: 2px;"></i>
+          <div>
+            <div style="font-size: 13.5px; font-weight: 500; margin-bottom: 4px;">I can't predict competitor pricing.</div>
+            <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;">I only have access to your own data, not other sellers' listings or prices. Here's what I can answer instead:</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 0 16px 14px;">
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 10px;">
+          <span class="chip">What did similar items in my catalog sell for?</span>
+          <span class="chip">What's my average price by category?</span>
+          <span class="chip">Where is Whatnot category-level benchmark data?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disambiguation -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Disambiguation — answer first, alternates as chips</span>
+      <span class="mock-sub">— never block with a clarifying question</span>
+    </div>
+    <div class="answer-card" style="max-width: 540px;">
+      <div class="answer-header">
+        <div class="answer-label" style="display:flex; align-items:center; gap:8px;">
+          <span style="background: var(--blue-50); color: var(--blue-800); padding:1px 6px; border-radius:3px; font-size:9px; font-weight:500;">ASSUMED</span>
+          Sales this week
+        </div>
+        <div class="answer-headline">$18,420</div>
+        <div class="answer-sub">I assumed <b style="font-weight:500;">live shows only</b>. Want a different scope?</div>
+      </div>
+      <div style="padding: 10px 16px 14px;">
+        <span class="chip">Include marketplace orders</span>
+        <span class="chip">Only Pokémon shows</span>
+        <span class="chip">Last 7 days instead</span>
+      </div>
+    </div>
+    <div class="mock-note">When a question is ambiguous, the bot picks the most likely interpretation, labels its assumption, and offers alternates. Never block with "What do you mean?"</div>
+  </div>
+
+  <!-- Stale data warning -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Stale or partial data warning</span>
+    </div>
+    <div class="alert-banner" style="max-width: 540px;">
+      <i class="ti ti-clock"></i>
+      <div>
+        <b style="font-weight: 500;">Payouts data delayed</b> — last sync 6 hours ago. Today's GMV total may be incomplete.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11 SHARING & COLLABORATION                                    -->
+<!-- ============================================================ -->
+<section id="sharing">
+  <div class="section-header">
+    <h2><span class="num">12</span> Sharing & collaboration</h2>
+    <p class="section-lede">Sellers don't work alone. Every answer is shareable; every thread can have collaborators.</p>
+  </div>
+
+  <!-- Share modal -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">Share a thread</span>
+      <span class="mock-sub">— link, Slack export, email digest</span>
+    </div>
+    <div class="modal-mock" style="max-width: 420px;">
+      <div class="head">
+        <i class="ti ti-share" style="color: var(--text-secondary);"></i>
+        <span class="title">Share "Compare last 3 shows by GMV"</span>
+        <i class="ti ti-x" style="color: var(--text-tertiary);"></i>
+      </div>
+      <div class="body">
+        <div class="form-row">
+          <div class="form-label">Access</div>
+          <div class="form-value" style="display: flex; justify-content: space-between;">Anyone in my org with the link <span style="color: var(--text-secondary);">▾</span></div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Permissions</div>
+          <div style="display:flex; gap: 6px;">
+            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--amber-400); padding: 6px 12px;"><i class="ti ti-check" style="font-size: 11px;"></i> Can view</span>
+            <span class="chip" style="padding: 6px 12px;">Can comment</span>
+            <span class="chip" style="padding: 6px 12px;">Can edit</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Or send to</div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button class="btn-action"><i class="ti ti-brand-slack"></i> Slack</button>
+            <button class="btn-action"><i class="ti ti-mail"></i> Email</button>
+            <button class="btn-action"><i class="ti ti-download"></i> PDF</button>
+            <button class="btn-action"><i class="ti ti-file-spreadsheet"></i> CSV</button>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom: 0;">
+          <div class="form-value" style="display: flex; align-items: center; gap: 8px; background: var(--bg);">
+            <i class="ti ti-link" style="color: var(--text-tertiary);"></i>
+            <span style="flex: 1; font-family: monospace; font-size: 11px; color: var(--text-secondary);">whatnot.com/ask/t_abc123</span>
+            <i class="ti ti-copy" style="color: var(--text-secondary); cursor: pointer;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slack preview -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2</span>
+      <span class="mock-title">Slack unfurl — how a shared thread looks</span>
+      <span class="mock-sub">— self-contained preview, not a redirect</span>
+    </div>
+    <div style="max-width: 480px; background: #fff; border: 0.5px solid var(--border); border-left: 3px solid var(--whatnot-yellow); border-radius: 4px; padding: 12px 14px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--whatnot-yellow); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600;">W</div>
+        <span style="font-size: 12px; color: var(--text-secondary);">Whatnot · Compare last 3 shows by GMV</span>
+      </div>
+      <div style="font-size: 13px; font-weight: 500; margin-bottom: 4px;">$12,470 across 3 shows</div>
+      <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px;">Tuesday drove 48% more than Friday. Tuesday's 2.1× viewer advantage and stronger Pokémon listing prices were the main drivers.</div>
+      <div style="display: flex; align-items: end; gap: 8px; height: 50px; margin-bottom: 8px;">
+        <div style="flex: 1; background: var(--amber-100); height: 65%; border-radius: 3px 3px 0 0;"></div>
+        <div style="flex: 1; background: var(--amber-200); height: 44%; border-radius: 3px 3px 0 0;"></div>
+        <div style="flex: 1; background: var(--amber-100); height: 84%; border-radius: 3px 3px 0 0;"></div>
+      </div>
+      <div style="font-size: 11px; color: var(--text-tertiary);">View thread · Open in Whatnot</div>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v3">v3</span>
+      <span class="mock-title">Inline comments on an answer</span>
+      <span class="mock-sub">— @-mention staff, leave notes</span>
+    </div>
+    <div style="max-width: 540px;">
+      <div class="answer-card" style="margin-bottom: 8px;">
+        <div class="answer-header" style="padding-bottom: 10px;">
+          <div class="answer-label">SKUs about to stock out</div>
+          <div class="answer-headline">14 <span class="unit">items in 7 days</span></div>
+        </div>
+      </div>
+      <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 12px 14px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+          <div style="width: 26px; height: 26px; border-radius: 50%; background: var(--purple-50); color: var(--purple-800); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0;">A</div>
+          <div>
+            <div style="font-size: 12px;"><b style="font-weight: 500;">Alex</b> <span style="color: var(--text-tertiary);">· 2h ago</span></div>
+            <div style="font-size: 13px; margin-top: 2px;">Already ordered restock for the Charizard. <b>@maya</b> can you check the slabbed Pikachus?</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; padding-left: 36px;">
+          <div style="width: 26px; height: 26px; border-radius: 50%; background: var(--teal-50); color: var(--teal-600); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0;">M</div>
+          <div>
+            <div style="font-size: 12px;"><b style="font-weight: 500;">Maya</b> <span style="color: var(--text-tertiary);">· 1h ago</span></div>
+            <div style="font-size: 13px; margin-top: 2px;">On it. ETA on slabs is next week.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12 MOBILE                                                     -->
+<!-- ============================================================ -->
+<section id="mobile">
+  <div class="section-header">
+    <h2><span class="num">13</span> Mobile</h2>
+    <p class="section-lede">Whatnot sellers run shows on phones. Voice input, narrow-viewport cards, push notifications for scheduled alerts.</p>
+  </div>
+
+  <div class="phone-row">
+    <!-- Mobile chat -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div style="padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid var(--border);">
+            <i class="ti ti-arrow-left" style="font-size: 16px;"></i>
+            <i class="ti ti-sparkles" style="font-size: 14px; color: var(--amber-600);"></i>
+            <span style="font-size: 13px; font-weight: 500;">Ask Whatnot</span>
+            <i class="ti ti-dots" style="font-size: 16px; margin-left: auto; color: var(--text-tertiary);"></i>
+          </div>
+          <div style="padding: 12px; height: 280px; background: var(--bg);">
+            <div class="user-msg"><div class="bubble">My sales last 7 days</div></div>
+            <div class="answer-card">
+              <div class="answer-header" style="padding: 10px 12px;">
+                <div class="answer-label" style="font-size: 10px;">GMV · last 7 days</div>
+                <div class="answer-headline" style="font-size: 20px;">$18,420</div>
+                <div class="answer-sub" style="font-size: 11px;"><span class="up">+23%</span> vs prior week.</div>
+              </div>
+              <div class="answer-actions" style="padding: 8px 12px;">
+                <button class="btn-action" style="font-size: 10px; padding: 4px 7px;"><i class="ti ti-pin" style="font-size: 10px;"></i></button>
+                <button class="btn-action" style="font-size: 10px; padding: 4px 7px;"><i class="ti ti-share" style="font-size: 10px;"></i></button>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 10px 12px; border-top: 0.5px solid var(--border);">
+            <div class="composer-input">
+              <i class="ti ti-message-circle" style="font-size: 13px; color: var(--text-tertiary);"></i>
+              <span class="ph">Ask anything…</span>
+              <i class="ti ti-microphone" style="font-size: 15px; color: var(--amber-600);"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Voice input first-class</div>
+    </div>
+
+    <!-- Push notification -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-screen" style="background: var(--bg); min-height: 380px;">
+          <div style="height: 50px;"></div>
+          <div style="margin: 0 10px; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 14px; padding: 11px 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <div style="width: 22px; height: 22px; border-radius: 5px; background: var(--whatnot-yellow); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600;">W</div>
+              <span style="font-size: 11px; font-weight: 500;">Whatnot</span>
+              <span style="font-size: 10px; color: var(--text-tertiary); margin-left: auto;">now</span>
+            </div>
+            <div style="font-size: 13px; font-weight: 500; margin-bottom: 2px;">Your weekly review is ready</div>
+            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.45;">GMV $18,420 (+23%). Tuesday's show was your best — tap to see why.</div>
+          </div>
+          <div style="margin: 8px 10px; background: rgba(255,255,255,0.95); border-radius: 14px; padding: 11px 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <div style="width: 22px; height: 22px; border-radius: 5px; background: var(--coral-50); display: flex; align-items: center; justify-content: center;">
+                <i class="ti ti-alert-triangle" style="font-size: 12px; color: var(--coral-600);"></i>
+              </div>
+              <span style="font-size: 11px; font-weight: 500;">Whatnot · Alert</span>
+              <span style="font-size: 10px; color: var(--text-tertiary); margin-left: auto;">2h</span>
+            </div>
+            <div style="font-size: 13px; font-weight: 500; margin-bottom: 2px;">Viewers dropped below 300</div>
+            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.45;">287 weekly avg — 17% below your threshold.</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Push notifications</div>
+    </div>
+
+    <!-- Mobile answer -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div style="padding: 8px 12px; border-bottom: 0.5px solid var(--border);">
+            <div style="font-size: 12px; font-weight: 500;">Weekly review</div>
+            <div style="font-size: 10px; color: var(--text-tertiary);">Updated 4 min ago</div>
+          </div>
+          <div style="padding: 12px; background: var(--bg); min-height: 300px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px;">
+              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">GMV</div><div class="value" style="font-size:14px;">$18,420</div></div>
+              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Viewers</div><div class="value" style="font-size:14px;">347</div></div>
+              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Sell-thru</div><div class="value" style="font-size:14px;">71%</div></div>
+              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Repeat</div><div class="value" style="font-size:14px;">42</div></div>
+            </div>
+            <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 11px;">
+              <div style="font-size: 10px; color: var(--amber-600); font-weight: 500; margin-bottom: 3px;"><i class="ti ti-sparkles" style="font-size: 10px;"></i> INSIGHT</div>
+              <div style="font-size: 11px; line-height: 1.4;">Tuesday shows convert 2.3× higher than other slots.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Briefing on mobile</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 13 ROADMAP                                                    -->
+<!-- ============================================================ -->
+<section id="roadmap">
+  <div class="section-header">
+    <h2><span class="num">14</span> Prioritization & roadmap</h2>
+    <p class="section-lede">Three phases. v1 ships a complete, useful product. v2 deepens engagement. v3 turns it into a workspace.</p>
+  </div>
+
+  <div class="roadmap">
+    <!-- v1 -->
+    <div class="phase v1">
+      <div class="phase-label">
+        <span class="pri pri-v1">v1 — ship now</span>
+        <span class="phase-when">6–8 weeks</span>
+      </div>
+      <div class="phase-name">Replace today's bot</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Fix what's broken. Establish the foundation. Kill the Analytics &gt; Chat tab.</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Header command bar (A) — ⌘K from anywhere</li>
+        <li><i class="ti ti-check"></i> Top-level "Ask Whatnot" nav (B)</li>
+        <li><i class="ti ti-check"></i> Side-panel runtime — doesn't navigate away</li>
+        <li><i class="ti ti-check"></i> Durable threads — URL-addressable, persist across sessions</li>
+        <li><i class="ti ti-check"></i> Named progress steps + cancel</li>
+        <li><i class="ti ti-check"></i> Answer cards (number, comparison, trend, table)</li>
+        <li><i class="ti ti-check"></i> Provenance row (show your work)</li>
+        <li><i class="ti ti-check"></i> Thread rail with grouping &amp; search</li>
+        <li><i class="ti ti-check"></i> Pin, share (link), CSV export</li>
+        <li><i class="ti ti-check"></i> Disambiguation chips, "I don't know" states</li>
+      </ul>
+    </div>
+
+    <!-- v2 -->
+    <div class="phase v2">
+      <div class="phase-label">
+        <span class="pri pri-v2">v2 — deepen</span>
+        <span class="phase-when">+ 8–10 weeks</span>
+      </div>
+      <div class="phase-name">Proactive & scheduled</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Turn the bot from reactive to ambient. Sellers see value before asking.</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Morning briefing on Ask Whatnot home</li>
+        <li><i class="ti ti-check"></i> Anomaly detection + insight cards</li>
+        <li><i class="ti ti-check"></i> Threshold alerts (in-app, email, push)</li>
+        <li><i class="ti ti-check"></i> Scheduled thread re-runs</li>
+        <li><i class="ti ti-check"></i> "What I know about you" memory panel</li>
+        <li><i class="ti ti-check"></i> Proactive peek on home (C)</li>
+        <li><i class="ti ti-check"></i> Streaming partial results</li>
+        <li><i class="ti ti-check"></i> Long-running query backgrounding</li>
+        <li><i class="ti ti-check"></i> Slack / email export, share modal</li>
+        <li><i class="ti ti-check"></i> Mobile voice input + push</li>
+      </ul>
+    </div>
+
+    <!-- v3 -->
+    <div class="phase v3">
+      <div class="phase-label">
+        <span class="pri pri-v3">v3 — expand</span>
+        <span class="phase-when">+ 10–14 weeks</span>
+      </div>
+      <div class="phase-name">Workspace</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Threads become collaborative analyses. The bot is now a workspace, not a feature.</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Persistent right sidebar (F) — opt-in for power users</li>
+        <li><i class="ti ti-check"></i> Pinned dashboard — answers as live cards</li>
+        <li><i class="ti ti-check"></i> Comments &amp; @-mentions on answers</li>
+        <li><i class="ti ti-check"></i> Tags &amp; folders for threads</li>
+        <li><i class="ti ti-check"></i> Thread versioning when re-run</li>
+        <li><i class="ti ti-check"></i> Multi-thread compare (tabs)</li>
+        <li><i class="ti ti-check"></i> Contextual "Ask about this" chips on data widgets</li>
+        <li><i class="ti ti-check"></i> Category benchmarks (your data vs. peers)</li>
+        <li><i class="ti ti-check"></i> Custom anomaly rules per seller</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ship-box">
+    <div class="title"><i class="ti ti-flag"></i> What we'd cut if we have to</div>
+    <div class="body">
+      The first thing to cut from v1 if scope is tight: the morning briefing on the Ask Whatnot home. The thread workspace, durable questions, and answer cards are non-negotiable. Without those, we're shipping the same broken product with a new entry point. With them, even a barebones briefing is a meaningful step forward.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 14 RISKS                                                      -->
+<!-- ============================================================ -->
+<section id="risks">
+  <div class="section-header">
+    <h2><span class="num">15</span> Risks & open questions</h2>
+    <p class="section-lede">The things that could kill this product, and what we'd do about each.</p>
+  </div>
+
+  <div class="risk-grid">
+    <div class="risk">
+      <h4>Hallucinated numbers destroy trust</h4>
+      <p>A bot that confidently states the wrong GMV once will not be trusted again. The damage is asymmetric — one bad answer outweighs a hundred good ones.</p>
+      <div class="mitig"><b>Mitigation:</b> Every numeric answer cites source, row count, query. Adversarial QA on the top 100 question types. Low-confidence labeling.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Slow queries kill adoption</h4>
+      <p>If 30% of questions take &gt;10s, sellers stop asking. The current bot already has this problem — sellers walk away mid-query.</p>
+      <div class="mitig"><b>Mitigation:</b> Aggressive pre-computation of common questions. Streaming partial results. Long-query backgrounding with notification.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Privacy &amp; data scope</h4>
+      <p>Sellers will ask "show me my top buyers by name." How much PII is safe to surface? What about cross-show buyer analysis that exposes patterns?</p>
+      <div class="mitig"><b>Mitigation:</b> PII access audit-logged. Buyer-level data gated behind seller permission. Aggregate-only for cross-show category questions.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Mobile is where shows happen</h4>
+      <p>Most Whatnot sellers stream from phones or tablets. If the bot is desktop-only or feels degraded on mobile, half the audience is left out.</p>
+      <div class="mitig"><b>Mitigation:</b> Mobile-first design for v1 chat surface. Voice input. Push for scheduled alerts. Responsive answer cards.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Cost per question</h4>
+      <p>LLM inference + query execution costs scale with usage. A power seller asking 50 questions a day at $0.10 each is $5/day, $1,500/year in pure cost.</p>
+      <div class="mitig"><b>Mitigation:</b> Tiered model (cheap model for routing, expensive for analysis). Query result caching. Rate limits at the extreme tail.</div>
+    </div>
+
+    <div class="risk">
+      <h4>"Just another chatbot" perception</h4>
+      <p>Sellers are saturated with AI chat features. If our bot looks like Intercom, ChatGPT, or Sidekick, it gets ignored despite being more powerful.</p>
+      <div class="mitig"><b>Mitigation:</b> Lead with proactive insights, not chat. Brand the surface — "Ask Whatnot" not "AI Assistant." Show data, not bubbles.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Question diversity is unbounded</h4>
+      <p>Sellers will ask things the system can't handle. Every "I don't know" is an adoption risk. But over-reaching produces wrong answers (see risk #1).</p>
+      <div class="mitig"><b>Mitigation:</b> Conservative routing — refuse confidently, suggest closest answerable. Telemetry on failed questions to expand coverage.</div>
+    </div>
+
+    <div class="risk">
+      <h4>Two surfaces, two experiences</h4>
+      <p>If the side panel and the full-page thread workspace drift apart, sellers learn two different products. Inconsistency kills trust.</p>
+      <div class="mitig"><b>Mitigation:</b> Side panel is literally the thread workspace at narrower width. Same components, same actions, same composer.</div>
+    </div>
+  </div>
+
+  <div class="ship-box" style="background: var(--surface); color: var(--text); border: 0.5px solid var(--border-strong);">
+    <div class="title" style="color: var(--amber-600);"><i class="ti ti-help-circle"></i> Open questions still to resolve</div>
+    <div class="body" style="color: var(--text-secondary);">
+      <b style="color: var(--text);">1.</b> Should the bot have a name (e.g. "Hubie") or stay "Ask Whatnot"? Named bots build affinity but also expectations of personality we may not want to fulfill.<br>
+      <b style="color: var(--text);">2.</b> How aggressive should proactive insights be? Daily can fatigue; weekly may miss urgent things. Per-seller cadence learning?<br>
+      <b style="color: var(--text);">3.</b> Pricing — included in seller tier, or a paid power feature? Bundled increases adoption; paid covers cost.<br>
+      <b style="color: var(--text);">4.</b> When do we open this up to data the seller doesn't own (category benchmarks)? Big trust unlock but big privacy lift for buyers.
+    </div>
+  </div>
+</section>
+
+<footer>
+  Whatnot AI Analytics · design system &amp; specification · June 2026 · Ranidu Lankage
+</footer>
+
+</div>
+</div>
+</body>
+</html>
