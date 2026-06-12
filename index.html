@@ -288,14 +288,16 @@
     padding: 7px 14px;
     display: flex; align-items: center; gap: 10px;
   }
-  .command-pill.highlight { border: 1.5px solid var(--amber-400); }
+  .command-pill.highlight { border: 1.5px solid var(--whatnot-yellow); background: #000; }
+  .command-pill.highlight .ph { color: rgba(255,255,255,0.7); }
+  .command-pill.highlight .kbd { background: rgba(255,255,255,0.12); border-color: transparent; color: rgba(255,255,255,0.5); }
   .command-pill .ph { flex: 1; font-size: 13px; color: var(--text-secondary); }
   .command-pill .kbd {
     font-size: 11px; color: var(--text-tertiary);
     background: #fff; padding: 2px 6px;
     border-radius: 3px; border: 0.5px solid var(--border);
   }
-  .command-pill .spark { font-size: 14px; color: var(--amber-600); }
+  .command-pill .spark { font-size: 14px; color: var(--whatnot-yellow); }
 
   .app-body { display: flex; min-height: 220px; }
   .left-nav {
@@ -314,14 +316,14 @@
   .left-nav .item.active { background: #000; color: #fff; font-weight: 500; }
   .left-nav .item.ai-active {
     background: #000; color: #fff; font-weight: 500;
-    border: 1.5px solid var(--amber-400);
+    border: 1.5px solid var(--whatnot-yellow);
   }
   .left-nav .item i { font-size: 14px; }
-  .left-nav .ai-active i.spark { color: var(--amber-100); }
+  .left-nav .ai-active i.spark { color: var(--whatnot-yellow); }
   .left-nav .badge-new {
-    margin-left: auto; background: var(--amber-200); color: var(--amber-900);
+    margin-left: auto; background: var(--whatnot-yellow); color: #000;
     padding: 1px 5px; border-radius: 3px;
-    font-size: 9px; font-weight: 500;
+    font-size: 9px; font-weight: 600;
   }
   .main-area { flex: 1; padding: 18px 24px; position: relative; }
   .greeting { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
@@ -433,15 +435,15 @@
     padding: 6px 12px;
   }
   .composer-input .ph { flex: 1; font-size: 11px; color: var(--text-tertiary); }
-  .composer-input i.send-icon { font-size: 11px; color: var(--amber-900); }
+  .composer-input i.send-icon { font-size: 11px; color: #000; }
   .composer-input .send-btn {
     width: 22px; height: 22px; border-radius: 50%;
-    background: var(--whatnot-yellow-soft);
+    background: var(--whatnot-yellow);
     border: none;
     display: flex; align-items: center; justify-content: center;
   }
   .composer-input .stop-btn {
-    background: var(--whatnot-yellow-soft); color: var(--amber-900);
+    background: var(--whatnot-yellow); color: #000;
     border: none; padding: 4px 10px; border-radius: 12px;
     font-size: 10px; font-weight: 500; cursor: pointer;
     display: flex; align-items: center; gap: 4px;
@@ -486,7 +488,7 @@
   }
   .spinner-mini {
     width: 12px; height: 12px;
-    border: 1.5px solid var(--amber-400);
+    border: 1.5px solid var(--whatnot-yellow);
     border-top-color: transparent;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
@@ -500,7 +502,7 @@
     overflow: hidden;
   }
   .progress-bar .fill {
-    background: var(--amber-400);
+    background: var(--whatnot-yellow);
     height: 100%;
     border-radius: 2px;
   }
@@ -534,20 +536,20 @@
     width: 52px; height: 52px;
     border-radius: 50%;
     background: #000;
-    border: 1.5px solid var(--amber-400);
+    border: 2px solid var(--whatnot-yellow);
     display: flex; align-items: center; justify-content: center;
   }
-  .fab-round i { color: var(--amber-100); font-size: 22px; }
+  .fab-round i { color: var(--whatnot-yellow); font-size: 22px; }
   .fab-pill {
     position: absolute; bottom: 16px; right: 16px;
     padding: 11px 16px 11px 14px;
     border-radius: 26px;
     background: #000;
-    border: 1.5px solid var(--amber-400);
+    border: 2px solid var(--whatnot-yellow);
     display: flex; align-items: center; gap: 8px;
     color: #fff;
   }
-  .fab-pill i.spark { color: var(--amber-100); font-size: 15px; }
+  .fab-pill i.spark { color: var(--whatnot-yellow); font-size: 15px; }
   .fab-pill .label { font-size: 13px; font-weight: 500; }
   .fab-pill .kbd { font-size: 10px; background: rgba(255,255,255,0.14); padding: 1px 6px; border-radius: 3px; }
 
@@ -594,7 +596,7 @@
     font-size: 13px; font-weight: 500;
     margin-bottom: 10px;
   }
-  .thread-rail .rail-title i.spark { font-size: 14px; color: var(--amber-600); }
+  .thread-rail .rail-title i.spark { font-size: 14px; color: #000; }
   .thread-rail .rail-search {
     background: #fff;
     border: 0.5px solid var(--border);
@@ -649,8 +651,8 @@
 
   /* Annotation callouts */
   .annotation {
-    background: var(--amber-50);
-    color: var(--amber-900);
+    background: #000;
+    color: var(--whatnot-yellow);
     font-size: 11px;
     padding: 4px 8px;
     border-radius: 4px;
@@ -857,16 +859,16 @@
 
   /* Insight strip */
   .insight-strip {
-    background: var(--amber-50);
+    background: #000;
     border-radius: 8px;
     padding: 10px 12px;
     display: flex; align-items: center; gap: 10px;
     font-size: 12px;
-    color: var(--amber-900);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 10px;
   }
-  .insight-strip i { font-size: 14px; color: var(--amber-600); }
-  .insight-strip b { font-weight: 500; }
+  .insight-strip i { font-size: 14px; color: var(--whatnot-yellow); }
+  .insight-strip b { font-weight: 500; color: var(--whatnot-yellow); }
 
   /* Alert banner */
   .alert-banner {
@@ -969,7 +971,7 @@
     background: #fff;
     color: var(--text);
   }
-  .ask-on-widget i { font-size: 8px; color: var(--amber-600); }
+  .ask-on-widget i { font-size: 8px; color: #000; }
 
   /* Slash command popover */
   .slash-popover {
@@ -988,7 +990,7 @@
     display: flex; align-items: center; gap: 5px;
   }
   .slash-popover .item-slash.active { background: var(--bg); }
-  .slash-popover .item-slash i { font-size: 9px; color: var(--amber-600); }
+  .slash-popover .item-slash i { font-size: 9px; color: #000; }
 
   /* Mobile small */
   @media (max-width: 900px) {
@@ -1160,7 +1162,7 @@
       <div class="app-header">
         <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
         <div class="header-actions" style="margin-left: auto;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--amber-50);border:0.5px solid var(--amber-200);cursor:pointer;" title="Ask Whatnot (⌘K)"><i class="ti ti-sparkles" style="font-size:14px;color:var(--amber-600);"></i></span>
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;border:1.5px solid var(--whatnot-yellow);cursor:pointer;" title="Ask Whatnot (⌘K)"><i class="ti ti-sparkles" style="font-size:14px;color:var(--whatnot-yellow);"></i></span>
           <i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div>
         </div>
       </div>
@@ -1440,7 +1442,7 @@
         </div>
         <div class="right-dock">
           <div class="header">
-            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <i class="ti ti-sparkles" style="color: #000; font-size: 14px;"></i>
             <span class="title">Ask Whatnot</span>
             <i class="ti ti-layout-sidebar-right-collapse" style="margin-left: auto; color: var(--text-tertiary);"></i>
           </div>
@@ -1519,9 +1521,9 @@
             <div style="color: var(--text-secondary); margin-top: 2px;">$5,420 · 392 viewers</div>
           </div>
         </div>
-        <div class="side-panel" style="border-left: 1.5px solid var(--amber-400);">
+        <div class="side-panel" style="border-left: 2px solid var(--whatnot-yellow);">
           <div class="panel-header">
-            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <i class="ti ti-sparkles" style="color: #000; font-size: 14px;"></i>
             <div class="title-block">
               <div class="title">Ask Whatnot</div>
               <div class="sub">New thread</div>
@@ -1756,9 +1758,9 @@
           <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-bottom: 4px; font-size: 11px;"><b>#1044</b> · @dani_drops · $54</div>
           <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 11px;"><b>#1045</b> · @slabsuperstar · $210</div>
         </div>
-        <div style="width: 260px; background: #fff; border-left: 1.5px solid var(--amber-400); display: flex; flex-direction: column;">
+        <div style="width: 260px; background: #fff; border-left: 2px solid var(--whatnot-yellow); display: flex; flex-direction: column;">
           <div style="padding: 10px 12px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 8px;">
-            <i class="ti ti-sparkles" style="color: var(--amber-600); font-size: 14px;"></i>
+            <i class="ti ti-sparkles" style="color: #000; font-size: 14px;"></i>
             <span style="font-size: 12px; font-weight: 500;">Ask Whatnot</span>
             <i class="ti ti-pin-filled" style="font-size: 12px; color: var(--amber-600); margin-left: auto;" title="Pinned"></i>
             <i class="ti ti-x" style="font-size: 12px; color: var(--text-tertiary);"></i>
@@ -1810,7 +1812,7 @@
           <div class="stub short" style="margin-top: 6px;"></div>
         </div>
         <!-- Expanded panel: inner rail + conversation -->
-        <div style="display: flex; border-left: 1.5px solid var(--amber-400);">
+        <div style="display: flex; border-left: 2px solid var(--whatnot-yellow);">
           <div style="width: 140px; background: var(--bg-deep); border-right: 0.5px solid var(--border); padding: 8px 6px;">
             <div style="display: flex; align-items: center; gap: 4px; padding: 4px 6px; margin-bottom: 8px;">
               <i class="ti ti-layout-sidebar" style="font-size: 12px; color: var(--text-secondary);"></i>
@@ -2687,7 +2689,7 @@
         <div class="form-row">
           <div class="form-label">Notify me via</div>
           <div style="display:flex; gap: 6px;">
-            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--amber-400); padding: 6px 12px;"><i class="ti ti-check" style="font-size:11px;"></i> In-app</span>
+            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--whatnot-yellow); padding: 6px 12px;"><i class="ti ti-check" style="font-size:11px;"></i> In-app</span>
             <span class="chip" style="padding: 6px 12px;">Email</span>
             <span class="chip" style="padding: 6px 12px;">Push</span>
           </div>
@@ -2926,7 +2928,7 @@
         <div class="form-row">
           <div class="form-label">Permissions</div>
           <div style="display:flex; gap: 6px;">
-            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--amber-400); padding: 6px 12px;"><i class="ti ti-check" style="font-size: 11px;"></i> Can view</span>
+            <span class="chip" style="background: var(--bg); border: 1.5px solid var(--whatnot-yellow); padding: 6px 12px;"><i class="ti ti-check" style="font-size: 11px;"></i> Can view</span>
             <span class="chip" style="padding: 6px 12px;">Can comment</span>
             <span class="chip" style="padding: 6px 12px;">Can edit</span>
           </div>
