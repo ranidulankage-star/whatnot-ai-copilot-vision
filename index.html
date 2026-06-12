@@ -1111,7 +1111,7 @@
 <header class="hero" id="overview">
   <span class="eyebrow"><i class="ti ti-sparkles"></i> Analytics → Agentic · Design system & specification</span>
   <h1>Seller AI Bot —<br>the complete design</h1>
-  <p class="lede">Today sellers have two siloed AI products — an analytics bot buried under Analytics › Chat, and Sierra handling CX tickets in a separate surface. Neither knows what the other knows. The future is one consistent interface, everywhere in the app, powered by tool calls that route to the right capability: analytics, CX, inventory, scheduling. This document covers the full arc — from fixing the analytics bot today, to a unified agentic co-pilot that replaces the fragmentation entirely.</p>
+  <p class="lede">We are building two AI products in parallel — a Seller AI Bot for analytics and business intelligence, and Sierra for CX ticket handling. Both are launching soon, both serve different contexts, but neither knows what the other knows. The future is one consistent interface, everywhere in the app, powered by tool calls that route across analytics, CX, inventory, and scheduling. This document covers the full arc: what the Seller AI Bot ships as, and what it becomes as the two products converge.</p>
   <div class="meta-row">
     <span><b>16</b> sections</span>
     <span><b>7</b> entry-point variants</span>
@@ -1169,22 +1169,22 @@
 <section id="critique">
   <div class="section-header">
     <h2><span class="num">02</span> Current state critique</h2>
-    <p class="section-lede">Two siloed AI products, both buried, both limited. The seller sees fragmentation where there should be one consistent co-pilot.</p>
+    <p class="section-lede">Two AI products being built in parallel, serving different use cases. The challenge: make sure they converge, not diverge.</p>
   </div>
 
   <!-- Fragmentation callout -->
   <div style="background: #000; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; display: flex; gap: 32px; align-items: flex-start;">
     <div style="flex: 1;">
-      <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Today — two siloed products</div>
+      <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Now — two products in parallel</div>
       <div style="display: flex; gap: 16px;">
         <div style="flex: 1; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
-          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-chart-bar" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Analytics Bot</div>
-          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">Buried under Analytics › Chat. Answers data questions. No actions, no memory of CX context.</div>
+          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-chart-bar" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Seller AI Bot <span style="font-size:10px;font-weight:400;color:rgba(255,255,255,0.4);">← this doc</span></div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">In development. Answers analytics and business questions. Launching soon as a standalone seller tool.</div>
         </div>
         <div style="display: flex; align-items: center; color: rgba(255,255,255,0.2); font-size: 20px;">+</div>
         <div style="flex: 1; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
           <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-headset" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Sierra (CX Bot)</div>
-          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">Handles buyer tickets and support flows. Separate surface, separate context, no analytics awareness.</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">Also in development. Handles buyer tickets and support flows. Separate surface, separate context, no analytics awareness.</div>
         </div>
       </div>
     </div>
@@ -1200,20 +1200,20 @@
 
   <div class="critique-grid">
     <div class="critique-card">
-      <h4>Fragmentation</h4>
-      <p>Two separate AI products with different surfaces, different contexts, and different capabilities. A seller dealing with a return spike has to cross between Sierra for the ticket and the analytics bot for the data — they should never have to.</p>
-    </div>
-    <div class="critique-card">
-      <h4>Buried capabilities</h4>
-      <p>Analytics bot is two clicks deep behind Analytics › Chat. Sierra lives in a separate support flow. The most powerful tools in the product are the hardest to reach.</p>
+      <h4>Parallel ≠ unified</h4>
+      <p>Building two products at once is the right short-term call. The risk is they ship and stay separate forever — two entry points, two contexts, two mental models for the seller.</p>
     </div>
     <div class="critique-card">
       <h4>No shared context</h4>
-      <p>The CX bot has no awareness of a seller's analytics. The analytics bot has no awareness of open tickets. Each product starts from zero — the seller's context is never carried across.</p>
+      <p>Seller AI Bot has no awareness of open CX tickets. Sierra has no awareness of a seller's GMV or show performance. Each starts from zero — the seller's full context is never available in one place.</p>
     </div>
     <div class="critique-card">
       <h4>Siloed actions</h4>
-      <p>Neither product can act across domains. Analytics can't draft a buyer response. Sierra can't pull GMV data. Tool calls and a shared backend are what unify them.</p>
+      <p>Neither product can act across domains today. Analytics can't draft a buyer response. Sierra can't surface GMV trends. Tool calls and a shared backend are the bridge.</p>
+    </div>
+    <div class="critique-card">
+      <h4>Convergence risk</h4>
+      <p>The longer two separate products run independently, the harder they are to merge — separate teams, separate infra, separate UX patterns. The time to align on a unified vision is now, before each calcifies.</p>
     </div>
     <div class="critique-card">
       <h4>Empty state</h4>
