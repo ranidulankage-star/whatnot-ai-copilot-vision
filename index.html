@@ -3104,99 +3104,31 @@
 <section id="mobile">
   <div class="section-header">
     <h2><span class="num">13</span> Mobile</h2>
-    <p class="section-lede">Whatnot sellers run shows on phones. Voice input, narrow-viewport cards, push notifications for scheduled alerts.</p>
+    <p class="section-lede">v1 ships on web. Mobile is a must-have follow — Whatnot sellers run shows from their phones and the bot needs to be there too.</p>
   </div>
 
-  <div class="phone-row">
-    <!-- Mobile chat -->
-    <div>
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div style="padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid var(--border);">
-            <i class="ti ti-arrow-left" style="font-size: 16px;"></i>
-            <i class="ti ti-sparkles" style="font-size: 14px; color: var(--amber-600);"></i>
-            <span style="font-size: 13px; font-weight: 500;">Ask Whatnot</span>
-            <i class="ti ti-dots" style="font-size: 16px; margin-left: auto; color: var(--text-tertiary);"></i>
-          </div>
-          <div style="padding: 12px; height: 280px; background: var(--bg);">
-            <div class="user-msg"><div class="bubble">My sales last 7 days</div></div>
-            <div class="answer-card">
-              <div class="answer-header" style="padding: 10px 12px;">
-                <div class="answer-label" style="font-size: 10px;">GMV · last 7 days</div>
-                <div class="answer-headline" style="font-size: 20px;">$18,420</div>
-                <div class="answer-sub" style="font-size: 11px;"><span class="up">+23%</span> vs prior week.</div>
-              </div>
-              <div class="answer-actions" style="padding: 8px 12px;">
-                <button class="btn-action" style="font-size: 10px; padding: 4px 7px;"><i class="ti ti-pin" style="font-size: 10px;"></i></button>
-                <button class="btn-action" style="font-size: 10px; padding: 4px 7px;"><i class="ti ti-share" style="font-size: 10px;"></i></button>
-              </div>
-            </div>
-          </div>
-          <div style="padding: 10px 12px; border-top: 0.5px solid var(--border);">
-            <div class="composer-input">
-              <i class="ti ti-message-circle" style="font-size: 13px; color: var(--text-tertiary);"></i>
-              <span class="ph">Ask anything…</span>
-              <i class="ti ti-microphone" style="font-size: 15px; color: var(--amber-600);"></i>
-            </div>
-          </div>
+  <div style="background: #000; border-radius: 14px; padding: 28px 32px; display: flex; align-items: flex-start; gap: 32px;">
+    <div style="flex: 1;">
+      <div style="font-size: 13px; font-weight: 600; color: var(--whatnot-yellow); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-device-mobile" style="font-size: 16px;"></i> Detailed mobile designs coming</div>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; margin: 0 0 16px;">Web is the right place to start — sellers use Seller Hub on desktop for deep analytics work. But Whatnot is a live commerce platform and most sellers run shows from their phones. Mobile isn't optional; it follows web in v2.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
+          <div style="font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;"><i class="ti ti-check" style="color: var(--whatnot-yellow);"></i> v1 — Web</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5;">Full feature set. Desktop-first layout. All entry points, answer cards, threads, and agentic flows.</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
+          <div style="font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;"><i class="ti ti-clock" style="color: rgba(255,255,255,0.4);"></i> v2 — Mobile</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5;">Native mobile experience. Voice-first input, push notifications for alerts, condensed answer cards for narrow viewports.</div>
         </div>
       </div>
-      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Voice input first-class</div>
     </div>
-
-    <!-- Push notification -->
-    <div>
-      <div class="phone-frame">
-        <div class="phone-screen" style="background: var(--bg); min-height: 380px;">
-          <div style="height: 50px;"></div>
-          <div style="margin: 0 10px; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 14px; padding: 11px 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <div style="width: 22px; height: 22px; border-radius: 5px; background: var(--whatnot-yellow); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600;">W</div>
-              <span style="font-size: 11px; font-weight: 500;">Whatnot</span>
-              <span style="font-size: 10px; color: var(--text-tertiary); margin-left: auto;">now</span>
-            </div>
-            <div style="font-size: 13px; font-weight: 500; margin-bottom: 2px;">Your weekly review is ready</div>
-            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.45;">GMV $18,420 (+23%). Tuesday's show was your best — tap to see why.</div>
-          </div>
-          <div style="margin: 8px 10px; background: rgba(255,255,255,0.95); border-radius: 14px; padding: 11px 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <div style="width: 22px; height: 22px; border-radius: 5px; background: var(--coral-50); display: flex; align-items: center; justify-content: center;">
-                <i class="ti ti-alert-triangle" style="font-size: 12px; color: var(--coral-600);"></i>
-              </div>
-              <span style="font-size: 11px; font-weight: 500;">Whatnot · Alert</span>
-              <span style="font-size: 10px; color: var(--text-tertiary); margin-left: auto;">2h</span>
-            </div>
-            <div style="font-size: 13px; font-weight: 500; margin-bottom: 2px;">Viewers dropped below 300</div>
-            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.45;">287 weekly avg — 17% below your threshold.</div>
-          </div>
-        </div>
-      </div>
-      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Push notifications</div>
-    </div>
-
-    <!-- Mobile answer -->
-    <div>
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div style="padding: 8px 12px; border-bottom: 0.5px solid var(--border);">
-            <div style="font-size: 12px; font-weight: 500;">Weekly review</div>
-            <div style="font-size: 10px; color: var(--text-tertiary);">Updated 4 min ago</div>
-          </div>
-          <div style="padding: 12px; background: var(--bg); min-height: 300px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px;">
-              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">GMV</div><div class="value" style="font-size:14px;">$18,420</div></div>
-              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Viewers</div><div class="value" style="font-size:14px;">347</div></div>
-              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Sell-thru</div><div class="value" style="font-size:14px;">71%</div></div>
-              <div class="metric" style="padding: 8px 9px;"><div class="label" style="font-size:9px;">Repeat</div><div class="value" style="font-size:14px;">42</div></div>
-            </div>
-            <div style="background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 11px;">
-              <div style="font-size: 10px; color: var(--amber-600); font-weight: 500; margin-bottom: 3px;"><i class="ti ti-sparkles" style="font-size: 10px;"></i> INSIGHT</div>
-              <div style="font-size: 11px; line-height: 1.4;">Tuesday shows convert 2.3× higher than other slots.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px; text-align: center;">Briefing on mobile</div>
+    <div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; padding-top: 4px;">
+      <div style="font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px;">Mobile must-haves</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;"><i class="ti ti-microphone" style="color: var(--whatnot-yellow); font-size: 13px;"></i> Voice input first-class</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;"><i class="ti ti-bell" style="color: var(--whatnot-yellow); font-size: 13px;"></i> Push notifications for alerts</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;"><i class="ti ti-layout-cards" style="color: var(--whatnot-yellow); font-size: 13px;"></i> Narrow-viewport answer cards</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;"><i class="ti ti-sparkles" style="color: var(--whatnot-yellow); font-size: 13px;"></i> Same bot, same threads, same memory</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;"><i class="ti ti-device-mobile-action" style="color: var(--whatnot-yellow); font-size: 13px;"></i> Show-time quick actions (mid-show)</div>
     </div>
   </div>
 </section>
