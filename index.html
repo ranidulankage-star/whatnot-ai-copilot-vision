@@ -1058,7 +1058,7 @@
   <p class="lede">From entry points to answer cards, from progress states to scheduled digests. A full specification of how a top-tier seller analytics bot should look, feel, and behave.</p>
   <div class="meta-row">
     <span><b>15</b> sections</span>
-    <span><b>6</b> entry-point variants</span>
+    <span><b>7</b> entry-point variants</span>
     <span><b>6</b> open-state surfaces</span>
     <span><b>v1 / v2 / v3</b> priority</span>
   </div>
@@ -1142,15 +1142,59 @@
 <section id="entrypoints">
   <div class="section-header">
     <h2><span class="num">03</span> Entry points</h2>
-    <p class="section-lede">Six placements on the same home page. Two ship in v1, one comes in v2, three get skipped.</p>
+    <p class="section-lede">Six placements on the same home page. Preferred: a subtle icon in the top bar. FABs ship alongside in v1. Command bar and sidebar are secondary options.</p>
   </div>
 
-  <!-- A: Command bar -->
+  <!-- A: Subtle header icon — PREFERRED -->
   <div class="mock">
     <div class="mock-label">
-      <span class="pri pri-v1">v1 — ship</span>
-      <span class="mock-title">A. Top header command bar</span>
-      <span class="mock-sub">— ⌘K from anywhere · Linear, Glean, Sidekick pattern</span>
+      <span class="pri pri-v1">v1 — preferred</span>
+      <span class="mock-title">A. Subtle sparkle icon — top bar</span>
+      <span class="mock-sub">— sits next to + button · low footprint · ⌘K shortcut still works</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">whatnot.com/dashboard/home</span>
+      </div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions" style="margin-left: auto;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--amber-50);border:0.5px solid var(--amber-200);cursor:pointer;" title="Ask Whatnot (⌘K)"><i class="ti ti-sparkles" style="font-size:14px;color:var(--amber-600);"></i></span>
+          <i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-package"></i> Inventory</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Zero header footprint · fits existing chrome · ⌘K still works · discoverable via tooltip</span>
+      <span class="cons"><i class="ti ti-x"></i> Less prominent than a command bar — relies on users learning the icon or shortcut</span>
+    </div>
+  </div>
+
+  <!-- A2: Command bar — downgraded -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 — consider</span>
+      <span class="mock-title">A2. Top header command bar</span>
+      <span class="mock-sub">— ⌘K from anywhere · Linear, Glean, Sidekick pattern · high prominence</span>
     </div>
     <div class="mock-frame">
       <div class="browser-bar">
@@ -1186,8 +1230,8 @@
       </div>
     </div>
     <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> One keystroke · always reachable · signals primary feature</span>
-      <span class="cons"><i class="ti ti-x"></i> Eats header real estate</span>
+      <span class="pros"><i class="ti ti-check"></i> Highly visible · signals primary feature · always reachable</span>
+      <span class="cons"><i class="ti ti-x"></i> Dominates the header — eats real estate that competes with nav identity</span>
     </div>
   </div>
 
@@ -1283,12 +1327,12 @@
     </div>
   </div>
 
-  <!-- D: Round FAB - skip -->
+  <!-- D: Round FAB - v1 contender -->
   <div class="mock">
     <div class="mock-label">
-      <span class="pri pri-skip">skip</span>
+      <span class="pri pri-v1">v1 — ship</span>
       <span class="mock-title">D. Round FAB — bottom right</span>
-      <span class="mock-sub">— Intercom, Drift pattern</span>
+      <span class="mock-sub">— Intercom, Drift, Notion AI pattern · pairs well with subtle icon (A)</span>
     </div>
     <div class="mock-frame">
       <div class="browser-bar">
@@ -1319,16 +1363,17 @@
       </div>
     </div>
     <div class="pros-cons">
-      <span class="cons"><i class="ti ti-x"></i> Reads as support chat · banner-blind after a week · blocks content</span>
+      <span class="pros"><i class="ti ti-check"></i> Familiar pattern · no header footprint · works on every page</span>
+      <span class="cons"><i class="ti ti-x"></i> Can read as support chat if unstyled — amber border + sparkle icon differentiates it</span>
     </div>
   </div>
 
-  <!-- E: Labeled pill FAB - skip -->
+  <!-- E: Labeled pill FAB - v1 contender -->
   <div class="mock">
     <div class="mock-label">
-      <span class="pri pri-skip">skip</span>
+      <span class="pri pri-v1">v1 — ship</span>
       <span class="mock-title">E. Labeled pill FAB</span>
-      <span class="mock-sub">— Arc, Raycast pattern</span>
+      <span class="mock-sub">— Arc, Raycast pattern · more legible than round FAB · shows shortcut</span>
     </div>
     <div class="mock-frame">
       <div class="browser-bar">
@@ -1359,8 +1404,8 @@
       </div>
     </div>
     <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> Branded, labeled, clearer than D</span>
-      <span class="cons"><i class="ti ti-x"></i> Still corner-anchored · weak importance signal · redundant with A</span>
+      <span class="pros"><i class="ti ti-check"></i> Branded, labeled, clearer than round FAB · shortcut hint visible · less widget-y</span>
+      <span class="cons"><i class="ti ti-x"></i> Slightly more footprint than round FAB · pick one FAB style (D or E), not both</span>
     </div>
   </div>
 
@@ -1418,10 +1463,10 @@
   </div>
 
   <div class="ship-box" style="background: var(--surface); color: var(--text); border: 0.5px solid var(--border-strong); margin-top: 28px;">
-    <div class="title" style="color: var(--teal-600);"><i class="ti ti-target"></i> The two-surface principle</div>
+    <div class="title" style="color: var(--teal-600);"><i class="ti ti-target"></i> Recommended v1 combination</div>
     <div class="body" style="color: var(--text);">
-      <b>One product, two doors.</b> The header command bar (A) and the left-nav item (B) point to the same threads, the same memory, the same dashboard. A question started in the command bar continues in the nav home. The peek (C) is an accelerator — it pre-fills the input and routes to the same backend.<br><br>
-      <span style="color: var(--text-secondary);">Avoid two parallel experiences. One bot, multiple doors.</span>
+      <b>Subtle icon (A) + one FAB (D or E) + left-nav item (B).</b> The sparkle icon in the top bar sits quietly next to + — zero chrome impact, ⌘K shortcut still works. The FAB gives a visible persistent on-page affordance for users who haven't learned the icon. The left-nav item (B) provides a full workspace destination. All three doors open the same threads, the same memory, the same backend.<br><br>
+      <span style="color: var(--text-secondary);">Don't ship the command bar (A2) alongside the subtle icon — pick one header treatment. The command bar is the right call only if discoverability data shows sellers aren't finding the icon.</span>
     </div>
   </div>
 </section>
