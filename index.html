@@ -1111,7 +1111,7 @@
 <header class="hero" id="overview">
   <span class="eyebrow"><i class="ti ti-sparkles"></i> Analytics → Agentic · Design system & specification</span>
   <h1>Seller AI Bot —<br>the complete design</h1>
-  <p class="lede">The AI co-pilot for every seller on Whatnot. Starts with analytics Q&A — answering questions, surfacing insights, citing sources. Grows into a fully agentic assistant that handles CX, manages inventory, preps shows, and runs multi-step workflows on the seller's behalf. This document covers the full arc: what ships in v1, what the product becomes.</p>
+  <p class="lede">Today sellers have two siloed AI products — an analytics bot buried under Analytics › Chat, and Sierra handling CX tickets in a separate surface. Neither knows what the other knows. The future is one consistent interface, everywhere in the app, powered by tool calls that route to the right capability: analytics, CX, inventory, scheduling. This document covers the full arc — from fixing the analytics bot today, to a unified agentic co-pilot that replaces the fragmentation entirely.</p>
   <div class="meta-row">
     <span><b>16</b> sections</span>
     <span><b>7</b> entry-point variants</span>
@@ -1169,13 +1169,51 @@
 <section id="critique">
   <div class="section-header">
     <h2><span class="num">02</span> Current state critique</h2>
-    <p class="section-lede">The bot today is buried, blank, and brittle. Four failures compound into a feature sellers won't return to.</p>
+    <p class="section-lede">Two siloed AI products, both buried, both limited. The seller sees fragmentation where there should be one consistent co-pilot.</p>
+  </div>
+
+  <!-- Fragmentation callout -->
+  <div style="background: #000; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; display: flex; gap: 32px; align-items: flex-start;">
+    <div style="flex: 1;">
+      <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Today — two siloed products</div>
+      <div style="display: flex; gap: 16px;">
+        <div style="flex: 1; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-chart-bar" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Analytics Bot</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">Buried under Analytics › Chat. Answers data questions. No actions, no memory of CX context.</div>
+        </div>
+        <div style="display: flex; align-items: center; color: rgba(255,255,255,0.2); font-size: 20px;">+</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-headset" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Sierra (CX Bot)</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">Handles buyer tickets and support flows. Separate surface, separate context, no analytics awareness.</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); padding: 0 8px; font-size: 22px;">→</div>
+    <div style="flex: 1;">
+      <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Future — one unified interface</div>
+      <div style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
+        <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-sparkles" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Seller AI Bot</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">One consistent entry point, everywhere in the app. Tool calls route to the right capability — analytics, CX, inventory, scheduling — transparently. The seller never thinks about which bot to use.</div>
+      </div>
+    </div>
   </div>
 
   <div class="critique-grid">
     <div class="critique-card">
-      <h4>Burial</h4>
-      <p>Two clicks deep behind Analytics &gt; Chat. The most powerful thing in the product is treated as a side feature of a side feature.</p>
+      <h4>Fragmentation</h4>
+      <p>Two separate AI products with different surfaces, different contexts, and different capabilities. A seller dealing with a return spike has to cross between Sierra for the ticket and the analytics bot for the data — they should never have to.</p>
+    </div>
+    <div class="critique-card">
+      <h4>Buried capabilities</h4>
+      <p>Analytics bot is two clicks deep behind Analytics › Chat. Sierra lives in a separate support flow. The most powerful tools in the product are the hardest to reach.</p>
+    </div>
+    <div class="critique-card">
+      <h4>No shared context</h4>
+      <p>The CX bot has no awareness of a seller's analytics. The analytics bot has no awareness of open tickets. Each product starts from zero — the seller's context is never carried across.</p>
+    </div>
+    <div class="critique-card">
+      <h4>Siloed actions</h4>
+      <p>Neither product can act across domains. Analytics can't draft a buyer response. Sierra can't pull GMV data. Tool calls and a shared backend are what unify them.</p>
     </div>
     <div class="critique-card">
       <h4>Empty state</h4>
@@ -1184,10 +1222,6 @@
     <div class="critique-card">
       <h4>No persistence</h4>
       <p>Navigate away and the question vanishes. Questions must be durable objects from the moment of submission, not transient UI state.</p>
-    </div>
-    <div class="critique-card">
-      <h4>Weak feedback</h4>
-      <p>A spinner says "something is happening." Sellers need to know what's happening, how long it will take, and whether they can leave.</p>
     </div>
   </div>
 </section>
