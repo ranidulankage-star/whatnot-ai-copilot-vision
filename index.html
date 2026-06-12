@@ -923,6 +923,59 @@
   .ep-compact .peek .body { font-size: 9px; margin-bottom: 5px; line-height: 1.3; }
   .ep-compact .peek .btn-primary { font-size: 8px; padding: 3px 6px; }
   .ep-compact .peek .btn-ghost { font-size: 8px; padding: 3px 6px; }
+  /* Right dock base styles */
+  .right-dock {
+    width: 220px;
+    background: #fff;
+    border-left: 2px solid var(--whatnot-yellow);
+    display: flex; flex-direction: column;
+    flex-shrink: 0;
+  }
+  .right-dock .header {
+    background: #000;
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .right-dock .header .title {
+    font-size: 12px; font-weight: 600;
+    color: #fff; flex: 1;
+  }
+  .right-dock .header i { color: var(--whatnot-yellow); font-size: 14px; cursor: pointer; }
+  .right-dock .header i.ti-layout-sidebar-right-collapse { color: rgba(255,255,255,0.4); font-size: 13px; }
+  .right-dock .body {
+    flex: 1; padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .right-dock .insight-card {
+    background: #000; color: rgba(255,255,255,0.85);
+    border-radius: 6px; padding: 8px 10px;
+    font-size: 12px; line-height: 1.45; margin-bottom: 6px;
+  }
+  .right-dock .insight-card b { color: var(--whatnot-yellow); font-weight: 500; }
+  .right-dock .label-tag {
+    font-size: 9px; font-weight: 600;
+    color: var(--text-tertiary); letter-spacing: 0.06em;
+    margin: 4px 0 4px;
+  }
+  .right-dock .suggested {
+    font-size: 12px; color: var(--text-secondary);
+    padding: 5px 8px; border-radius: 5px;
+    background: var(--bg); cursor: pointer;
+  }
+  .right-dock .suggested:hover { background: var(--border); }
+  .right-dock .composer {
+    padding: 10px 12px;
+    border-top: 0.5px solid var(--border);
+  }
+  .right-dock .composer-pill {
+    background: var(--bg);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 16px;
+    padding: 6px 12px;
+    font-size: 12px; color: var(--text-tertiary);
+  }
+
   .ep-compact .right-dock { width: 80px; }
   .ep-compact .right-dock .header { padding: 5px 6px; }
   .ep-compact .right-dock .body { padding: 5px 6px; }
