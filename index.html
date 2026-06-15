@@ -1063,11 +1063,12 @@
 <div class="layout">
 
 <aside class="sidenav">
-  <div class="brand"><div class="mark">W</div> Seller AI Bot design</div>
+  <div class="brand"><div class="mark">W</div> Whatnot AI Copilot design</div>
 
   <div class="group">
     <div class="group-label">Foundation</div>
     <a href="#overview"><span class="ix">00</span> Overview</a>
+    <a href="#vision"><span class="ix">→</span> The vision</a>
     <a href="#principles"><span class="ix">01</span> Design principles</a>
     <a href="#critique"><span class="ix">02</span> Current state critique</a>
   </div>
@@ -1109,16 +1110,110 @@
 <!-- HERO                                                          -->
 <!-- ============================================================ -->
 <header class="hero" id="overview">
-  <span class="eyebrow"><i class="ti ti-sparkles"></i> Analytics → Agentic · Design system & specification</span>
-  <h1>Seller AI Bot —<br>the complete design</h1>
-  <p class="lede">We are building two AI products in parallel — a Seller AI Bot for analytics and business intelligence, and Sierra for CX ticket handling. Both are launching soon, both serve different contexts, but neither knows what the other knows. The future is one consistent interface, everywhere in the app, powered by tool calls that route across analytics, CX, inventory, and scheduling. This document covers the full arc: what the Seller AI Bot ships as, and what it becomes as the two products converge.</p>
+  <span class="eyebrow"><i class="ti ti-sparkles"></i> Design system & specification</span>
+  <h1>Whatnot AI Copilot</h1>
+  <p class="lede">An AI co-pilot built into every seller's workflow — starting with analytics Q&A and growing into a fully agentic assistant that monitors your business, handles CX, manages inventory, preps shows, and acts on your behalf. This document covers the full vision and the v1 spec.</p>
   <div class="meta-row">
     <span><b>16</b> sections</span>
     <span><b>7</b> entry-point variants</span>
     <span><b>6</b> open-state surfaces</span>
-    <span><b>analytics → agentic</b> vision</span>
+    <span><b>analytics → agentic</b> arc</span>
   </div>
 </header>
+
+<!-- ============================================================ -->
+<!-- VISION                                                        -->
+<!-- ============================================================ -->
+<section id="vision">
+  <div class="section-header">
+    <h2><i class="ti ti-sparkles" style="color:var(--whatnot-yellow);font-size:20px;margin-right:4px;"></i> The vision</h2>
+    <p class="section-lede">Whatnot AI Copilot starts as an analytics assistant and grows into the operating system for every seller's business. Four phases, one consistent interface.</p>
+  </div>
+
+  <!-- Milestone roadmap -->
+  <div class="roadmap" style="grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px;">
+    <div class="phase v1">
+      <div class="phase-label"><span class="pri pri-v1">Now · v1</span></div>
+      <div class="phase-name">Analytics Q&A</div>
+      <div class="phase-when">Shipping Q3 2026</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Natural-language questions about your store</li>
+        <li><i class="ti ti-check"></i> Charts, tables, and citation cards</li>
+        <li><i class="ti ti-check"></i> Drill-down follow-up questions</li>
+        <li><i class="ti ti-check"></i> Read-only — zero write actions</li>
+      </ul>
+    </div>
+    <div class="phase v2">
+      <div class="phase-label"><span class="pri pri-v2">Next · v2</span></div>
+      <div class="phase-name">Contextual actions</div>
+      <div class="phase-when">Target Q4 2026</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Suggest actions from insight context</li>
+        <li><i class="ti ti-check"></i> Draft buyer messages from answer cards</li>
+        <li><i class="ti ti-check"></i> Flag low-stock items for reorder</li>
+        <li><i class="ti ti-check"></i> Single-step writes with explicit confirm</li>
+      </ul>
+    </div>
+    <div class="phase v3">
+      <div class="phase-label"><span class="pri pri-v3">Later · v3</span></div>
+      <div class="phase-name">Agentic workflows</div>
+      <div class="phase-when">Target H1 2027</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Multi-step autonomous task chains</li>
+        <li><i class="ti ti-check"></i> Human approval gates before each write</li>
+        <li><i class="ti ti-check"></i> 60-second undo on every action</li>
+        <li><i class="ti ti-check"></i> "Prep my Friday show" end-to-end</li>
+      </ul>
+    </div>
+    <div class="phase" style="border:1.5px solid var(--whatnot-yellow);background:#fafaf8;">
+      <div class="phase-label"><span style="background:var(--whatnot-yellow);color:#000;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;">Future</span></div>
+      <div class="phase-name">Full seller co-pilot</div>
+      <div class="phase-when" style="color:var(--text-tertiary);">2027+</div>
+      <ul>
+        <li><i class="ti ti-check"></i> Proactive, always-on monitoring</li>
+        <li><i class="ti ti-check"></i> Autonomous CX triage & responses</li>
+        <li><i class="ti ti-check"></i> Inventory, growth & competitive intel</li>
+        <li><i class="ti ti-check"></i> Handles routine tasks end-to-end</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Capability pillars -->
+  <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);margin-bottom:16px;">Future capability pillars — what gets unlocked over time</div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:48px;">
+    <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
+      <span style="width:36px;height:36px;background:var(--whatnot-yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-ticket" style="font-size:18px;color:#000;"></i></span>
+      <strong style="font-size:13px;line-height:1.3;">CX & ticket triage</strong>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Auto-classify inbound messages, draft responses, escalate edge-cases.</p>
+    </div>
+    <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
+      <span style="width:36px;height:36px;background:var(--whatnot-yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-package" style="font-size:18px;color:#000;"></i></span>
+      <strong style="font-size:13px;line-height:1.3;">Inventory management</strong>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Monitor stock levels, flag slow-movers, suggest reorder quantities.</p>
+    </div>
+    <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
+      <span style="width:36px;height:36px;background:var(--whatnot-yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-broadcast" style="font-size:18px;color:#000;"></i></span>
+      <strong style="font-size:13px;line-height:1.3;">Show scheduling</strong>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Recommend optimal slots, auto-fill descriptions, manage show cadence.</p>
+    </div>
+    <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
+      <span style="width:36px;height:36px;background:var(--whatnot-yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-users" style="font-size:18px;color:#000;"></i></span>
+      <strong style="font-size:13px;line-height:1.3;">Buyer outreach</strong>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Re-engage lapsed buyers, announce new arrivals to high-intent segments.</p>
+    </div>
+    <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
+      <span style="width:36px;height:36px;background:var(--whatnot-yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-refresh" style="font-size:18px;color:#000;"></i></span>
+      <strong style="font-size:13px;line-height:1.3;">Competitive intel</strong>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Track category trends, benchmark your pricing, surface whitespace opportunities.</p>
+    </div>
+  </div>
+
+  <!-- Transition to v1 -->
+  <div class="ship-box" style="background:var(--surface);color:var(--text);border:0.5px solid var(--border-strong);">
+    <div class="title" style="color:var(--teal-600);"><i class="ti ti-arrow-down-right"></i> Now — the v1 design</div>
+    <div class="body" style="color:var(--text);">Everything below this point is the <b>v1 analytics spec</b> — the entry points, answer cards, running states, threads, and trust model that ship first. The vision above is where it goes. The sections below are how we get there.</div>
+  </div>
+</section>
 
 <!-- ============================================================ -->
 <!-- 01 PRINCIPLES                                                 -->
@@ -1178,7 +1273,7 @@
       <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Now — two products in parallel</div>
       <div style="display: flex; gap: 16px;">
         <div style="flex: 1; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
-          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-chart-bar" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Seller AI Bot <span style="font-size:10px;font-weight:400;color:rgba(255,255,255,0.4);">← this doc</span></div>
+          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-chart-bar" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Whatnot AI Copilot <span style="font-size:10px;font-weight:400;color:rgba(255,255,255,0.4);">← this doc</span></div>
           <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">In development. Answers analytics and business questions. Launching soon as a standalone seller tool.</div>
         </div>
         <div style="display: flex; align-items: center; color: rgba(255,255,255,0.2); font-size: 20px;">+</div>
@@ -1192,7 +1287,7 @@
     <div style="flex: 1;">
       <div style="font-size: 11px; font-weight: 600; color: var(--whatnot-yellow); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Future — one unified interface</div>
       <div style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px;">
-        <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-sparkles" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Seller AI Bot</div>
+        <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;"><i class="ti ti-sparkles" style="color: var(--whatnot-yellow); margin-right: 6px;"></i>Whatnot AI Copilot</div>
         <div style="font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;">One consistent entry point, everywhere in the app. Tool calls route to the right capability — analytics, CX, inventory, scheduling — transparently. The seller never thinks about which bot to use.</div>
       </div>
     </div>
@@ -1205,7 +1300,7 @@
     </div>
     <div class="critique-card">
       <h4>No shared context</h4>
-      <p>Seller AI Bot has no awareness of open CX tickets. Sierra has no awareness of a seller's GMV or show performance. Each starts from zero — the seller's full context is never available in one place.</p>
+      <p>Whatnot AI Copilot has no awareness of open CX tickets. Sierra has no awareness of a seller's GMV or show performance. Each starts from zero — the seller's full context is never available in one place.</p>
     </div>
     <div class="critique-card">
       <h4>Siloed actions</h4>
@@ -3230,8 +3325,10 @@
     </p>
   </div>
 
+  <p style="font-size:13px;color:var(--text-secondary);margin:0 0 32px;">The milestone roadmap and capability pillars are at the <a href="#vision" style="color:var(--text);font-weight:500;">top of this document ↑</a>. Below are the agentic UX mocks and guardrail principles.</p>
+
   <h3 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:48px 0 16px;">Milestone roadmap</h3>
-  <div class="roadmap" style="grid-template-columns:repeat(4,1fr);gap:12px;">
+  <div class="roadmap" style="grid-template-columns:repeat(4,1fr);gap:12px;display:none;">
 
     <div class="phase v1">
       <div class="phase-label"><span class="pri pri-v1">Now · v1</span></div>
@@ -3286,8 +3383,8 @@
 
   </div>
 
-  <h3 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:56px 0 16px;">Future capability pillars</h3>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:48px;">
+  <h3 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:56px 0 16px;display:none;">Future capability pillars</h3>
+  <div style="display:none;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:48px;">
 
     <div class="ship-box" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 16px;">
       <span style="width:36px;height:36px;background:#FFE817;border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="ti ti-ticket" style="font-size:18px;color:#000;"></i></span>
