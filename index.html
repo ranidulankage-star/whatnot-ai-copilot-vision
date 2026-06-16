@@ -2141,8 +2141,123 @@
 <section id="variants">
   <div class="section-header">
     <h2><span class="num">06</span> Answer variants</h2>
-    <p class="section-lede">The same anatomy renders as the right primitive for the question. Six variants cover ~95% of seller queries.</p>
+    <p class="section-lede">Two fundamental primitives — prose and structured cards — combine to cover every response type. Prose is the foundation that scales to agentic. Structured cards are the analytics layer on top.</p>
   </div>
+
+  <!-- Primitive callout -->
+  <div style="background:#000;border-radius:14px;padding:24px 28px;margin-bottom:40px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:10px;">Prose reply — the foundational primitive</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.65;">Plain text responses that explain, reason, confirm, and converse. Powers analytics explanations today and every agentic interaction tomorrow — step confirmations, clarification requests, approval gates, action summaries.</div>
+        <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Why questions</span>
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Advice & recommendations</span>
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Action previews</span>
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Step confirmations</span>
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Clarifications</span>
+          <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:11px;padding:3px 8px;border-radius:4px;">Error explanations</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Structured card — analytics layer</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;">Data-heavy responses with a headline number, chart, or table. Always cites source, row count, and freshness. Used when the answer is a number or comparison, not an explanation.</div>
+        <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:11px;padding:3px 8px;border-radius:4px;">How much / how many</span>
+          <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:11px;padding:3px 8px;border-radius:4px;">Comparisons</span>
+          <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:11px;padding:3px 8px;border-radius:4px;">Rankings</span>
+          <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:11px;padding:3px 8px;border-radius:4px;">Trends</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prose replies -->
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px;padding-top:8px;">Prose reply variants</div>
+
+  <!-- g. Conversational explanation -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">g. Conversational / explanation</span>
+      <span class="mock-sub">— "Why did my Tuesday show outperform Friday's?"</span>
+    </div>
+    <div class="answer-card" style="max-width:600px;">
+      <div class="answer-header">
+        <div class="answer-label">Explanation · Tuesday vs Friday shows</div>
+        <div style="font-size:14px;line-height:1.7;color:var(--text);margin-top:6px;">
+          Tuesday's show outperformed Friday's for three reasons:<br><br>
+          <b>1. Audience timing.</b> Your Tuesday followers skew toward collectors who browse in the evening — 73% of Tuesday bids came after 7 PM vs 41% on Friday.<br><br>
+          <b>2. Inventory mix.</b> You listed 18 Pokémon cards on Tuesday vs 6 on Friday. Your buyer base has a 2.4× higher conversion rate on Pokémon vs other categories.<br><br>
+          <b>3. Viewer duration.</b> Average watch time on Tuesday was 22 minutes vs 11 minutes on Friday, which correlates with higher per-session spend in your store.
+        </div>
+      </div>
+      <div class="answer-provenance">
+        <i class="ti ti-database"></i>
+        <span>Shows · last 30 days · 12 sessions compared</span>
+        <i class="ti ti-chevron-down chev"></i>
+      </div>
+      <div class="answer-actions">
+        <button class="btn-action"><i class="ti ti-plus"></i> Add Tuesday slot</button>
+        <button class="btn-action"><i class="ti ti-chart-bar"></i> Show me the data</button>
+        <div class="feedback-row"><i class="ti ti-thumb-up"></i><i class="ti ti-thumb-down"></i></div>
+      </div>
+    </div>
+    <div class="mock-note">Prose reply: no headline number, just explanation. Source still cited. Follow-up action chips can suggest next steps — in v2 "Add Tuesday slot" becomes a real write action with a confirmation step.</div>
+  </div>
+
+  <!-- h. Agentic step confirmation -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2+</span>
+      <span class="mock-title">h. Agentic step confirmation</span>
+      <span class="mock-sub">— bot is about to do something, tells you exactly what before acting</span>
+    </div>
+    <div class="answer-card" style="max-width:600px;border:1.5px solid var(--whatnot-yellow);">
+      <div class="answer-header">
+        <div class="answer-label" style="color:#000;font-weight:600;display:flex;align-items:center;gap:6px;"><i class="ti ti-sparkles" style="color:var(--whatnot-yellow);"></i> About to take an action — your approval needed</div>
+        <div style="font-size:14px;line-height:1.7;color:var(--text);margin-top:8px;">
+          Based on your return rate spike I found <b>3 buyer complaints</b> about the vintage denim listing from last Tuesday's show. Here's what I'd send to each:<br><br>
+          <div style="background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--text-secondary);border-left:3px solid var(--whatnot-yellow);line-height:1.6;">
+            <b style="color:var(--text);">Draft message:</b> "Hi! So sorry about the fit issue with the denim jacket. I'd love to make it right — happy to offer a full refund or store credit. Let me know what works best for you."
+          </div>
+        </div>
+      </div>
+      <div class="answer-actions">
+        <button class="btn-action" style="background:#000;color:var(--whatnot-yellow);border-color:#000;font-weight:600;"><i class="ti ti-send"></i> Send to all 3</button>
+        <button class="btn-action"><i class="ti ti-edit"></i> Edit first</button>
+        <button class="btn-action"><i class="ti ti-eye"></i> See all 3 drafts</button>
+        <button class="btn-action"><i class="ti ti-x"></i> Cancel</button>
+      </div>
+    </div>
+    <div class="mock-note">Prose + action buttons. The bot explains what it's about to do in plain language before doing it. Yellow border signals a write action is pending. No action fires until the seller explicitly approves.</div>
+  </div>
+
+  <!-- i. Clarification -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">i. Clarification request</span>
+      <span class="mock-sub">— question is ambiguous, bot asks before guessing</span>
+    </div>
+    <div class="answer-card" style="max-width:520px;">
+      <div class="answer-header">
+        <div class="answer-label">Needs clarification</div>
+        <div style="font-size:14px;line-height:1.7;color:var(--text);margin-top:6px;">
+          "My top products" could mean a few different things — which would be most useful?
+        </div>
+      </div>
+      <div style="padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;">
+        <div class="chip" style="border:0.5px solid var(--border-strong);">By GMV this month</div>
+        <div class="chip" style="border:0.5px solid var(--border-strong);">By units sold</div>
+        <div class="chip" style="border:0.5px solid var(--border-strong);">By sell-through rate</div>
+        <div class="chip" style="border:0.5px solid var(--border-strong);">By repeat buyer rate</div>
+      </div>
+    </div>
+    <div class="mock-note">Bot never guesses when the intent is ambiguous. Asks once, with specific options — not "can you clarify?" but concrete choices that immediately narrow the question.</div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px;padding-top:32px;border-top:1px solid var(--border);">Structured card variants</div>
 
   <!-- Big number -->
   <div class="mock">
