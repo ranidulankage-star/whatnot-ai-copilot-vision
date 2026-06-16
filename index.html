@@ -1669,7 +1669,7 @@
 <section id="openstate">
   <div class="section-header">
     <h2><span class="num">04</span> When you open it</h2>
-    <p class="section-lede">Every entry point routes to one of six "opened" surfaces. Picking the right surface for the context is half the design.</p>
+    <p class="section-lede">Three surfaces cover the core use cases — a side panel for quick in-context questions, ⌘K for keyboard-driven lookups, and a full-page workspace for deep analytical work.</p>
   </div>
 
   <!-- 1. Side panel (default) -->
@@ -1819,7 +1819,8 @@
     <div class="mock-note">Modal pops centered. Up/down arrow keys navigate suggestions. Enter submits and transitions to side panel (state 1) with the question already streaming. Esc returns to the page. Pure keyboard — never requires a mouse.</div>
   </div>
 
-  <!-- 3. Mini dropdown -->
+  <!-- 3. Mini dropdown — hidden -->
+  <div style="display:none;">
   <div class="mock">
     <div class="mock-label">
       <span class="pri pri-v2">v2 · lightweight</span>
@@ -1855,6 +1856,8 @@
     </div>
     <div class="mock-note">Answer appears inline below the command bar without leaving the page. Perfect for "what's my GMV right now?" — no thread, no panel, no friction. Press Enter to convert into a full thread; click away to dismiss.</div>
   </div>
+
+  </div><!-- end hidden mini dropdown -->
 
   <!-- 4. Full-page takeover -->
   <div class="mock">
@@ -1918,6 +1921,8 @@
     <div class="mock-note">Clicking "Ask Whatnot" in the nav opens this — a full workspace with thread rail (search, grouping, pinning), morning briefing, and metric overview. Same threads as the side panel — open the same thread from either surface and it picks up where it left off.</div>
   </div>
 
+  <!-- 5 & 6 hidden -->
+  <div style="display:none;">
   <!-- 5. Persistent docked sidebar -->
   <div class="mock">
     <div class="mock-label">
@@ -2060,15 +2065,15 @@
     <div class="mock-note">Click the hamburger inside the side panel header to expose an inner thread list. Now the panel is a mini workspace — switch between threads without leaving the page you're working on. Closes back to a single-column panel.</div>
   </div>
 
+  </div><!-- end hidden 5 & 6 -->
+
   <div class="ship-box" style="margin-top: 20px;">
     <div class="title"><i class="ti ti-route"></i> Routing logic — which surface opens?</div>
     <div class="body">
-      <b>From the command bar (A):</b> click opens the side panel (1) on the current page.<br>
-      <b>From ⌘K keyboard:</b> opens the command palette (2) → enter routes to the side panel.<br>
-      <b>From the nav item (B):</b> opens the full-page workspace (4).<br>
-      <b>From the peek (C) "Show me why":</b> opens the side panel (1) with that question already streaming.<br>
-      <b>Pinned sidebar (5):</b> a seller preference, opt-in, persists across sessions.<br><br>
-      <span style="color: rgba(255,255,255,0.65);">The mini dropdown (3) is the only surface that doesn't create a thread — it's a peek-and-pin pattern for instant lookups.</span>
+      <b>Sparkle icon or FAB:</b> opens the side panel on whatever page you're on. Context-aware suggestions load based on current page.<br>
+      <b>⌘K keyboard:</b> opens the command palette → enter routes to the side panel with the question already streaming.<br>
+      <b>Nav item "Ask Whatnot":</b> opens the full-page workspace — briefing home, thread rail, deep work mode.<br><br>
+      <span style="color: rgba(255,255,255,0.65);">All three surfaces share the same threads and memory. A question started in the side panel continues in the full-page workspace.</span>
     </div>
   </div>
 </section>
