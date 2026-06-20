@@ -1108,6 +1108,10 @@
     <a href="#roadmap"><span class="ix">14</span> Roadmap</a>
     <a href="#agentic"><span class="ix">15</span> Agentic vision</a>
     <a href="#risks"><span class="ix">16</span> Risks</a>
+  </div>
+
+  <div class="group">
+    <div class="group-label">Appendix</div>
     <a href="#appendix-a"><span class="ix">A</span> Seller research</a>
     <a href="#appendix-b"><span class="ix">B</span> Agentic loops</a>
     <a href="#appendix-c"><span class="ix">C</span> Competitor table</a>
@@ -3696,80 +3700,66 @@
 <section id="roadmap">
   <div class="section-header">
     <h2><span class="num">14</span> Prioritization & roadmap</h2>
-    <p class="section-lede">Three phases. v1 ships a complete, useful product. v2 deepens engagement. v3 turns it into a workspace.</p>
+    <p class="section-lede">Three phases, framed by what the bot can <em>do</em> — not a UI checklist. Each phase adds a layer of capability on top of the last.</p>
   </div>
 
   <div class="roadmap">
     <!-- v1 -->
     <div class="phase v1">
       <div class="phase-label">
-        <span class="pri pri-v1">v1 — ship now</span>
+        <span class="pri pri-v1">v1 — Analytics MVP</span>
         <span class="phase-when">6–8 weeks</span>
       </div>
-      <div class="phase-name">Replace today's bot</div>
-      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Fix what's broken. Establish the foundation. Kill the Analytics &gt; Chat tab.</div>
+      <div class="phase-name">A real analytics assistant</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Replaces the buried Analytics → Chat tab. Ask anything about your business, get durable answers you can trust and return to.</div>
       <ul>
-        <li><i class="ti ti-check"></i> Header command bar (A) — ⌘K from anywhere</li>
-        <li><i class="ti ti-check"></i> Top-level "Ask Whatnot" nav (B)</li>
-        <li><i class="ti ti-check"></i> Side-panel runtime — doesn't navigate away</li>
-        <li><i class="ti ti-check"></i> Durable threads — URL-addressable, persist across sessions</li>
-        <li><i class="ti ti-check"></i> Named progress steps + cancel</li>
-        <li><i class="ti ti-check"></i> Answer cards (number, comparison, trend, table)</li>
-        <li><i class="ti ti-check"></i> Provenance row (show your work)</li>
-        <li><i class="ti ti-check"></i> Thread rail with grouping &amp; search</li>
-        <li><i class="ti ti-check"></i> Pin, share (link), CSV export</li>
-        <li><i class="ti ti-check"></i> Disambiguation chips, "I don't know" states</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Conversational analytics</b> — ask anything about your data</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Answer cards</b> — durable, cited, pinnable; never a chat bubble</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Threads</b> — saved, shareable, URL-addressable</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Honest by default</b> — provenance, "I don't know", disambiguation</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Always reachable</b> — subtle entry point + side panel that doesn't navigate away</li>
       </ul>
     </div>
 
     <!-- v2 -->
     <div class="phase v2">
       <div class="phase-label">
-        <span class="pri pri-v2">v2 — deepen</span>
+        <span class="pri pri-v2">v2 — Proactive</span>
         <span class="phase-when">+ 8–10 weeks</span>
       </div>
-      <div class="phase-name">Proactive & scheduled</div>
-      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Turn the bot from reactive to ambient. Sellers see value before asking.</div>
+      <div class="phase-name">Reaches out before you ask</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">The bot turns from reactive to ambient — surfacing value and taking its first contextual actions.</div>
       <ul>
-        <li><i class="ti ti-check"></i> Morning briefing on Ask Whatnot home</li>
-        <li><i class="ti ti-check"></i> Anomaly detection + insight cards</li>
-        <li><i class="ti ti-check"></i> Threshold alerts (in-app, email, push)</li>
-        <li><i class="ti ti-check"></i> Scheduled thread re-runs</li>
-        <li><i class="ti ti-check"></i> "What I know about you" memory panel</li>
-        <li><i class="ti ti-check"></i> Proactive peek on home (C)</li>
-        <li><i class="ti ti-check"></i> Streaming partial results</li>
-        <li><i class="ti ti-check"></i> Long-running query backgrounding</li>
-        <li><i class="ti ti-check"></i> Slack / email export, share modal</li>
-        <li><i class="ti ti-check"></i> Mobile voice input + push</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Proactive insights</b> — morning briefing, anomaly alerts</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Scheduling</b> — re-run threads, threshold alerts</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Memory</b> — learns your business over time</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">First contextual actions</b> — draft a message, flag a listing (with approval)</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Mobile</b> — voice input + push notifications</li>
       </ul>
     </div>
 
     <!-- v3 -->
     <div class="phase v3">
       <div class="phase-label">
-        <span class="pri pri-v3">v3 — expand</span>
+        <span class="pri pri-v3">v3 — Agentic</span>
         <span class="phase-when">+ 10–14 weeks</span>
       </div>
-      <div class="phase-name">Workspace</div>
-      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Threads become collaborative analyses. The bot is now a workspace, not a feature.</div>
+      <div class="phase-name">Acts &amp; becomes a workspace</div>
+      <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">Multi-step workflows the bot runs on your behalf, and threads that become collaborative, living analyses.</div>
       <ul>
-        <li><i class="ti ti-check"></i> Persistent right sidebar (F) — opt-in for power users</li>
-        <li><i class="ti ti-check"></i> Pinned dashboard — answers as live cards</li>
-        <li><i class="ti ti-check"></i> Comments &amp; @-mentions on answers</li>
-        <li><i class="ti ti-check"></i> Tags &amp; folders for threads</li>
-        <li><i class="ti ti-check"></i> Thread versioning when re-run</li>
-        <li><i class="ti ti-check"></i> Multi-thread compare (tabs)</li>
-        <li><i class="ti ti-check"></i> Contextual "Ask about this" chips on data widgets</li>
-        <li><i class="ti ti-check"></i> Category benchmarks (your data vs. peers)</li>
-        <li><i class="ti ti-check"></i> Custom anomaly rules per seller</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Agentic workflows</b> — multi-step tasks, approval-gated</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Collaborative threads</b> — comments, tags, folders</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Living dashboards</b> — pinned answers that stay fresh</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Benchmarks</b> — your data vs. category peers</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Custom automation</b> — seller-defined rules &amp; alerts</li>
       </ul>
     </div>
   </div>
 
   <div class="ship-box">
-    <div class="title"><i class="ti ti-flag"></i> What we'd cut if we have to</div>
+    <div class="title"><i class="ti ti-flag"></i> The v1 line in the sand</div>
     <div class="body">
-      The first thing to cut from v1 if scope is tight: the morning briefing on the Ask Whatnot home. The thread workspace, durable questions, and answer cards are non-negotiable. Without those, we're shipping the same broken product with a new entry point. With them, even a barebones briefing is a meaningful step forward.
+      The <b>Analytics MVP</b> is non-negotiable on three things: durable answer cards, saved threads, and honest provenance. Without them we're shipping the same broken Chat tab with a new front door. Everything else in v1 can flex on scope — these three cannot.
     </div>
   </div>
 </section>
@@ -4632,6 +4622,16 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================ -->
+<!-- APPENDIX DIVIDER                                              -->
+<!-- ============================================================ -->
+<div style="margin:96px 0 0;padding:40px 0 0;border-top:3px solid #000;">
+  <div style="display:flex;align-items:baseline;gap:14px;">
+    <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;">Appendix</span>
+    <span style="font-size:14px;color:var(--text-secondary);">Supporting research, full loop inventory, and competitor detail</span>
+  </div>
+</div>
 
 <!-- APPENDIX A -->
 <section id="appendix-a">
