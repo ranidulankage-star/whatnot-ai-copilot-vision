@@ -1110,6 +1110,7 @@
     <a href="#agentic"><span class="ix">15</span> Agentic vision</a>
     <a href="#risks"><span class="ix">16</span> Risks</a>
     <a href="#appendix-a"><span class="ix">A</span> Seller research</a>
+    <a href="#appendix-b"><span class="ix">B</span> Agentic loops</a>
   </div>
 </aside>
 
@@ -4292,6 +4293,392 @@
   <div class="mock-note"><strong>Key design decision:</strong> The bot clarifies scope ambiguity ("bidders" vs "buyers") before executing — mirroring Shopify's plan step but adding a precision layer specific to Whatnot's data model. The 60-second undo window handles the irreversibility concern of bulk actions without requiring a full confirmation modal, keeping the loop fast while preserving seller safety.</div>
 </div>
 
+<!-- SELLER HUB P0 AGENTIC LOOPS -->
+
+<!-- LOOP 1: Payout Breakdown Explainer -->
+<div class="mock">
+  <div class="mock-label">EP2 · Payout Breakdown Explainer · 8,457 earnings tickets in 14 days · P0</div>
+  <div class="mock-frame">
+    <div class="browser-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">whatnot.com/seller/hub/earnings</span>
+    </div>
+    <div class="app-header">
+      <div class="logo-block">
+        <div class="logo-mark"></div>
+        <span class="pill-dark">Seller Hub</span>
+      </div>
+      <div class="header-actions">
+        <div class="avatar-circle">KD</div>
+      </div>
+    </div>
+    <div class="app-body">
+      <div class="left-nav">
+        <div class="item">Dashboard</div>
+        <div class="item active">Earnings</div>
+        <div class="item">Inventory</div>
+        <div class="item">Shows</div>
+        <div class="item">Messages</div>
+      </div>
+      <div class="main-area">
+        <div style="padding:20px 24px 0; color:var(--text); font-size:13px; opacity:0.5; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">Settlement · June 14 Show</div>
+        <div style="padding:8px 24px 20px; display:flex; gap:32px;">
+          <div style="font-size:28px; font-weight:700; color:var(--text);">$2,100.00 <span style="font-size:13px; font-weight:400; opacity:0.5;">net payout</span></div>
+          <div style="font-size:28px; font-weight:700; color:var(--text); opacity:0.4;">$2,840.00 <span style="font-size:13px; font-weight:400; opacity:0.5;">gross GMV</span></div>
+        </div>
+      </div>
+      <div class="side-panel" style="border-left:2px solid var(--whatnot-yellow);">
+        <div class="panel-header">
+          <span style="font-weight:700; font-size:14px;">Copilot</span>
+          <span style="font-size:11px; opacity:0.4; margin-left:auto;">Earnings · June 14</span>
+        </div>
+        <div class="panel-body">
+          <div class="user-msg">
+            <div class="bubble">Why was my payout $340 less than I expected?</div>
+          </div>
+          <div class="answer-card">
+            <div class="answer-header" style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--whatnot-yellow);">Payout Waterfall</span>
+              <span style="font-size:11px; opacity:0.4; margin-left:auto;">June 14 Show</span>
+            </div>
+            <div style="margin:12px 0; display:flex; flex-direction:column; gap:0;">
+              <!-- Waterfall rows -->
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:rgba(255,232,23,0.08); border-radius:6px 6px 0 0; border-bottom:1px solid var(--border);">
+                <span style="font-size:13px; font-weight:600; color:var(--text);">Gross GMV</span>
+                <span style="font-size:14px; font-weight:700; color:#4ade80;">+$2,840.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:var(--surface); border-bottom:1px solid var(--border); cursor:pointer;" onmouseenter="this.style.background='rgba(255,255,255,0.06)'" onmouseleave="this.style.background='var(--surface)'">
+                <span style="font-size:13px; color:var(--text); opacity:0.8;">Seller fee (15%)</span>
+                <span style="font-size:13px; font-weight:600; color:var(--coral-600, #f87171);">−$426.00 ↗</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:var(--surface); border-bottom:1px solid var(--border); cursor:pointer;" onmouseenter="this.style.background='rgba(255,255,255,0.06)'" onmouseleave="this.style.background='var(--surface)'">
+                <span style="font-size:13px; color:var(--text); opacity:0.8;">Shipping labels (12 labels)</span>
+                <span style="font-size:13px; font-weight:600; color:var(--coral-600, #f87171);">−$189.00 ↗</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:var(--surface); border-bottom:1px solid var(--border); cursor:pointer;" onmouseenter="this.style.background='rgba(255,255,255,0.06)'" onmouseleave="this.style.background='var(--surface)'">
+                <span style="font-size:13px; color:var(--text); opacity:0.8;">Refunds (2 orders)</span>
+                <span style="font-size:13px; font-weight:600; color:var(--coral-600, #f87171);">−$78.00 ↗</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:var(--surface); border-bottom:1px solid var(--border); cursor:pointer;" onmouseenter="this.style.background='rgba(255,255,255,0.06)'" onmouseleave="this.style.background='var(--surface)'">
+                <span style="font-size:13px; color:var(--text); opacity:0.8;">Billback (1 dispute)</span>
+                <span style="font-size:13px; font-weight:600; color:var(--coral-600, #f87171);">−$47.00 ↗</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:rgba(74,222,128,0.06); border-radius:0 0 6px 6px; border-top:1px solid rgba(74,222,128,0.2);">
+                <span style="font-size:13px; font-weight:700; color:var(--text);">Net Payout</span>
+                <span style="font-size:15px; font-weight:700; color:#4ade80;">$2,100.00</span>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--text); opacity:0.55; line-height:1.6;">Your gross GMV was <strong style="color:var(--text); opacity:1;">$2,840</strong>. The $740 gap comes from fees, shipping, 2 refunds, and 1 billback. <strong style="color:var(--whatnot-yellow);">Tap any row</strong> to see the full detail.</div>
+            <div class="answer-actions" style="margin-top:12px;">
+              <button class="btn-action">Export breakdown</button>
+              <button class="btn-action">Dispute a line</button>
+              <button class="btn-action">See all settlements</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-composer">
+          <input type="text" placeholder="Ask about your earnings…" style="width:100%; background:transparent; border:none; outline:none; color:var(--text); font-size:13px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mock-note"><strong>Design decision:</strong> A waterfall — not a flat list — makes the deduction sequence legible at a glance. Each row is tappable for drill-down because the #1 follow-up in payout tickets is "what is this charge?" Gross → Net ordering mirrors how sellers mentally account. <strong>Signal:</strong> 8,457 payout tickets in 14 days; root cause is that deductions are not itemized at payout time.</div>
+</div>
+
+<!-- LOOP 2: Flash Sale Batch Executor -->
+<div class="mock">
+  <div class="mock-label">PR3 · Flash Sale Batch Executor · ~10 min/show lost per seller · P0</div>
+  <div class="mock-frame">
+    <div class="browser-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">whatnot.com/seller/hub/show/live</span>
+    </div>
+    <div class="app-header">
+      <div class="logo-block">
+        <div class="logo-mark"></div>
+        <span class="pill-dark">Live Show</span>
+      </div>
+      <div class="header-actions">
+        <div style="display:flex; align-items:center; gap:6px; padding:4px 10px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.4); border-radius:20px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:#ef4444; display:inline-block;"></span>
+          <span style="font-size:11px; font-weight:700; color:#ef4444;">LIVE</span>
+        </div>
+        <div class="avatar-circle">KD</div>
+      </div>
+    </div>
+    <div class="app-body">
+      <div class="left-nav">
+        <div class="item active">Show Controls</div>
+        <div class="item">Inventory</div>
+        <div class="item">Chat</div>
+        <div class="item">Analytics</div>
+      </div>
+      <div class="main-area" style="display:flex; flex-direction:column; gap:0; padding:20px 24px;">
+        <div style="font-size:13px; font-weight:600; opacity:0.4; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Active Queue · 34 items</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+          <div style="padding:10px; background:var(--surface); border-radius:8px; border:1px solid var(--border); font-size:12px;">
+            <div style="opacity:0.5; margin-bottom:2px;">Pokémon Charizard Holo</div>
+            <div style="font-weight:700;">$24.00</div>
+          </div>
+          <div style="padding:10px; background:var(--surface); border-radius:8px; border:1px solid var(--border); font-size:12px;">
+            <div style="opacity:0.5; margin-bottom:2px;">Base Set Booster Pack</div>
+            <div style="font-weight:700;">$18.00</div>
+          </div>
+          <div style="padding:10px; background:var(--surface); border-radius:8px; border:1px solid rgba(255,232,23,0.3); font-size:12px; background:rgba(255,232,23,0.06);">
+            <div style="opacity:0.5; margin-bottom:2px;">+32 more items</div>
+            <div style="font-weight:700; color:var(--whatnot-yellow);">under $30</div>
+          </div>
+        </div>
+      </div>
+      <div class="side-panel" style="border-left:2px solid var(--whatnot-yellow);">
+        <div class="panel-header">
+          <span style="font-weight:700; font-size:14px;">Copilot</span>
+          <span style="font-size:11px; opacity:0.4; margin-left:auto;">Live · 47 viewers</span>
+        </div>
+        <div class="panel-body">
+          <div class="user-msg">
+            <div class="bubble">Turn on flash sales for everything under $30</div>
+          </div>
+          <div class="answer-card" style="border:1px solid rgba(255,232,23,0.3);">
+            <div class="answer-header" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--whatnot-yellow);">Batch Flash Sale</span>
+              <span style="font-size:10px; padding:2px 7px; background:rgba(255,232,23,0.15); border-radius:10px; color:var(--whatnot-yellow); font-weight:600;">READY TO APPLY</span>
+            </div>
+            <div style="display:flex; gap:16px; margin-bottom:12px;">
+              <div style="flex:1; padding:10px; background:rgba(255,255,255,0.04); border-radius:8px; text-align:center;">
+                <div style="font-size:22px; font-weight:700; color:var(--whatnot-yellow);">34</div>
+                <div style="font-size:11px; opacity:0.5; margin-top:2px;">items matched</div>
+              </div>
+              <div style="flex:1; padding:10px; background:rgba(255,255,255,0.04); border-radius:8px; text-align:center;">
+                <div style="font-size:22px; font-weight:700; color:var(--whatnot-yellow);">$612</div>
+                <div style="font-size:11px; opacity:0.5; margin-top:2px;">total starting value</div>
+              </div>
+              <div style="flex:1; padding:10px; background:rgba(255,255,255,0.04); border-radius:8px; text-align:center;">
+                <div style="font-size:22px; font-weight:700; color:#4ade80;">20%</div>
+                <div style="font-size:11px; opacity:0.5; margin-top:2px;">flash discount</div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--text); opacity:0.6; line-height:1.6; margin-bottom:12px;">Apply a 20% flash discount to all <strong style="color:var(--text); opacity:1;">34 items under $30</strong>? This would replace individual toggles and save ~10 minutes.</div>
+            <div class="answer-actions" style="flex-direction:column; gap:8px;">
+              <button class="btn-action" style="width:100%; background:var(--whatnot-yellow); color:#000; font-weight:700; padding:10px; border-radius:8px; font-size:13px;">Yes, apply to all 34</button>
+              <button class="btn-action" style="width:100%; text-align:center;">Let me review first</button>
+            </div>
+          </div>
+          <div class="progress-block" style="margin-top:8px; padding:10px 12px; background:rgba(74,222,128,0.06); border-radius:8px; border:1px solid rgba(74,222,128,0.2); display:none;">
+            <div style="font-size:12px; font-weight:600; color:#4ade80;">Done. Flash sales active on 34 items.</div>
+            <div style="font-size:11px; opacity:0.5; margin-top:4px;">Tap to turn them all off at once.</div>
+          </div>
+        </div>
+        <div class="panel-composer">
+          <input type="text" placeholder="Tell Copilot what to do next…" style="width:100%; background:transparent; border:none; outline:none; color:var(--text); font-size:13px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mock-note"><strong>Design decision:</strong> A confirm-before-execute pattern with an explicit item count and total value gives sellers confidence before a bulk action. The two-button layout — primary CTA in yellow (brand action color) vs. secondary "Let me review" — maps to the two real mental modes: trust the bot vs. stay in control. <strong>Signal:</strong> kdubshouse spends ~10 min/show twice per show on manual toggles; sellers run fewer "plant" items purely because of toggle time. Zero-data-infra change — just batch the existing flash sale API.</div>
+</div>
+
+<!-- LOOP 3: Smart SPS First-Response -->
+<div class="mock">
+  <div class="mock-label">BM1 · Smart SPS First-Response · Premier Shop SLA: 95% response within 2 days · P0</div>
+  <div class="mock-frame">
+    <div class="browser-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">whatnot.com/seller/hub/messages</span>
+    </div>
+    <div class="app-header">
+      <div class="logo-block">
+        <div class="logo-mark"></div>
+        <span class="pill-dark">Seller Hub</span>
+      </div>
+      <div class="header-actions">
+        <div style="display:flex; align-items:center; gap:6px; padding:4px 10px; background:rgba(74,222,128,0.12); border:1px solid rgba(74,222,128,0.3); border-radius:20px;">
+          <span style="font-size:10px; font-weight:700; color:#4ade80; letter-spacing:0.05em;">PREMIER SHOP</span>
+        </div>
+        <div class="avatar-circle">KD</div>
+      </div>
+    </div>
+    <div class="app-body">
+      <div class="left-nav">
+        <div class="item">Dashboard</div>
+        <div class="item active">Messages <span style="margin-left:6px; padding:1px 6px; background:#ef4444; border-radius:10px; font-size:10px; font-weight:700; color:#fff;">3</span></div>
+        <div class="item">Orders</div>
+        <div class="item">Earnings</div>
+      </div>
+      <div class="main-area" style="padding:0; display:flex; flex-direction:column;">
+        <div style="padding:16px 20px; border-bottom:1px solid var(--border); font-size:13px; font-weight:600; opacity:0.5; text-transform:uppercase; letter-spacing:0.05em;">SPS Inbox · 3 unread</div>
+        <div style="padding:14px 20px; border-bottom:1px solid var(--border); background:rgba(255,232,23,0.04); cursor:pointer;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <span style="font-size:13px; font-weight:700;">buyer_sarah92</span>
+            <span style="font-size:11px; opacity:0.4;">2 min ago</span>
+          </div>
+          <div style="font-size:12px; opacity:0.6; line-height:1.5;">Hi! I ordered 5 days ago and still haven't received my package. Is everything okay?</div>
+          <div style="margin-top:6px; display:inline-flex; align-items:center; gap:4px; padding:2px 8px; background:rgba(255,232,23,0.15); border-radius:10px;">
+            <span style="width:5px; height:5px; border-radius:50%; background:var(--whatnot-yellow);"></span>
+            <span style="font-size:10px; font-weight:700; color:var(--whatnot-yellow);">Draft ready</span>
+          </div>
+        </div>
+        <div style="padding:14px 20px; border-bottom:1px solid var(--border); opacity:0.5; cursor:pointer;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <span style="font-size:13px; font-weight:700;">cardking_mike</span>
+            <span style="font-size:11px; opacity:0.4;">1 hr ago</span>
+          </div>
+          <div style="font-size:12px; opacity:0.6;">Question about grading on order #48821...</div>
+        </div>
+      </div>
+      <div class="side-panel" style="border-left:2px solid var(--whatnot-yellow);">
+        <div class="panel-header">
+          <span style="font-weight:700; font-size:14px;">Copilot</span>
+          <span style="font-size:10px; opacity:0.4; margin-left:auto; display:flex; align-items:center; gap:4px;">
+            <span style="width:5px; height:5px; border-radius:50%; background:#4ade80; display:inline-block;"></span>
+            tracking fetched 2 min ago
+          </span>
+        </div>
+        <div class="panel-body">
+          <div style="padding:10px 12px; background:rgba(239,68,68,0.08); border-radius:8px; border:1px solid rgba(239,68,68,0.2); margin-bottom:12px; font-size:12px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#ef4444; font-weight:700;">⚠</span>
+            <span style="opacity:0.7;">SLA: respond within <strong style="color:var(--text); opacity:1;">38 hours</strong> to maintain Premier Shop</span>
+          </div>
+          <div class="user-msg" style="justify-content:flex-start;">
+            <div style="padding:10px 13px; background:rgba(255,255,255,0.06); border-radius:12px 12px 12px 2px; font-size:12px; line-height:1.6; max-width:85%; color:var(--text); opacity:0.8;">
+              <div style="font-size:10px; font-weight:700; opacity:0.5; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.05em;">buyer_sarah92</div>
+              Hi! I ordered 5 days ago and still haven't received my package. Is everything okay?
+            </div>
+          </div>
+          <div class="answer-card" style="margin-top:10px; border:1px solid rgba(255,232,23,0.25);">
+            <div class="answer-header" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--whatnot-yellow);">Draft Response Ready</span>
+            </div>
+            <div style="padding:12px; background:rgba(255,255,255,0.03); border-radius:8px; font-size:12px; line-height:1.75; color:var(--text); opacity:0.85; border:1px solid var(--border); margin-bottom:12px;">
+              Hi Sarah! Your package is on its way 📦 USPS shows it's currently in <strong style="color:var(--text);">Phoenix, AZ</strong> as of this morning. Estimated delivery: <strong style="color:var(--text);">tomorrow by 8pm</strong>.<br/><br/>
+              Your tracking link: <span style="color:var(--teal-600, #2dd4bf); text-decoration:underline; cursor:pointer;">track.usps.com/track/9400…</span><br/><br/>
+              Let me know if you have any other questions!
+            </div>
+            <div style="display:flex; gap:8px; font-size:11px; color:var(--text); opacity:0.45; margin-bottom:12px;">
+              <span>📍 In transit · Phoenix, AZ</span>
+              <span>·</span>
+              <span>Est. delivery tomorrow</span>
+            </div>
+            <div class="answer-actions" style="flex-direction:column; gap:8px;">
+              <button class="btn-action" style="width:100%; background:var(--whatnot-yellow); color:#000; font-weight:700; padding:10px; border-radius:8px; font-size:13px;">Send this</button>
+              <button class="btn-action" style="width:100%; text-align:center;">Edit first</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-composer">
+          <input type="text" placeholder="Override or refine the draft…" style="width:100%; background:transparent; border:none; outline:none; color:var(--text); font-size:13px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mock-note"><strong>Design decision:</strong> The draft surfaces before the seller even opens the message — the bot does the research (live tracking fetch) and the writing in the background. The SLA countdown banner is always visible because Premier Shop status is the motivating stake. Send vs. Edit maps exactly to the two real actions: fast senders vs. personalization-focused sellers. <strong>Signal:</strong> Manual tracking lookup + response writing is the dominant time cost per SPS ticket. Poor first responses generate "Re:" chains that balloon response time and risk status.</div>
+</div>
+
+<!-- LOOP 4: Inventory Carry-Forward -->
+<div class="mock">
+  <div class="mock-label">IN2 · Inventory Carry-Forward · #1 named pre-show pain across 700+ seller interviews · P0</div>
+  <div class="mock-frame">
+    <div class="browser-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">whatnot.com/seller/hub/shows/upcoming</span>
+    </div>
+    <div class="app-header">
+      <div class="logo-block">
+        <div class="logo-mark"></div>
+        <span class="pill-dark">Seller Hub</span>
+      </div>
+      <div class="header-actions">
+        <div class="avatar-circle">KD</div>
+      </div>
+    </div>
+    <div class="app-body">
+      <div class="left-nav">
+        <div class="item">Dashboard</div>
+        <div class="item">Earnings</div>
+        <div class="item">Inventory</div>
+        <div class="item active">Shows</div>
+        <div class="item">Messages</div>
+      </div>
+      <div class="main-area" style="padding:20px 24px;">
+        <div style="font-size:13px; font-weight:600; opacity:0.4; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Shows</div>
+        <div style="padding:14px 16px; background:var(--surface); border-radius:10px; border:1px solid var(--border); margin-bottom:10px; opacity:0.45;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:2px;">Tuesday Show</div>
+          <div style="font-size:12px; opacity:0.6;">Ended 12 min ago · $3,240 GMV · 23 unsold</div>
+        </div>
+        <div style="padding:14px 16px; background:rgba(255,232,23,0.05); border-radius:10px; border:1px solid rgba(255,232,23,0.3);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:2px;">Thursday Show</div>
+              <div style="font-size:12px; opacity:0.6;">In 2 days · 0 items added yet</div>
+            </div>
+            <span style="font-size:10px; padding:3px 8px; background:rgba(255,232,23,0.15); border-radius:10px; color:var(--whatnot-yellow); font-weight:700;">NEEDS INVENTORY</span>
+          </div>
+        </div>
+      </div>
+      <div class="side-panel" style="border-left:2px solid var(--whatnot-yellow);">
+        <div class="panel-header">
+          <span style="font-weight:700; font-size:14px;">Copilot</span>
+          <span style="font-size:11px; opacity:0.4; margin-left:auto;">Post-show · auto-triggered</span>
+        </div>
+        <div class="panel-body">
+          <div class="answer-card" style="border:1px solid rgba(255,232,23,0.3);">
+            <div class="answer-header" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-size:15px;">🎉</span>
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--whatnot-yellow);">Your Tuesday Show Just Ended</span>
+            </div>
+            <div style="font-size:13px; line-height:1.65; margin-bottom:14px; color:var(--text); opacity:0.85;">You have <strong style="color:var(--text); opacity:1;">23 unsold items</strong>. Want me to add them all to your Thursday show?</div>
+            <div class="answer-actions" style="flex-direction:column; gap:8px; margin-bottom:14px;">
+              <button class="btn-action" style="width:100%; background:var(--whatnot-yellow); color:#000; font-weight:700; padding:10px; border-radius:8px; font-size:13px;">Yes, add all 23</button>
+              <button class="btn-action" style="width:100%; text-align:center;">Let me pick</button>
+            </div>
+          </div>
+          <!-- Stale items suggestion -->
+          <div class="answer-card" style="margin-top:10px; border:1px solid rgba(248,113,113,0.25);">
+            <div class="answer-header" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#f87171;">Also — 4 Slow-Moving Items</span>
+              <span style="font-size:10px; opacity:0.4; margin-left:auto;">3+ shows unsold</span>
+            </div>
+            <div style="font-size:12px; opacity:0.6; margin-bottom:10px; line-height:1.5;">These haven't sold in 3+ shows. Lower the starting bid by $5?</div>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:rgba(255,255,255,0.03); border-radius:7px; border:1px solid var(--border);">
+                <div>
+                  <div style="font-size:12px; font-weight:600;">Shadowless Blastoise</div>
+                  <div style="font-size:11px; opacity:0.45;">4 shows · current bid $35</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="font-size:12px; color:#4ade80; font-weight:700;">→ $30</span>
+                  <button class="btn-action" style="padding:4px 10px; font-size:11px; background:rgba(74,222,128,0.1); border-radius:6px;">Approve</button>
+                  <button class="btn-action" style="padding:4px 10px; font-size:11px; opacity:0.5;">Skip</button>
+                </div>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:rgba(255,255,255,0.03); border-radius:7px; border:1px solid var(--border);">
+                <div>
+                  <div style="font-size:12px; font-weight:600;">1st Ed. Venusaur PSA 7</div>
+                  <div style="font-size:11px; opacity:0.45;">3 shows · current bid $120</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="font-size:12px; color:#4ade80; font-weight:700;">→ $115</span>
+                  <button class="btn-action" style="padding:4px 10px; font-size:11px; background:rgba(74,222,128,0.1); border-radius:6px;">Approve</button>
+                  <button class="btn-action" style="padding:4px 10px; font-size:11px; opacity:0.5;">Skip</button>
+                </div>
+              </div>
+              <div style="padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:7px; border:1px dashed var(--border); font-size:11px; opacity:0.4; text-align:center;">+ 2 more items</div>
+            </div>
+            <div class="answer-actions">
+              <button class="btn-action">Approve all 4</button>
+              <button class="btn-action">Skip all</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-composer">
+          <input type="text" placeholder="Ask about your next show…" style="width:100%; background:transparent; border:none; outline:none; color:var(--text); font-size:13px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mock-note"><strong>Design decision:</strong> Auto-trigger post-show (not on-demand) is critical — sellers are in wind-down mode and won't navigate to a new flow. Two cards in sequence: (1) bulk carry-forward — the high-urgency 1-tap action; (2) price-drop suggestions — a lower-stakes review loop that can be done item-by-item or bulk-approved. Stale items use a red accent (not yellow) to signal a different signal type: opportunity cost vs. pending action. <strong>Signal:</strong> Named the #1 pre-show pain in 700+ seller interviews. Zero new data infrastructure — unsold list and show schedule already exist.</div>
+</div>
+
   <h3 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:56px 0 4px;">Mock A — proactive anomaly detection (v2)</h3>
   <p style="font-size:13px;color:var(--text-secondary);margin:0 0 20px;">Bot detects a return-rate spike and proactively offers to act — seller hasn't asked anything.</p>
 
@@ -4865,6 +5252,529 @@
     <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;border-top:1px solid rgba(255,255,255,0.15);padding-top:14px;">
       A standalone analytics Copilot is valuable for medium sellers but leaves 63% of ticket pain unaddressed. The Seller AI Copilot vision must converge with Sierra into a unified seller support surface — one entry point, intelligently routed. Small sellers need CX deflection first. Medium sellers need growth intelligence. Large sellers need data portability. The same chat interface can serve all three if the routing layer is built correctly.
     </div>
+  </div>
+
+</section>
+
+<!-- APPENDIX B -->
+<section id="appendix-b">
+  <div class="section-header">
+    <h2><span class="num">B</span> Appendix B: Seller Hub Agentic Loop Inventory</h2>
+    <p class="section-lede">
+      A prioritized inventory of all 25 agentic loops identified from systematic analysis of 48,343 Zendesk seller support tickets (May 20–June 3, 2026), 700+ Listen Labs seller interviews (Jan–May 2026, $5k+/month sellers), internal strategy documentation, Gong AM notes, and Sigma analytics pilot findings. Loops span 9 product areas across 27 pages of source material. Each loop is classified by priority, trigger mechanism, approval gate, and estimated ticket impact.
+    </p>
+  </div>
+
+  <!-- DATA SOURCES -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0;">
+    <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--surface);">
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal-600);margin-bottom:0.75rem;">CX Ticket Corpus</div>
+      <div style="font-size:2rem;font-weight:800;color:var(--text);line-height:1;">48,343</div>
+      <div style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Zendesk seller support tickets</div>
+      <div style="font-size:0.8rem;color:#6b7280;border-top:1px solid var(--border);padding-top:0.75rem;">
+        <div style="margin-bottom:0.3rem;"><strong style="color:var(--text);">Window:</strong> May 20 – June 3, 2026 (14 days)</div>
+        <div style="margin-bottom:0.3rem;"><strong style="color:var(--text);">Top volume:</strong> Orders (23,169) · Earnings (8,457) · Shipments (7,384)</div>
+        <div><strong style="color:var(--text);">Methodology:</strong> Tag clustering, frequency ranking, manual theme validation</div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--surface);">
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--coral-600);margin-bottom:0.75rem;">Seller Interviews</div>
+      <div style="font-size:2rem;font-weight:800;color:var(--text);line-height:1;">700+</div>
+      <div style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Listen Labs seller interviews</div>
+      <div style="font-size:0.8rem;color:#6b7280;border-top:1px solid var(--border);padding-top:0.75rem;">
+        <div style="margin-bottom:0.3rem;"><strong style="color:var(--text);">Window:</strong> Jan – May 2026</div>
+        <div style="margin-bottom:0.3rem;"><strong style="color:var(--text);">Cohort:</strong> $5,000+/month GMV sellers</div>
+        <div><strong style="color:var(--text);">Supplemental:</strong> Gong AM call notes · Sigma analytics pilot · Internal strategy doc (June 2026)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY OVERVIEW -->
+  <h3 style="font-size:1rem;font-weight:700;margin:2.5rem 0 1rem;">Priority Overview</h3>
+  <div class="roadmap" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem;">
+    <div style="border-radius:12px;border:2px solid #ef4444;padding:1.25rem;background:#fef2f2;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+        <span class="pri" style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:800;padding:0.2rem 0.5rem;border-radius:4px;">P0</span>
+        <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#ef4444;">Ship First</span>
+      </div>
+      <div style="font-size:2rem;font-weight:800;color:#991b1b;line-height:1;">11</div>
+      <div style="font-size:0.8rem;color:#7f1d1d;margin-top:0.25rem;margin-bottom:0.75rem;">loops</div>
+      <div style="font-size:0.78rem;color:#991b1b;border-top:1px solid #fecaca;padding-top:0.75rem;">
+        Estimated <strong>~28,000 tickets/yr</strong> deflection potential. Highest-frequency issues with data already available.
+      </div>
+    </div>
+    <div style="border-radius:12px;border:2px solid var(--whatnot-yellow, #f59e0b);padding:1.25rem;background:#fffbeb;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+        <span class="pri" style="background:var(--whatnot-yellow,#f59e0b);color:#78350f;font-size:0.7rem;font-weight:800;padding:0.2rem 0.5rem;border-radius:4px;">P1</span>
+        <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#b45309;">Follow</span>
+      </div>
+      <div style="font-size:2rem;font-weight:800;color:#92400e;line-height:1;">9</div>
+      <div style="font-size:0.8rem;color:#78350f;margin-top:0.25rem;margin-bottom:0.75rem;">loops</div>
+      <div style="font-size:0.78rem;color:#92400e;border-top:1px solid #fde68a;padding-top:0.75rem;">
+        Estimated <strong>~14,000 tickets/yr</strong> deflection potential. Moderate complexity; some require minor pipeline work.
+      </div>
+    </div>
+    <div style="border-radius:12px;border:2px solid #6b7280;padding:1.25rem;background:#f9fafb;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+        <span class="pri" style="background:#6b7280;color:#fff;font-size:0.7rem;font-weight:800;padding:0.2rem 0.5rem;border-radius:4px;">P2</span>
+        <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Later</span>
+      </div>
+      <div style="font-size:2rem;font-weight:800;color:#374151;line-height:1;">5</div>
+      <div style="font-size:0.8rem;color:#6b7280;margin-top:0.25rem;margin-bottom:0.75rem;">loops</div>
+      <div style="font-size:0.78rem;color:#4b5563;border-top:1px solid #e5e7eb;padding-top:0.75rem;">
+        Estimated <strong>~6,000 tickets/yr</strong> deflection potential. New data pipelines or infrastructure required.
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL LOOP TABLE -->
+  <h3 style="font-size:1rem;font-weight:700;margin:2.5rem 0 1rem;">Full Loop Inventory</h3>
+
+  <div style="overflow-x:auto;margin-bottom:2.5rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+      <thead>
+        <tr style="background:var(--surface,#f9fafb);border-bottom:2px solid var(--border,#e5e7eb);">
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;white-space:nowrap;">Loop ID</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Name</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Trigger</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Approval Gate</th>
+          <th style="text-align:center;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;white-space:nowrap;">Pri</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;white-space:nowrap;">Est. Ticket Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ORDERS -->
+        <tr>
+          <td colspan="6" style="background:#eff6ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;border-top:2px solid #bfdbfe;border-bottom:1px solid #bfdbfe;">
+            Orders &mdash; 23,169 tickets / 14 days
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;white-space:nowrap;">O1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Post-Show Order Triage</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews flagged items</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,800/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Billback Appeal Autopilot</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Delivered billback detected</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">15-min opt-out window; auto-submits if no action</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,200/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Show-Tech Mass Cancellation</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Stream interruption detected</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">One-tap confirm; fee waiver auto-applied</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,400/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O4</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Non-Payer Auto-Cancel</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">24h after show, unpaid orders remain</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms batch; relist prompt shown</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,100/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O5</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Cancellation Request Auto-Triage</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Buyer cancellation request received</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-approve recommendation; seller override available</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,600/yr</td>
+        </tr>
+
+        <!-- SHIPMENTS -->
+        <tr>
+          <td colspan="6" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#15803d;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
+            Shipments &mdash; 7,384 tickets / 14 days
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Label Generation Guard</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Label generation initiated</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Blocks on validation failure; seller must confirm fix</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,100/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Insurance / Signature Rule Engine</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">One-time rule config by seller</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Fully automatic after initial setup</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,400/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Carrier Adjustment Dispute Agent</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Carrier adjustment charge appears</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-dispute $1–$5; seller review for &gt;$5</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~800/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH4</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Smart Bundle Pre-Check</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Multi-lot buyer detected before label gen</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms bundle or proceeds separately</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,200/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH5</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Fulfillment Health Monitor</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">48h after label generated, no carrier scan</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller takes action</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~900/yr</td>
+        </tr>
+
+        <!-- ANALYTICS -->
+        <tr>
+          <td colspan="6" style="background:#fdf4ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#7e22ce;border-top:2px solid #e9d5ff;border-bottom:1px solid #e9d5ff;">
+            Analytics
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Post-Show Debrief</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends (within 15 min)</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — fully automatic via ClickHouse</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Real-Time Show Pulse</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">During-show GMV pacing deviation</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller acts</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Weekly Performance Report</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Monday scheduled (WoW cadence)</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — pushed to seller hub</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~500/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN4</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Anomaly Alert Watchdog</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Defect rate spike, OTSR drop, top buyer gone dark</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~700/yr</td>
+        </tr>
+
+        <!-- EARNINGS -->
+        <tr>
+          <td colspan="6" style="background:#fff7ed;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#c2410c;border-top:2px solid #fed7aa;border-bottom:1px solid #fed7aa;">
+            Earnings &amp; Payouts &mdash; 8,457 tickets / 14 days
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Payout Arrival Tracker</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">"Where's my payout?" query</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — status surfaced automatically</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,800/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Payout Breakdown Explainer</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller views payout or asks "why this amount?"</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — waterfall surfaced on demand</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,600/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Per-Show P&amp;L Auto-Generator</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">15 min after show end</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — P&amp;L card pushed automatically</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~900/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP4 / AN5</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Bonus Eligibility Tracker</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Ongoing: seller opens hub or asks about bonus</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — live progress displayed</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,200/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP5</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Settlement Dispute Initiator</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller disputes settlement line item</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews draft before submission</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~700/yr</td>
+        </tr>
+
+        <!-- SHOWS -->
+        <tr>
+          <td colspan="6" style="background:#f0f9ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0369a1;border-top:2px solid #bae6fd;border-bottom:1px solid #bae6fd;">
+            Shows
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Show Planner Agent</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller begins show setup</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews pre-fill before publishing</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~400/yr (time saved)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Scheduling Conflict Detector</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller picks time slot</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller decides</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~200/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Post-Show → Next Show Seed</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Post-show debrief viewed</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews pre-filled draft</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (time saved)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS4</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">In-Show Pacing Assist</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Pacing deviation or viewership dip during show</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller acts live</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~200/yr (indirect)</td>
+        </tr>
+
+        <!-- INVENTORY -->
+        <tr>
+          <td colspan="6" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#166534;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
+            Inventory
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">AI Listing from Photo</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller uploads photo to create listing</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews and confirms draft</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~500/yr (time saved)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Inventory Carry-Forward</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends with unsold items</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-queue; seller reviews flagged 3+ show items</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,100/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Show Inventory Optimizer</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">"Help me pick items for this show"</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller approves ranked selection</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN5</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Shopify Sync Health</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Sync conflict or drift detected</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-resolve non-quantity conflicts; flag rest</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr</td>
+        </tr>
+
+        <!-- PROMOTIONS -->
+        <tr>
+          <td colspan="6" style="background:#fefce8;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#a16207;border-top:2px solid #fef08a;border-bottom:1px solid #fef08a;">
+            Promotions
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">PR1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">ROAS Transparency</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Weekly scheduled push</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — summary delivered automatically</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~800/yr (retention)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">PR2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Budget Calibration Advisor</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sets or reviews ad budget</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Recommendation only; seller confirms</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~400/yr (indirect)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">PR3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Flash Sale Batch Executor</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller issues one flash sale command</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms scope before execution</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr (time saved)</td>
+        </tr>
+
+        <!-- ACCOUNT HEALTH -->
+        <tr>
+          <td colspan="6" style="background:#fff1f2;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#be123c;border-top:2px solid #fecdd3;border-bottom:1px solid #fecdd3;">
+            Account Health
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AH1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">INAD Appeal Drafter</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">INAD (Item Not As Described) claim received</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews draft before submission</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,800/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AH3</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Ticket State Transparency</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">"What's the status of my appeal?"</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — status surfaced automatically</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,100/yr</td>
+        </tr>
+
+        <!-- BUYER MESSAGING -->
+        <tr>
+          <td colspan="6" style="background:#f5f3ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#6d28d9;border-top:2px solid #ddd6fe;border-bottom:1px solid #ddd6fe;">
+            Buyer Messaging
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">BM1</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Smart SPS First-Response</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Buyer sends shipping/tracking question</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sends or discards draft</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,200/yr</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">BM2</td>
+          <td style="padding:0.65rem 0.75rem;font-weight:600;color:var(--text);">Proactive Buyer Delay Messaging</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Carrier delay event detected</td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sends or discards proactive draft</td>
+          <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
+          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,600/yr</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FASTEST WINS CALLOUT -->
+  <div class="ship-box" style="background:#111;color:#fff;border-radius:14px;padding:2rem;margin:2.5rem 0;">
+    <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--whatnot-yellow,#f59e0b);margin-bottom:0.75rem;">Fastest Wins — No New Data Infrastructure Required</div>
+    <p style="color:#d1d5db;font-size:0.85rem;margin-bottom:1.5rem;line-height:1.6;">
+      Four loops can ship in days using data and platform capabilities that already exist. These are not technical bets — they are display and automation gaps on top of live data.
+    </p>
+    <div class="principles" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="border:1px solid #374151;border-radius:10px;padding:1.1rem;background:#1a1a1a;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:var(--whatnot-yellow,#f59e0b);">SS1 partial</span>
+          <span style="font-size:0.7rem;color:#6b7280;">Mod Copy</span>
+        </div>
+        <div style="font-size:0.82rem;color:#e5e7eb;line-height:1.5;">Copy moderators from last show into new show setup. Last-show mods are already queryable. One read + one pre-fill. Ships in days.</div>
+      </div>
+      <div style="border:1px solid #374151;border-radius:10px;padding:1.1rem;background:#1a1a1a;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:var(--whatnot-yellow,#f59e0b);">PR3</span>
+          <span style="font-size:0.7rem;color:#6b7280;">Flash Sale Batch Executor</span>
+        </div>
+        <div style="font-size:0.82rem;color:#e5e7eb;line-height:1.5;">One command applies flash discounts across all matching items. Flash sale creation is an existing platform action. Needs batching and a confirm step only.</div>
+      </div>
+      <div style="border:1px solid #374151;border-radius:10px;padding:1.1rem;background:#1a1a1a;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:var(--whatnot-yellow,#f59e0b);">PR1</span>
+          <span style="font-size:0.7rem;color:#6b7280;">ROAS Transparency</span>
+        </div>
+        <div style="font-size:0.82rem;color:#e5e7eb;line-height:1.5;">Sellers running 440% ROAS don't know it. The data is in existing ad reporting. This is a plain-English summary on top of a computed field — no new pipeline.</div>
+      </div>
+      <div style="border:1px solid #374151;border-radius:10px;padding:1.1rem;background:#1a1a1a;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:var(--whatnot-yellow,#f59e0b);">EP2</span>
+          <span style="font-size:0.7rem;color:#6b7280;">Payout Breakdown Explainer</span>
+        </div>
+        <div style="font-size:0.82rem;color:#e5e7eb;line-height:1.5;">Every line item (GMV → fees → shipping → refunds → billbacks → net) lives in the ledger. This is a waterfall render on existing structured data — no new data required.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA GAPS TABLE -->
+  <h3 style="font-size:1rem;font-weight:700;margin:2.5rem 0 1rem;">Data Gaps — Infrastructure Required Before Certain Loops Can Ship</h3>
+  <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1.25rem;line-height:1.6;">
+    The following gaps must be resolved before the dependent loops can enter production. Each gap is scoped to a specific infrastructure need and lists the loops it unlocks.
+  </p>
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+      <thead>
+        <tr style="background:var(--surface,#f9fafb);border-bottom:2px solid var(--border,#e5e7eb);">
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Infrastructure Gap</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Description</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Loops Blocked</th>
+          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Estimated Effort</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">Real-Time GMV Feed</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Sub-minute GMV and viewership streaming required for during-show pacing alerts. Current ClickHouse pipeline is post-show batch only.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">AN2, SS4</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Large — new streaming pipeline</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">Per-Show Label Cost Linking</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Shipping label costs must be joinable to individual show IDs for accurate per-show P&amp;L. Currently labels are linked to orders, not shows.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">EP3</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Medium — data model join</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">Bonus Eligibility API</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Live progress toward Sales Match and Super Seller bonuses must be queryable in real time. Current bonus state is only computed at settlement.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">EP4 / AN5</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Medium — API endpoint + live calc</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">PST / UTC Alignment</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Show scheduling data uses mixed timezones across seller records and platform slots. Conflict detection requires a single canonical timezone normalization layer.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">SS2</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Small — normalization fix</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">Appeal Submission API</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Programmatic appeal submission (for billbacks and INAD) requires a write-capable internal API. Currently appeals are submitted via a manual CX tool only.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">O2, AH1, EP5</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Large — new internal API surface</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
+          <td style="padding:0.7rem 0.75rem;font-weight:600;color:var(--text);white-space:nowrap;">Cross-Account Access</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Some sellers operate multiple Whatnot accounts (e.g. test + production). Inventory optimizer and anomaly watchdog need scoped cross-account read access with explicit consent model.</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;font-family:monospace;font-size:0.78rem;">IN3, AN4</td>
+          <td style="padding:0.7rem 0.75rem;color:#4b5563;">Medium — auth + consent scoping</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </section>
