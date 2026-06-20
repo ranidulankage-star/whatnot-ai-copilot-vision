@@ -3888,7 +3888,7 @@
 <!-- MOCK 1: Amazon → Proactive compliance/health monitoring -->
 <div class="mock">
   <div class="mock-label" style="background:#fff3cd;color:#7a5c00;">Inspired by Amazon Seller Assistant — proactive monitoring &amp; approval gates</div>
-  <div class="mock-title">Whatnot: Post-show health scan — non-paying bidders + below-cost listings</div>
+  <div class="mock-title">Whatnot: Post-show fulfillment scan — bundle opportunities + address flags</div>
   <div class="mock-frame">
     <div class="browser-bar">
       <span class="dot" style="background:#ff5f57;"></span>
@@ -3923,17 +3923,17 @@
             <div style="font-size:10px;color:#666;margin-bottom:4px;">TOTAL ORDERS</div>
             <div style="font-size:20px;font-weight:700;">381</div>
           </div>
+          <div style="background:#f8f8f8;border-radius:8px;padding:12px;">
+            <div style="font-size:10px;color:#666;margin-bottom:4px;">TO SHIP</div>
+            <div style="font-size:20px;font-weight:700;">83</div>
+          </div>
+          <div style="background:#fffbe6;border-radius:8px;padding:12px;border:1px solid #ffe89a;">
+            <div style="font-size:10px;color:#8a6d00;margin-bottom:4px;">BUNDLES</div>
+            <div style="font-size:20px;font-weight:700;color:#8a6d00;">8</div>
+          </div>
           <div style="background:#fff0f0;border-radius:8px;padding:12px;border:1px solid #ffd0d0;">
-            <div style="font-size:10px;color:#c0392b;margin-bottom:4px;">UNPAID</div>
-            <div style="font-size:20px;font-weight:700;color:#c0392b;">47</div>
-          </div>
-          <div style="background:#f8f8f8;border-radius:8px;padding:12px;">
-            <div style="font-size:10px;color:#666;margin-bottom:4px;">SHIPPED</div>
-            <div style="font-size:20px;font-weight:700;">298</div>
-          </div>
-          <div style="background:#f8f8f8;border-radius:8px;padding:12px;">
-            <div style="font-size:10px;color:#666;margin-bottom:4px;">DISPUTES</div>
-            <div style="font-size:20px;font-weight:700;">2</div>
+            <div style="font-size:10px;color:#c0392b;margin-bottom:4px;">ADDR FLAGS</div>
+            <div style="font-size:20px;font-weight:700;color:#c0392b;">2</div>
           </div>
         </div>
         <div style="background:#f8f8f8;border-radius:8px;padding:10px;font-size:11px;color:#888;text-align:center;">Order table hidden for brevity</div>
@@ -3946,20 +3946,20 @@
         </div>
         <div class="panel-body">
           <div class="insight-strip" style="background:#fff8e1;border-left:3px solid var(--whatnot-yellow);padding:8px 10px;border-radius:4px;font-size:11px;color:#555;margin-bottom:12px;">
-            ⚡ Post-show scan complete — 2 issues found
+            ⚡ Post-show scan complete — 2 things before you print labels
           </div>
           <div class="answer-card" style="border:1px solid #e8e8e8;border-radius:10px;padding:12px;margin-bottom:8px;">
             <div class="answer-header" style="font-size:12px;font-weight:700;margin-bottom:6px;">From your Tuesday show</div>
             <p style="font-size:12px;line-height:1.5;margin:0 0 10px;color:#222;">
-              47 bidders who won items never paid. I can block them from your future shows. Want me to also flag their accounts to Whatnot support?
+              <b>8 buyers won multiple items.</b> Bundling their orders saves about <b>$46</b> in postage and avoids sending the same buyer separate packages. Want me to combine them?
             </p>
             <p style="font-size:12px;line-height:1.5;margin:0 0 10px;color:#222;">
-              Also — I noticed 3 of your listings are priced below your average payout cost. Want me to update them?
+              Also — <b>2 orders have addresses USPS couldn't verify.</b> Worth fixing now so the labels don't bounce back.
             </p>
             <div class="answer-actions" style="display:flex;flex-wrap:wrap;gap:6px;">
-              <button class="btn-action" style="background:#000;color:#FFE817;border:none;border-radius:6px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;">Block all 47</button>
-              <button class="btn-action" style="background:#f0f0f0;color:#222;border:none;border-radius:6px;padding:6px 11px;font-size:11px;cursor:pointer;">Review list first</button>
-              <button class="btn-action" style="background:#f0f0f0;color:#222;border:none;border-radius:6px;padding:6px 11px;font-size:11px;cursor:pointer;">Update prices</button>
+              <button class="btn-action" style="background:#000;color:#FFE817;border:none;border-radius:6px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;">Combine 8 bundles</button>
+              <button class="btn-action" style="background:#f0f0f0;color:#222;border:none;border-radius:6px;padding:6px 11px;font-size:11px;cursor:pointer;">Review bundles</button>
+              <button class="btn-action" style="background:#f0f0f0;color:#222;border:none;border-radius:6px;padding:6px 11px;font-size:11px;cursor:pointer;">Fix 2 addresses</button>
             </div>
           </div>
         </div>
@@ -3969,7 +3969,7 @@
       </div>
     </div>
   </div>
-  <div class="mock-note"><strong>Key design decision:</strong> The bot surfaces two distinct issues in a single card rather than two separate interruptions — batching related health signals keeps the UI calm while still requiring explicit seller approval before any bulk action executes.</div>
+  <div class="mock-note"><strong>Key design decision:</strong> Post-show, the bot surfaces helpful fulfillment work — not punitive actions. Bundling saves the seller money and prevents buyer complaints; address validation prevents returns. Two related signals batched into one calm card, each requiring explicit approval before anything executes.</div>
 </div>
 
 <!-- MOCK 2: Shopify Sidekick → Fill content directly -->
