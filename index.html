@@ -4592,266 +4592,161 @@
   <h3 style="font-size:16px;font-weight:700;margin:0 0 6px;">Pain → agentic loop translations</h3>
   <p style="font-size:13px;color:var(--text-secondary);margin:0 0 20px;">Each card maps a verified seller pain to its ticket signal, Copilot feature, and the agentic loop that addresses it.</p>
 
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;">
+  <style>
+    .pain-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:32px; align-items:start; }
+    .pain-card { background:var(--surface); border:0.5px solid var(--border-strong); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+    .pain-card .pc-head { padding:16px 16px 12px; flex:1; }
+    .pain-card .pc-label { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:6px; display:flex; align-items:center; justify-content:space-between; }
+    .pain-card .pc-title { font-size:14px; font-weight:700; margin-bottom:10px; line-height:1.35; }
+    .pain-card .pc-quote { font-size:11.5px; color:var(--text-secondary); padding:8px 10px; background:var(--bg); border-left:3px solid var(--whatnot-yellow); border-radius:0 4px 4px 0; margin-bottom:12px; font-style:italic; line-height:1.55; }
+    .pain-card .pc-quote.teal { border-left-color:var(--teal-600); }
+    .pain-card .pc-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:11.5px; }
+    .pain-card .pc-meta-cell { padding:8px 10px; background:var(--bg); border:0.5px solid var(--border); border-radius:6px; line-height:1.5; }
+    .pain-card .pc-meta-cell strong { display:block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:3px; }
+    .pain-card .pc-loop { padding:12px 16px; background:#000; font-size:11.5px; color:rgba(255,255,255,0.8); line-height:1.6; }
+    .pain-card .pc-loop-label { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--whatnot-yellow); margin-bottom:5px; }
+  </style>
 
-    <!-- CARD A: Bonus eligibility -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain A · Bonus &amp; incentive eligibility confusion</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"Did I qualify for Sales Match this week?"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--whatnot-yellow);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "I keep on my personal spreadsheet to grow my business, I'm having to check in several different places" — the_aaronsphere
+  <div class="pain-grid">
+
+    <!-- CARD A -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain A · Bonus &amp; incentive eligibility <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"Did I qualify for Sales Match this week?"</div>
+        <div class="pc-quote">"I keep on my personal spreadsheet to grow my business, I'm having to check in several different places" — the_aaronsphere</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>Cross-cuts all 5 buckets. #1 source of classification bleed. In 11.4% tools + 17.5% earnings minimum.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Incentive eligibility tracker — real-time progress toward Sales Match, Super Seller, $400 bonus.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          Cross-cuts all 5 buckets. #1 source of classification bleed. Appears in 11.4% seller tools + 17.5% earnings buckets at minimum.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Incentive eligibility tracker — real-time progress toward Sales Match, Super Seller, $400 bonus thresholds.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Monitor seller GMV + show cadence in real time → compare against bonus program thresholds → proactively surface "You're $340 away from Sales Match — you have 2 days left" → on qualifying, auto-generate payout projection.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Monitor seller GMV + show cadence → compare against bonus thresholds → surface "You're $340 away from Sales Match — 2 days left" → on qualifying, auto-generate payout projection.</div>
     </div>
 
-    <!-- CARD B: Post-show analytics latency -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain B · Post-show analytics latency</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"I should be able to see my full analytics right now"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--teal-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "The delay of a day or however long it takes for it to show up in our analytics, really I wish it was more instant. The show ended, I can ship it right now, I should be able to see my full analytics right now." — the_aaronsphere
+    <!-- CARD B -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain B · Post-show analytics latency <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"I should be able to see my full analytics right now"</div>
+        <div class="pc-quote teal">"The delay of a day or however long it takes for it to show up in our analytics, really I wish it was more instant." — the_aaronsphere</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>Contributes to 17.5% earnings/payouts bucket. High-frequency qualitative pain across all seller tiers.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Instant post-show debrief card — auto-generated within 15 min of show end via ClickHouse.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          Contributes to 17.5% earnings/payouts bucket. High-frequency qualitative pain in Listen Labs across all tiers.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Instant post-show debrief card — auto-generated within minutes of show end. GMV, units sold, top items, repeat buyers, payout estimate.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Trigger on show-end event → pull finalized order data → compute GMV, conversion rate, avg order value, top-5 items, new vs. repeat buyer split → render debrief card in Copilot feed → push push notification to seller mobile.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Show-end trigger → pull order data → compute GMV, conversion, top-5 items, new vs. repeat buyer split → render debrief card in Copilot feed → push notification to mobile.</div>
     </div>
 
-    <!-- CARD C: Pre-show rebuild -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain C · Pre-show inventory rebuild</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"Nothing carries over. I have to rebuild every show."</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--whatnot-yellow);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "Once you set up a show, all your inventory that you haven't sold that's still posted in your last show just automatically appear on your new show." — Lostgemz (feature request)
+    <!-- CARD C -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain C · Pre-show inventory rebuild <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"Nothing carries over. I rebuild every single show."</div>
+        <div class="pc-quote">"Once you set up a show, all your inventory that you haven't sold just automatically appear on your new show." — Lostgemz (feature request)</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>11.4% seller tools bucket. #1 qualitative pain for medium/large sellers in Listen Labs May 2026.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>"Prep my show" loop — carry unsold inventory forward, rank by prior performance, suggest opening order.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          11.4% seller tools bucket. #1 qualitative pain for medium/large sellers in Listen Labs May 2026 report.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          "Prep my show" agentic loop — carry unsold inventory forward, rank items by prior performance, suggest opening order.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Seller initiates "prep show" → Copilot pulls unsold inventory from last N shows → ranks by sell-through rate, viewer engagement, category demand signal → pre-populates show queue → flags items that sold well in comparable seller shows that week → one-tap confirm.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Seller taps "prep show" → pull unsold inventory from last N shows → rank by sell-through + category demand → pre-populate show queue → flag items sold well in similar shows this week → one-tap confirm.</div>
     </div>
 
-    <!-- CARD D: Label/fulfillment errors -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain D · Label &amp; fulfillment errors</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"Label generation fails and I don't find out until it's too late"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--coral-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "I am trying to return or rather refund a buyer who did not receive an item in her shipment of twenty-plus items, and it's frustrating." — gilliankohn
+    <!-- CARD D -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain D · Label &amp; fulfillment errors <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"Label fails and I don't find out until it's too late"</div>
+        <div class="pc-quote" style="border-left-color:var(--coral-600);">"I am trying to refund a buyer who did not receive an item in her shipment of twenty-plus items, and it's frustrating." — gilliankohn</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>15.3% of all tickets (7,384) — label errors, media-mail misclassification, address change requests.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Shipping anomaly detection — proactive flag before seller ships when label fails or media-mail misapplied.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          15.3% of all tickets (7,384) — label generation errors, media-mail misclassification, address change requests.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Shipping anomaly detection — proactive flag when label generation fails or media-mail is misapplied before seller ships.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Monitor label generation job status post-show → detect failure or media-mail classification on items &gt;13oz → surface inline alert in Copilot feed with one-tap re-generate → escalate to Sierra CX if re-generation fails twice → track resolution and log for payout protection.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Monitor label generation post-show → detect failure or media-mail on items &gt;13oz → inline alert with one-tap re-generate → escalate to Sierra CX if re-generation fails twice.</div>
     </div>
 
-    <!-- CARD E: Refund/billback/bulk cancel -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain E · Refund, billback &amp; bulk cancellation</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"I had a tech issue. I need to cancel everything from last show."</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--coral-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "Need assistance mass-cancelling all orders from last show... I experienced technical difficulties which caused me to start my show 2 hours later." — anonymous, bulk cancellation ticket
+    <!-- CARD E -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain E · Refund, billback &amp; bulk cancel <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"I had a tech issue. Cancel everything from last show."</div>
+        <div class="pc-quote" style="border-left-color:var(--coral-600);">"Need assistance mass-cancelling all orders from last show... I experienced technical difficulties which caused me to start my show 2 hours later." — anonymous ticket</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>47.9% of all tickets (23,169) — the single largest bucket. Dominated by billback appeals and show-tech bulk cancellations.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Bulk cancellation assistant — proactive "tech anomaly detected, want to bulk cancel?" when show-start was delayed or stream dropped.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          47.9% of all tickets (23,169) — the single largest bucket. Dominated by refund/billback appeals and show-tech-triggered bulk cancellations.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Bulk cancellation assistant + proactive "your show had a tech anomaly — want to bulk cancel?" trigger when show-start was delayed or dropped.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Detect show-start delay &gt;30 min or stream drop event → cross-reference order creation timestamps → surface "We noticed your show started late — 47 orders were placed during the affected window. Cancel all?" → seller confirms → execute bulk cancel + auto-generate buyer notifications → log for payout protection appeal.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Detect show-start delay &gt;30 min or stream drop → cross-reference order timestamps → surface "47 orders placed during the affected window. Cancel all?" → seller confirms → bulk cancel + auto-draft buyer notifications → log for payout protection.</div>
     </div>
 
-    <!-- CARD F: Ad ROI opacity -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v2">v2</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain F · Ad ROI opacity</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"I don't know if my ads are even working"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--whatnot-yellow);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          Some sellers have 440% ROAS but are completely unaware of it. Ad spend decisions are made blind, leading to underspend in high-ROI channels. — May 2026 report finding
+    <!-- CARD F -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain F · Ad ROI opacity <span class="pri pri-v2">v2</span></div>
+        <div class="pc-title">"I don't even know if my ads are working"</div>
+        <div class="pc-quote">Some sellers have 440% ROAS but are completely unaware of it. Ad spend decisions are made blind, leading to underspend in high-ROI channels. — May 2026 internal finding</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Signal</strong>High-frequency qualitative theme. Not a CX ticket — sellers don't complain because they don't know what they're missing.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Proactive ROAS insight — "Your ads are working better than you think." Weekly plain-English summary with spend recommendation.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Signal</div>
-          High-frequency qualitative theme in Listen Labs. Not a CX ticket category — sellers don't know to complain about it because they don't know what they're missing.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Proactive ad performance insight — "Your ads are working better than you think. Here's your actual ROAS." Spend recommendation engine.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Weekly: pull ad spend + attributed GMV → compute ROAS by campaign and category → compare vs. seller's own benchmark and cohort median → if ROAS &gt;300% and seller is underspending vs. cohort → surface "You're leaving money on the table" insight card with recommended budget increase.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Weekly: pull ad spend + attributed GMV → compute 7-day ROAS → compare vs. seller benchmark and cohort median → if ROAS &gt;300% and seller is underspending → surface "You're leaving money on the table" with recommended budget increase.</div>
     </div>
 
-    <!-- CARD G: Buyer engagement -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v2">v2</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain G · Buyer engagement &amp; LTV blindness</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"Who are my best buyers and am I losing them?"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--teal-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "Real-time viewer behavior such as entry and exit trends, bid activity by item, conversion rates, and peak engagement could help optimize spacing, pricing." — plumadeals
+    <!-- CARD G -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain G · Buyer LTV blindness <span class="pri pri-v2">v2</span></div>
+        <div class="pc-title">"Who are my best buyers and am I losing them?"</div>
+        <div class="pc-quote teal">"Real-time viewer behavior such as entry and exit trends, bid activity by item, conversion rates, and peak engagement could help optimize." — plumadeals</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Signal</strong>Listen Labs: medium/large sellers explicitly request buyer-level analytics. Manage top buyer relationships manually via DMs.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Top buyer identification, repeat trend tracking, LTV analysis, churn risk alerts for high-value buyers who haven't returned.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Signal</div>
-          Listen Labs: medium/large sellers explicitly request buyer-level analytics. Top buyers drive disproportionate GMV; sellers manage relationships manually (DMs, personal notes).
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Top buyer identification, repeat buyer trend tracking, LTV analysis, churn risk alerts for high-value buyers who haven't returned.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Weekly: rank buyers by 30-day GMV and purchase frequency → flag top-20 buyers who have not purchased in 14+ days → surface "Your top buyer @[handle] hasn't been back in 3 weeks — their usual category is showing in your next show" → optionally suggest a shoutout prompt for live engagement.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Weekly: rank buyers by 30-day GMV → flag top-20 who haven't purchased in 14+ days → surface "@[handle] hasn't been back in 3 weeks — their category is in your next show" → suggest a live shoutout prompt.</div>
     </div>
 
-    <!-- CARD H: Live analytics gaps -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v2">v2</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain H · Live show analytics gaps</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"I can't see what's working while the show is happening"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--teal-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "Real-time viewer behavior such as entry and exit trends, bid activity by item, conversion rates, and peak engagement could help optimize spacing, pricing." — plumadeals
+    <!-- CARD H -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain H · Live show analytics gaps <span class="pri pri-v2">v2</span></div>
+        <div class="pc-title">"I can't see what's working while the show is on"</div>
+        <div class="pc-quote teal">"In-show: limited real-time data and having to manage items manually while engaging the audience. Hard to react without clear visibility." — plumadeals</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Signal</strong>Most-requested feature from Sigma pilot. Sellers use gut feel for item pacing, flash sale timing, and when to do giveaways.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Live show pulse sidebar — rolling viewer count, bid velocity, GMV-to-date, pacing-to-bonus, peak engagement marker.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Signal</div>
-          Listen Labs: highly requested by medium/large sellers. Sellers currently use gut feel to decide when to move to the next item, when to do flash sales, when viewer count is peaking.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Live show performance sidebar — rolling viewer count, bid velocity, items-per-minute pace, estimated GMV-to-date, peak engagement marker.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        During live show: stream viewer entry/exit events + bid events → compute 60-second rolling conversion rate per item → if conversion drops below threshold for 90s → whisper alert "Engagement dropping on this item — next item ready?" → track which whispers seller acted on and which led to recovery, to improve future suggestions.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>During show: stream viewer + bid events → compute 60s rolling conversion per item → if conversion drops &gt;20% for 90s → whisper "Engagement dropping — next item ready?" → learn from which whispers seller acted on.</div>
     </div>
 
-    <!-- CARD I: Human CX gap -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v1">v1</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain I · Human CX gap (small sellers)</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"I have never had easy, thoughtful customer service on this platform"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--coral-600);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "I have never had easy, specific, thoughtful customer service on this platform." — gilliankohn
+    <!-- CARD I -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain I · Human CX gap <span class="pri pri-v1">v1</span></div>
+        <div class="pc-title">"I've never had thoughtful customer service here"</div>
+        <div class="pc-quote" style="border-left-color:var(--coral-600);">"I have never had easy, specific, thoughtful customer service on this platform from either the buyer side or the seller side." — gilliankohn</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>Small sellers generate bulk of "where's my payout?", "label not working", "bonus math" tickets. AI-only support is itself a named pain in Listen Labs.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Sierra + Copilot unified routing: operational → Sierra. Analytics + growth → Copilot. Seamless handoff, context carried.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          Small sellers generate the majority of "where's my payout?", "label not working", "bonus math" tickets. AI-only support is itself a ranked pain point in Listen Labs.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Sierra + Copilot unified routing: operational questions (payout, labels, bans) → Sierra CX bot. Analytics + growth questions → Copilot. Seamless handoff, no re-stating context.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Classify inbound seller message intent → if operational (payout status, label issue, ban appeal, bonus math) → route to Sierra with full session context pre-loaded → if growth/analytics intent → handle in Copilot → if ambiguous → ask one clarifying question, never restart the conversation.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Classify inbound seller message intent → operational (payout, label, ban) → route to Sierra with full context → analytics/growth → handle in Copilot → ambiguous → one clarifying question, never restart the conversation.</div>
     </div>
 
-    <!-- CARD J: Shipping complexity -->
-    <div class="answer-card" style="position:relative;">
-      <div style="position:absolute;top:14px;right:14px;"><span class="pri pri-v2">v2</span></div>
-      <div class="answer-header">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:4px;">Pain J · Shipping configuration complexity</div>
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">"Shipping config eats 30+ minutes every single day"</div>
-        <div style="font-size:12px;color:var(--text-secondary);padding:8px 10px;background:var(--surface);border-left:3px solid var(--whatnot-yellow);border-radius:0 4px 4px 0;margin-bottom:10px;font-style:italic;">
-          "Why? If the PO doesn't scan or deliver the package why am I the one who has to take the loss?" — anonymous, order management ticket
+    <!-- CARD J -->
+    <div class="pain-card">
+      <div class="pc-head">
+        <div class="pc-label">Pain J · Shipping configuration complexity <span class="pri pri-v2">v2</span></div>
+        <div class="pc-title">"Shipping config eats 30+ minutes every single day"</div>
+        <div class="pc-quote">"If the PO doesn't scan or deliver the package why am I the one who has to take the loss?" — anonymous order management ticket</div>
+        <div class="pc-meta">
+          <div class="pc-meta-cell"><strong>Ticket signal</strong>15.3% fulfillment tickets. Shipping config (insurance, signatures, non-machinable flags) is a top daily time cost for medium sellers.</div>
+          <div class="pc-meta-cell"><strong>Copilot feature</strong>Smart shipping profile — analyze order history, recommend optimal defaults per category, one-tap apply.</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:12px;">
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Ticket signal</div>
-          15.3% fulfillment tickets + qualitative signal from May 2026 report: shipping config (insurance, signatures, non-machinable flags) is a top daily time cost for medium sellers.
-        </div>
-        <div style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-          <div style="font-weight:700;color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Copilot feature</div>
-          Smart shipping profile suggestions — analyze order history to recommend optimal default profile (insurance thresholds, signature requirements, carrier) per category.
-        </div>
-      </div>
-      <div style="padding:10px 12px;background:#000;border-radius:5px;font-size:12px;color:#fff;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:4px;">Agentic loop</div>
-        Monthly: analyze seller's last 90 days of shipments → compute claim rate by carrier, insurance level, item category, and weight band → surface recommended shipping profile changes with projected savings → one-tap apply → flag non-machinable items in pre-show queue before seller goes live.
-      </div>
+      <div class="pc-loop"><div class="pc-loop-label">Agentic loop</div>Monthly: analyze last 90 days of shipments → compute claim rate by carrier, insurance level, category, weight → surface recommended profile changes with projected savings → one-tap apply → flag non-machinable items in pre-show queue.</div>
     </div>
 
   </div>
