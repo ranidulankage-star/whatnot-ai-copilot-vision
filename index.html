@@ -1085,7 +1085,7 @@
     <div class="group-label">Surface</div>
     <a href="#entrypoints"><span class="ix">03</span> Entry points</a>
     <a href="#openstate"><span class="ix">04</span> When you open it</a>
-    <a href="#answer"><span class="ix">05</span> The answer card</a>
+    <a href="#answer"><span class="ix">05</span> Responses</a>
   </div>
 
   <div class="group">
@@ -2401,63 +2401,11 @@
 <!-- ============================================================ -->
 <section id="answer">
   <div class="section-header">
-    <h2><span class="num">05</span> The answer card</h2>
-    <p class="section-lede">The smallest unit of the product. Anatomy, primitives, and all variants — prose and structured — in one place.</p>
+    <h2><span class="num">05</span> Responses</h2>
+    <p class="section-lede">Every response the bot gives is one of two primitives — <b style="font-weight:600;color:var(--text);">text</b> or <b style="font-weight:600;color:var(--text);">an answer card</b>. Text is the foundation that scales to agentic. The answer card is the structured form for analytics queries. Most responses are one or the other; some combine both.</p>
   </div>
 
-  <div class="mock">
-    <div class="mock-label">
-      <span class="pri pri-v1">v1</span>
-      <span class="mock-title">Anatomy</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: start;">
-      <div class="answer-card">
-        <div class="answer-header">
-          <div class="answer-label">Total GMV across 3 most recent shows</div>
-          <div class="answer-headline">$12,470 <span class="unit">across 3 shows</span></div>
-          <div class="answer-sub">Tuesday's show drove <span class="up">48% more</span> than Friday's.</div>
-        </div>
-        <div class="answer-viz">
-          <div class="bar-row">
-            <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
-            <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
-            <div class="col"><div class="v">$5,420</div><div class="bar bar-amber" style="height:84%;"></div><div class="label">Sun</div></div>
-          </div>
-        </div>
-        <div class="answer-provenance">
-          <i class="ti ti-database"></i>
-          <span>Orders · last 3 shows · paid · 14,213 rows · 6.2s</span>
-          <i class="ti ti-chevron-down chev"></i>
-        </div>
-        <div class="answer-actions">
-          <button class="btn-action"><i class="ti ti-pin"></i> Pin</button>
-          <button class="btn-action"><i class="ti ti-clock"></i> Schedule</button>
-          <button class="btn-action"><i class="ti ti-share"></i> Share</button>
-          <button class="btn-action"><i class="ti ti-download"></i> CSV</button>
-          <div class="feedback-row">
-            <i class="ti ti-thumb-up"></i>
-            <i class="ti ti-thumb-down"></i>
-          </div>
-        </div>
-      </div>
-      <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">1. Headline</b><br>Confident number, no hedging.</div>
-        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">2. Plain-English finding</b><br>One sentence. Color-coded if directional.</div>
-        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">3. Right viz</b><br>Bar, line, table, or stat — never an empty chart.</div>
-        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">4. Provenance</b><br>Source, rows, time. Expand for query.</div>
-        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">5. Durable actions</b><br>Pin, schedule, share, export — labeled.</div>
-        <div><b style="font-weight:500; color:var(--text);">6. Feedback</b><br>Secondary, right-aligned.</div>
-      </div>
-    </div>
-    <div class="mock-note">Every answer in the product follows this six-zone structure. Chat bubbles get replaced by this card. The card is what gets pinned, shared, scheduled, and embedded.</div>
-  </div>
-
-  <!-- Variants continue in same section -->
-  <div id="variants" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
-  <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px;">Response variants — prose &amp; structured</div>
-  <p style="font-size:14px;color:var(--text-secondary);margin:0 0 28px;max-width:680px;">Two fundamental primitives combine to cover every response type. Prose is the foundation that scales to agentic. Structured cards are the analytics layer on top.</p>
-
-  <!-- Primitive callout -->
+  <!-- Two-primitive callout — leads the section -->
   <div style="background:#000;border-radius:14px;padding:24px 28px;margin-bottom:40px;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       <div>
@@ -2486,7 +2434,10 @@
   </div>
 
   <!-- Prose replies -->
-  <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px;padding-top:8px;">Prose reply variants</div>
+  <div style="margin-bottom:20px;padding-top:8px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#000;color:#fff;padding:5px 12px;border-radius:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;">Primitive 1 · Text</span></div>
+    <p style="font-size:13px;color:var(--text-secondary);margin:6px 0 0;max-width:640px;">Plain-language responses — the foundation. Explanations, advice, clarifications, and every agentic confirmation. Three core variants:</p>
+  </div>
 
   <!-- g. Conversational explanation -->
   <div class="mock">
@@ -2570,7 +2521,60 @@
     <div class="mock-note">Bot never guesses when the intent is ambiguous. Asks once, with specific options — not "can you clarify?" but concrete choices that immediately narrow the question.</div>
   </div>
 
-  <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px;padding-top:32px;border-top:1px solid var(--border);">Structured card variants</div>
+  <div style="margin-bottom:24px;padding-top:32px;border-top:1px solid var(--border);">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--whatnot-yellow);color:#000;padding:5px 12px;border-radius:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;">Primitive 2 · The answer card</span></div>
+    <p style="font-size:13px;color:var(--text-secondary);margin:6px 0 0;max-width:640px;">The structured form for analytics queries — when the answer is a number, comparison, ranking, or trend. Every answer card follows a fixed six-zone anatomy, then renders as the right variant for the question.</p>
+  </div>
+
+  <!-- Anatomy -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v1">v1</span>
+      <span class="mock-title">Anatomy — the six-zone structure</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: start;">
+      <div class="answer-card">
+        <div class="answer-header">
+          <div class="answer-label">Total GMV across 3 most recent shows</div>
+          <div class="answer-headline">$12,470 <span class="unit">across 3 shows</span></div>
+          <div class="answer-sub">Tuesday's show drove <span class="up">48% more</span> than Friday's.</div>
+        </div>
+        <div class="answer-viz">
+          <div class="bar-row">
+            <div class="col"><div class="v">$4,210</div><div class="bar bar-amber" style="height:65%;"></div><div class="label">Tue</div></div>
+            <div class="col"><div class="v">$2,840</div><div class="bar bar-amber-strong" style="height:44%;"></div><div class="label">Fri</div></div>
+            <div class="col"><div class="v">$5,420</div><div class="bar bar-amber" style="height:84%;"></div><div class="label">Sun</div></div>
+          </div>
+        </div>
+        <div class="answer-provenance">
+          <i class="ti ti-database"></i>
+          <span>Orders · last 3 shows · paid · 14,213 rows · 6.2s</span>
+          <i class="ti ti-chevron-down chev"></i>
+        </div>
+        <div class="answer-actions">
+          <button class="btn-action"><i class="ti ti-pin"></i> Pin</button>
+          <button class="btn-action"><i class="ti ti-clock"></i> Schedule</button>
+          <button class="btn-action"><i class="ti ti-share"></i> Share</button>
+          <button class="btn-action"><i class="ti ti-download"></i> CSV</button>
+          <div class="feedback-row">
+            <i class="ti ti-thumb-up"></i>
+            <i class="ti ti-thumb-down"></i>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">1. Headline</b><br>Confident number, no hedging.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">2. Plain-English finding</b><br>One sentence. Color-coded if directional.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">3. Right viz</b><br>Bar, line, table, or stat — never an empty chart.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">4. Provenance</b><br>Source, rows, time. Expand for query.</div>
+        <div style="margin-bottom: 8px;"><b style="font-weight:500; color:var(--text);">5. Durable actions</b><br>Pin, schedule, share, export — labeled.</div>
+        <div><b style="font-weight:500; color:var(--text);">6. Feedback</b><br>Secondary, right-aligned.</div>
+      </div>
+    </div>
+    <div class="mock-note">Every answer card follows this six-zone structure. The card is what gets pinned, shared, scheduled, and embedded — never a chat bubble that scrolls away.</div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);margin:32px 0 20px;">Answer card variants</div>
 
   <!-- Big number -->
   <div class="mock">
@@ -2710,7 +2714,6 @@
       </div>
     </div>
   </div>
-  </div><!-- end variants subsection -->
 </section>
 
 <!-- ============================================================ -->
