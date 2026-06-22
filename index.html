@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whatnot AI Analytics Bot — design system & specification</title>
+<title>Whatnot AI Copilot — design system & specification</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
   :root {
@@ -1076,21 +1076,21 @@
     <div class="group-label">Foundation</div>
     <a href="#overview"><span class="ix">00</span> Overview</a>
     <a href="#vision"><span class="ix">→</span> The vision</a>
-    <a href="#competitive"><span class="ix">03</span> Competitive landscape</a>
-    <a href="#principles"><span class="ix">01</span> Design principles</a>
-    <a href="#critique"><span class="ix">02</span> Current state critique</a>
+    <a href="#competitive"><span class="ix">01</span> Competitive landscape</a>
+    <a href="#principles"><span class="ix">02</span> Design principles</a>
+    <a href="#critique"><span class="ix">03</span> Current state critique</a>
   </div>
 
   <div class="group">
     <div class="group-label">Surface</div>
-    <a href="#entrypoints"><span class="ix">03</span> Entry points</a>
-    <a href="#openstate"><span class="ix">04</span> When you open it</a>
-    <a href="#answer"><span class="ix">05</span> Responses</a>
+    <a href="#entrypoints"><span class="ix">04</span> Entry points</a>
+    <a href="#openstate"><span class="ix">05</span> When you open it</a>
+    <a href="#answer"><span class="ix">06</span> Responses</a>
   </div>
 
   <div class="group">
     <div class="group-label">Behavior</div>
-    <a href="#running"><span class="ix">06</span> Running & feedback</a>
+    <a href="#running"><span class="ix">07</span> Running & feedback</a>
     <a href="#threads"><span class="ix">08</span> Threads workspace</a>
     <a href="#proactive"><span class="ix">09</span> Proactive intelligence</a>
     <a href="#scheduled"><span class="ix">10</span> Scheduled & memory</a>
@@ -1229,10 +1229,10 @@
   </div>
 </section>
 
-<!-- COMPETITIVE LANDSCAPE -->
+<!-- 01 COMPETITIVE LANDSCAPE -->
 <section id="competitive">
   <div class="section-header">
-    <h2><span class="num">03</span> Competitive landscape</h2>
+    <h2><span class="num">01</span> Competitive landscape</h2>
     <p class="section-lede">The AI seller assistant market is maturing fast — Amazon and Shopify have proven agentic loops work, TikTok has moved beyond advisory into content generation and live-stream automation, and nobody has touched live commerce intelligence. Whatnot's whitespace is large and defensible.</p>
   </div>
 
@@ -1531,11 +1531,11 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 01 PRINCIPLES                                                 -->
+<!-- 02 PRINCIPLES                                                 -->
 <!-- ============================================================ -->
 <section id="principles">
   <div class="section-header">
-    <h2><span class="num">01</span> Design principles</h2>
+    <h2><span class="num">02</span> Design principles</h2>
     <p class="section-lede">Six rules that resolve most design questions before they reach a debate. When in doubt, pick the principle.</p>
   </div>
 
@@ -1574,11 +1574,11 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 02 CRITIQUE                                                   -->
+<!-- 03 CRITIQUE                                                   -->
 <!-- ============================================================ -->
 <section id="critique">
   <div class="section-header">
-    <h2><span class="num">02</span> Current state critique</h2>
+    <h2><span class="num">03</span> Current state critique</h2>
     <p class="section-lede">Two AI products being built in parallel, serving different use cases. The challenge: make sure they converge, not diverge.</p>
   </div>
 
@@ -1637,11 +1637,11 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 03 ENTRY POINTS                                               -->
+<!-- 04 ENTRY POINTS                                               -->
 <!-- ============================================================ -->
 <section id="entrypoints">
   <div class="section-header">
-    <h2><span class="num">03</span> Entry points</h2>
+    <h2><span class="num">04</span> Entry points</h2>
     <p class="section-lede">Placements on the same home page. Preferred: a subtle icon in the top bar. FABs ship alongside in v1. Command bar and sidebar are secondary options.</p>
   </div>
 
@@ -1933,12 +1933,34 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 04 OPEN STATE — WHAT HAPPENS WHEN YOU CLICK                   -->
+<!-- 05 OPEN STATE — WHAT HAPPENS WHEN YOU CLICK                   -->
 <!-- ============================================================ -->
 <section id="openstate">
   <div class="section-header">
-    <h2><span class="num">04</span> When you open it</h2>
+    <h2><span class="num">05</span> When you open it</h2>
     <p class="section-lede">Three surfaces cover the core use cases — a side panel for quick in-context questions, ⌘K for keyboard-driven lookups, and a full-page workspace for deep analytical work.</p>
+  </div>
+
+  <div style="background:#000;border-radius:14px;padding:24px 28px;margin-bottom:40px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:16px;">How you actually ask a question</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">1 · Open</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;">Tap the sparkle icon, FAB, or hit ⌘K. The side panel slides in — your current page stays put behind it.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">2 · Empty state</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;">A composer sits at the bottom ("Ask about your business…"). Above it: suggested questions for the page you're on, plus your recent threads.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">3 · Ask</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;">Type a question, tap a suggestion, or use voice. Hit enter. Your question becomes a durable thread the moment you submit.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">4 · Answer streams</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;">Named progress steps stream (not a spinner), then an answer card renders — pinnable, shareable, with sources. Ask follow-ups in the same thread.</div>
+      </div>
+    </div>
   </div>
 
   <!-- 1. Side panel (default) -->
@@ -2093,7 +2115,7 @@
   <div class="mock">
     <div class="mock-label">
       <span class="pri pri-v2">v2 · lightweight</span>
-      <span class="mock-title">3. Mini dropdown — quick lookup, no commitment</span>
+      <span class="mock-title">4. Mini dropdown — quick lookup, no commitment</span>
       <span class="mock-sub">— for one-off queries that don't need a full thread</span>
     </div>
     <div class="mock-frame">
@@ -2132,7 +2154,7 @@
   <div class="mock">
     <div class="mock-label">
       <span class="pri pri-v1">v1 · nav route</span>
-      <span class="mock-title">4. Full-page workspace — for deep work</span>
+      <span class="mock-title">3. Full-page workspace — for deep work</span>
       <span class="mock-sub">— what "Ask Whatnot" in the nav opens · briefing home + thread rail</span>
     </div>
     <div class="mock-frame">
@@ -2348,11 +2370,11 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 05 ANSWER CARD                                                -->
+<!-- 06 ANSWER CARD                                                -->
 <!-- ============================================================ -->
 <section id="answer">
   <div class="section-header">
-    <h2><span class="num">05</span> Responses</h2>
+    <h2><span class="num">06</span> Responses</h2>
     <p class="section-lede">Every response the bot gives is one of two primitives — <b style="font-weight:600;color:var(--text);">text</b> or <b style="font-weight:600;color:var(--text);">an answer card</b>. Text is the foundation that scales to agentic. The answer card is the structured form for analytics queries. Most responses are one or the other; some combine both.</p>
   </div>
 
@@ -2668,7 +2690,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 06 RUNNING & FEEDBACK                                         -->
+<!-- 07 RUNNING & FEEDBACK                                         -->
 <!-- ============================================================ -->
 <section id="running">
   <div class="section-header">
@@ -2895,7 +2917,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 07 THREADS WORKSPACE                                          -->
+<!-- 08 THREADS WORKSPACE                                          -->
 <!-- ============================================================ -->
 <section id="threads">
   <div class="section-header">
@@ -3108,7 +3130,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 08 PROACTIVE INTELLIGENCE                                     -->
+<!-- 09 PROACTIVE INTELLIGENCE                                     -->
 <!-- ============================================================ -->
 <section id="proactive">
   <div class="section-header">
@@ -3252,7 +3274,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 09 SCHEDULED & MEMORY                                         -->
+<!-- 10 SCHEDULED & MEMORY                                         -->
 <!-- ============================================================ -->
 <section id="scheduled">
   <div class="section-header">
@@ -3381,7 +3403,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 10 TRUST & HONESTY                                            -->
+<!-- 11 TRUST & HONESTY                                            -->
 <!-- ============================================================ -->
 <section id="honesty">
   <div class="section-header">
@@ -3495,7 +3517,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 11 SHARING & COLLABORATION                                    -->
+<!-- 12 SHARING & COLLABORATION                                    -->
 <!-- ============================================================ -->
 <section id="sharing">
   <div class="section-header">
@@ -3607,7 +3629,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 12 MOBILE                                                     -->
+<!-- 13 MOBILE                                                     -->
 <!-- ============================================================ -->
 <section id="mobile">
   <div class="section-header">
@@ -3642,7 +3664,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- 13 ROADMAP                                                    -->
+<!-- 14 ROADMAP                                                    -->
 <!-- ============================================================ -->
 <section id="roadmap">
   <div class="section-header">
@@ -4102,7 +4124,7 @@
               Based on your last 8 Thursday shows, a <strong>7 PM slot typically does $280–$400</strong>. One show could close the gap. Want me to schedule it?
             </p>
             <div style="background:#f4f4f4;border-radius:8px;padding:8px;font-size:11px;color:#555;margin-bottom:10px;">
-              <strong>Suggested slot:</strong> Thursday Jun 20, 7:00 PM PT<br/>
+              <strong>Suggested slot:</strong> Thursday Jun 19, 7:00 PM PT<br/>
               <span style="color:#888;">Alt: Saturday Jun 21, 2:00 PM PT (avg $310)</span>
             </div>
             <div class="answer-actions" style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -4437,12 +4459,12 @@
         </div>
         <div class="main-area" style="flex:1;background:#f7f7f7;padding:24px;">
           <div style="font-size:14px;font-weight:700;margin-bottom:16px;">Dashboard · Overview</div>
-          <div style="font-size:12px;color:#aaa;text-align:center;margin-top:80px;">Seller Bot is working on your Friday show prep…</div>
+          <div style="font-size:12px;color:#aaa;text-align:center;margin-top:80px;">Copilot is working on your Friday show prep…</div>
         </div>
         <div class="side-panel" style="width:340px;border-left:1px solid #e8e8e8;">
           <div class="panel-header" style="background:#0a0a0a;">
             <span style="width:24px;height:24px;background:#FFE817;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-sparkles" style="font-size:12px;color:#000;"></i></span>
-            <div class="title-block"><div class="title" style="color:#fff;">Seller Bot</div><div class="sub" style="color:rgba(255,255,255,0.4);">v3 preview</div></div>
+            <div class="title-block"><div class="title" style="color:#fff;">Copilot</div><div class="sub" style="color:rgba(255,255,255,0.4);">v3 preview</div></div>
           </div>
           <div class="panel-body" style="padding:14px;gap:10px;display:flex;flex-direction:column;">
             <div class="user-msg"><div class="bubble">Prep my Friday show</div></div>
@@ -4899,7 +4921,7 @@
           <td style="padding:12px 14px;vertical-align:top;color:var(--text-secondary);">Raw API/MCP access — not self-service enough yet. Premature for this cohort without guided interpretation layer.</td>
           <td style="padding:12px 14px;vertical-align:top;">
             <span style="background:#dcfce7;color:#166534;font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;">Highest GMV opportunity</span>
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">This cohort can 2–5x GMV with the right insight at the right moment. Analytics bot ROI is highest here.</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">This cohort can 2–5x GMV with the right insight at the right moment. Copilot ROI is highest here.</div>
           </td>
         </tr>
         <tr>
@@ -4933,12 +4955,12 @@
   <div class="ship-box" style="border-radius:8px;padding:24px 28px;">
     <div style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--whatnot-yellow);margin-bottom:10px;">Key insight — convergence with Sierra is not optional</div>
     <div style="font-size:18px;font-weight:700;line-height:1.4;margin-bottom:14px;">
-      The analytics bot alone addresses ~19% of ticket volume (earnings/payouts + analytics-adjacent). Solving the other 63% — order management and fulfillment — requires the CX integration.
+      Copilot alone addresses ~19% of ticket volume (earnings/payouts + analytics-adjacent). Solving the other 63% — order management and fulfillment — requires the CX integration.
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
       <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:14px;">
         <div style="font-size:28px;font-weight:800;color:var(--whatnot-yellow);">47.9%</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px;">Order management tickets — requires CX bot (Sierra), not analytics bot</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px;">Order management tickets — requires CX bot (Sierra), not Copilot</div>
       </div>
       <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:14px;">
         <div style="font-size:28px;font-weight:800;color:var(--whatnot-yellow);">15.3%</div>
@@ -5526,7 +5548,7 @@
 </section>
 
 <footer>
-  Whatnot AI Analytics Bot · design system &amp; specification · June 2026 · Ranidu Lankage
+  Whatnot AI Copilot · design system &amp; specification · June 2026 · Ranidu Lankage
 </footer>
 
 </div>
