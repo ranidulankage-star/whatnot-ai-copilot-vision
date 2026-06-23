@@ -1115,6 +1115,7 @@
     <a href="#appendix-a"><span class="ix">A</span> Seller research</a>
     <a href="#appendix-b"><span class="ix">B</span> Agentic loops</a>
     <a href="#appendix-c"><span class="ix">C</span> Competitor table</a>
+    <a href="#appendix-d"><span class="ix">D</span> Entry points considered</a>
   </div>
 </aside>
 
@@ -1617,7 +1618,7 @@
 <section id="entrypoints">
   <div class="section-header">
     <h2><span class="num">04</span> Entry points</h2>
-    <p class="section-lede">Six options below — but <b style="font-weight:600;color:var(--text);">v1 ships only two</b>: the left-nav item (the front door) and a subtle top-bar icon (ambient quick-ask). The rest are alternatives and fallbacks. See the recommendation at the end of this section.</p>
+    <p class="section-lede"><b style="font-weight:600;color:var(--text);">v1 ships just two entry points</b>: the left-nav item (the front door) and a subtle top-bar icon (ambient quick-ask). Other placements considered — command bar, FABs, persistent sidebar — are deferred to v2 (see <a href="#appendix-d" style="color:var(--text);">Appendix D</a>).</p>
   </div>
 
   <!-- A: Subtle header icon — PREFERRED -->
@@ -1664,52 +1665,6 @@
     </div>
   </div>
 
-  <!-- A2: Command bar — downgraded -->
-  <div class="mock">
-    <div class="mock-label">
-      <span class="pri pri-v2">v2 — consider</span>
-      <span class="mock-title">A2. Top header command bar</span>
-      <span class="mock-sub">— ⌘K from anywhere · Linear, Glean, Sidekick pattern · high prominence</span>
-    </div>
-    <div class="mock-frame">
-      <div class="browser-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="url">whatnot.com/dashboard/home</span>
-      </div>
-      <div class="app-header">
-        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
-        <div class="command-pill highlight">
-          <i class="ti ti-sparkles spark"></i>
-          <span class="ph">Ask Whatnot anything…</span>
-          <span class="kbd">⌘K</span>
-        </div>
-        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
-      </div>
-      <div class="app-body">
-        <div class="left-nav">
-          <div class="item active"><i class="ti ti-home"></i> Home</div>
-          <div class="item"><i class="ti ti-package"></i> Inventory</div>
-          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
-          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
-          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
-        </div>
-        <div class="main-area">
-          <div class="greeting">Good morning, Ranidu</div>
-          <div class="metric-grid">
-            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
-            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
-            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
-            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> Highly visible · signals primary feature · always reachable</span>
-      <span class="cons"><i class="ti ti-x"></i> Dominates the header — eats real estate that competes with nav identity</span>
-    </div>
-  </div>
-
   <!-- C: Left nav -->
   <div class="mock">
     <div class="mock-label">
@@ -1746,141 +1701,6 @@
     <div class="pros-cons">
       <span class="pros"><i class="ti ti-check"></i> First-class product · briefing home · discoverable</span>
       <span class="cons"><i class="ti ti-x"></i> Requires navigating from current task</span>
-    </div>
-  </div>
-
-  <!-- D: Round FAB - v1 contender -->
-  <div class="mock">
-    <div class="mock-label">
-      <span class="pri pri-v1">v1 — ship</span>
-      <span class="mock-title">D. Round FAB — bottom right</span>
-      <span class="mock-sub">— Intercom, Drift, Notion AI pattern · pairs well with subtle icon (A)</span>
-    </div>
-    <div class="mock-frame">
-      <div class="browser-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="url">whatnot.com/dashboard/home</span>
-      </div>
-      <div class="app-header">
-        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
-        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
-      </div>
-      <div class="app-body">
-        <div class="left-nav">
-          <div class="item active"><i class="ti ti-home"></i> Home</div>
-          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
-          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
-          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
-        </div>
-        <div class="main-area">
-          <div class="greeting">Good morning, Ranidu</div>
-          <div class="metric-grid">
-            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
-            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
-            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
-            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
-          </div>
-          <button class="fab-round" aria-label="Ask Whatnot"><i class="ti ti-sparkles"></i></button>
-        </div>
-      </div>
-    </div>
-    <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> Familiar pattern · no header footprint · works on every page</span>
-      <span class="cons"><i class="ti ti-x"></i> Can read as support chat if unstyled — amber border + sparkle icon differentiates it</span>
-    </div>
-  </div>
-
-  <!-- E: Labeled pill FAB - v1 contender -->
-  <div class="mock">
-    <div class="mock-label">
-      <span class="pri pri-v1">v1 — ship</span>
-      <span class="mock-title">E. Labeled pill FAB</span>
-      <span class="mock-sub">— Arc, Raycast pattern · more legible than round FAB · shows shortcut</span>
-    </div>
-    <div class="mock-frame">
-      <div class="browser-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="url">whatnot.com/dashboard/home</span>
-      </div>
-      <div class="app-header">
-        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
-        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
-      </div>
-      <div class="app-body">
-        <div class="left-nav">
-          <div class="item active"><i class="ti ti-home"></i> Home</div>
-          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
-          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
-          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
-        </div>
-        <div class="main-area">
-          <div class="greeting">Good morning, Ranidu</div>
-          <div class="metric-grid">
-            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
-            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
-            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
-            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
-          </div>
-          <button class="fab-pill"><i class="ti ti-sparkles spark"></i><span class="label">Ask Whatnot</span><span class="kbd">⌘K</span></button>
-        </div>
-      </div>
-    </div>
-    <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> Branded, labeled, clearer than round FAB · shortcut hint visible · less widget-y</span>
-      <span class="cons"><i class="ti ti-x"></i> Slightly more footprint than round FAB · pick one FAB style (D or E), not both</span>
-    </div>
-  </div>
-
-  <!-- F: Persistent right sidebar - defer -->
-  <div class="mock">
-    <div class="mock-label">
-      <span class="pri pri-v3">v3 — defer</span>
-      <span class="mock-title">F. Persistent right sidebar</span>
-      <span class="mock-sub">— Cursor pattern · always docked, always proactive</span>
-    </div>
-    <div class="mock-frame">
-      <div class="browser-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="url">whatnot.com/dashboard/home</span>
-      </div>
-      <div class="app-header">
-        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
-        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
-      </div>
-      <div class="app-body">
-        <div class="left-nav">
-          <div class="item active"><i class="ti ti-home"></i> Home</div>
-          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
-          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
-        </div>
-        <div class="main-area" style="padding: 18px 16px;">
-          <div class="greeting" style="font-size: 16px;">Good morning, Ranidu</div>
-          <div class="metric-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="metric"><div class="label">GMV</div><div class="value">$18,420</div></div>
-            <div class="metric"><div class="label">Viewers</div><div class="value">347</div></div>
-          </div>
-        </div>
-        <div class="right-dock">
-          <div class="header">
-            <i class="ti ti-sparkles" style="color: #000; font-size: 14px;"></i>
-            <span class="title">Ask Whatnot</span>
-            <i class="ti ti-layout-sidebar-right-collapse" style="margin-left: auto; color: var(--text-tertiary);"></i>
-          </div>
-          <div class="body">
-            <div class="insight-card"><b>Insight:</b> Tuesday shows convert 2.3× higher.</div>
-            <div class="label-tag">SUGGESTED</div>
-            <div class="suggested">Why did viewers drop 8%?</div>
-            <div class="suggested">Top buyers last 30 days</div>
-          </div>
-          <div class="composer">
-            <div class="composer-pill">Ask anything…</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pros-cons">
-      <span class="pros"><i class="ti ti-check"></i> Always visible · always proactive · highest engagement</span>
-      <span class="cons"><i class="ti ti-x"></i> Eats 25% of screen · ship only after v1 usage proves demand</span>
     </div>
   </div>
 
@@ -5055,14 +4875,13 @@
           <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Trigger</th>
           <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;">Approval Gate</th>
           <th style="text-align:center;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;white-space:nowrap;">Pri</th>
-          <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:#6b7280;white-space:nowrap;">Est. Ticket Impact</th>
         </tr>
       </thead>
       <tbody>
 
         <!-- ORDERS -->
         <tr>
-          <td colspan="6" style="background:#eff6ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;border-top:2px solid #bfdbfe;border-bottom:1px solid #bfdbfe;">
+          <td colspan="5" style="background:#eff6ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;border-top:2px solid #bfdbfe;border-bottom:1px solid #bfdbfe;">
             Orders &mdash; 23,169 tickets / 14 days
           </td>
         </tr>
@@ -5072,7 +4891,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews flagged items</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,800/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O2</td>
@@ -5080,7 +4898,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Delivered billback detected</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">15-min opt-out window; auto-submits if no action</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,200/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O3</td>
@@ -5088,7 +4905,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Stream interruption detected</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">One-tap confirm; fee waiver auto-applied</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,400/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O4</td>
@@ -5096,7 +4912,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">24h after show, unpaid orders remain</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms batch; relist prompt shown</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,100/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">O5</td>
@@ -5104,12 +4919,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Buyer cancellation request received</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-approve recommendation; seller override available</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,600/yr</td>
         </tr>
 
         <!-- SHIPMENTS -->
         <tr>
-          <td colspan="6" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#15803d;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
+          <td colspan="5" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#15803d;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
             Shipments &mdash; 7,384 tickets / 14 days
           </td>
         </tr>
@@ -5119,7 +4933,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Label generation initiated</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Blocks on validation failure; seller must confirm fix</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,100/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH2</td>
@@ -5127,7 +4940,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">One-time rule config by seller</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Fully automatic after initial setup</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,400/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH3</td>
@@ -5135,7 +4947,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Carrier adjustment charge appears</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-dispute $1–$5; seller review for &gt;$5</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~800/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH4</td>
@@ -5143,7 +4954,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Multi-lot buyer detected before label gen</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms bundle or proceeds separately</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,200/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SH5</td>
@@ -5151,12 +4961,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">48h after label generated, no carrier scan</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller takes action</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~900/yr</td>
         </tr>
 
         <!-- ANALYTICS -->
         <tr>
-          <td colspan="6" style="background:#fdf4ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#7e22ce;border-top:2px solid #e9d5ff;border-bottom:1px solid #e9d5ff;">
+          <td colspan="5" style="background:#fdf4ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#7e22ce;border-top:2px solid #e9d5ff;border-bottom:1px solid #e9d5ff;">
             Analytics
           </td>
         </tr>
@@ -5166,7 +4975,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends (within 15 min)</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — fully automatic via ClickHouse</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN2</td>
@@ -5174,7 +4982,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">During-show GMV pacing deviation</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller acts</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN3</td>
@@ -5182,7 +4989,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Monday scheduled (WoW cadence)</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — pushed to seller hub</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~500/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AN4</td>
@@ -5190,12 +4996,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Defect rate spike, OTSR drop, top buyer gone dark</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~700/yr</td>
         </tr>
 
         <!-- EARNINGS -->
         <tr>
-          <td colspan="6" style="background:#fff7ed;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#c2410c;border-top:2px solid #fed7aa;border-bottom:1px solid #fed7aa;">
+          <td colspan="5" style="background:#fff7ed;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#c2410c;border-top:2px solid #fed7aa;border-bottom:1px solid #fed7aa;">
             Earnings &amp; Payouts &mdash; 8,457 tickets / 14 days
           </td>
         </tr>
@@ -5205,7 +5010,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">"Where's my payout?" query</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — status surfaced automatically</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,800/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP2</td>
@@ -5213,7 +5017,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller views payout or asks "why this amount?"</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — waterfall surfaced on demand</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,600/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP3</td>
@@ -5221,7 +5024,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">15 min after show end</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — P&amp;L card pushed automatically</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~900/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP4 / AN5</td>
@@ -5229,7 +5031,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Ongoing: seller opens hub or asks about bonus</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — live progress displayed</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,200/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">EP5</td>
@@ -5237,12 +5038,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller disputes settlement line item</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews draft before submission</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~700/yr</td>
         </tr>
 
         <!-- SHOWS -->
         <tr>
-          <td colspan="6" style="background:#f0f9ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0369a1;border-top:2px solid #bae6fd;border-bottom:1px solid #bae6fd;">
+          <td colspan="5" style="background:#f0f9ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0369a1;border-top:2px solid #bae6fd;border-bottom:1px solid #bae6fd;">
             Shows
           </td>
         </tr>
@@ -5252,7 +5052,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller begins show setup</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews pre-fill before publishing</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~400/yr (time saved)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS2</td>
@@ -5260,7 +5059,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller picks time slot</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller decides</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~200/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS3</td>
@@ -5268,7 +5066,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Post-show debrief viewed</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews pre-filled draft</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (time saved)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">SS4</td>
@@ -5276,12 +5073,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Pacing deviation or viewership dip during show</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Alert only; seller acts live</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~200/yr (indirect)</td>
         </tr>
 
         <!-- INVENTORY -->
         <tr>
-          <td colspan="6" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#166534;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
+          <td colspan="5" style="background:#f0fdf4;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#166534;border-top:2px solid #bbf7d0;border-bottom:1px solid #bbf7d0;">
             Inventory
           </td>
         </tr>
@@ -5291,7 +5087,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller uploads photo to create listing</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews and confirms draft</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~500/yr (time saved)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN2</td>
@@ -5299,7 +5094,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Show ends with unsold items</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-queue; seller reviews flagged 3+ show items</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,100/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN3</td>
@@ -5307,7 +5101,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">"Help me pick items for this show"</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller approves ranked selection</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~300/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">IN5</td>
@@ -5315,12 +5108,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Sync conflict or drift detected</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Auto-resolve non-quantity conflicts; flag rest</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr</td>
         </tr>
 
         <!-- PROMOTIONS -->
         <tr>
-          <td colspan="6" style="background:#fefce8;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#a16207;border-top:2px solid #fef08a;border-bottom:1px solid #fef08a;">
+          <td colspan="5" style="background:#fefce8;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#a16207;border-top:2px solid #fef08a;border-bottom:1px solid #fef08a;">
             Promotions
           </td>
         </tr>
@@ -5330,7 +5122,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Weekly scheduled push</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — summary delivered automatically</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~800/yr (retention)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">PR2</td>
@@ -5338,7 +5129,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sets or reviews ad budget</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Recommendation only; seller confirms</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:#78350f;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P1</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~400/yr (indirect)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">PR3</td>
@@ -5346,12 +5136,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller issues one flash sale command</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller confirms scope before execution</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~600/yr (time saved)</td>
         </tr>
 
         <!-- ACCOUNT HEALTH -->
         <tr>
-          <td colspan="6" style="background:#fff1f2;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#be123c;border-top:2px solid #fecdd3;border-bottom:1px solid #fecdd3;">
+          <td colspan="5" style="background:#fff1f2;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#be123c;border-top:2px solid #fecdd3;border-bottom:1px solid #fecdd3;">
             Account Health
           </td>
         </tr>
@@ -5361,7 +5150,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">INAD (Item Not As Described) claim received</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller reviews draft before submission</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~2,800/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">AH3</td>
@@ -5369,12 +5157,11 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">"What's the status of my appeal?"</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">None — status surfaced automatically</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~3,100/yr</td>
         </tr>
 
         <!-- BUYER MESSAGING -->
         <tr>
-          <td colspan="6" style="background:#f5f3ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#6d28d9;border-top:2px solid #ddd6fe;border-bottom:1px solid #ddd6fe;">
+          <td colspan="5" style="background:#f5f3ff;padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#6d28d9;border-top:2px solid #ddd6fe;border-bottom:1px solid #ddd6fe;">
             Buyer Messaging
           </td>
         </tr>
@@ -5384,7 +5171,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Buyer sends shipping/tracking question</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sends or discards draft</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#ef4444;color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P0</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~4,200/yr</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border,#e5e7eb);background:#fafafa;">
           <td style="padding:0.65rem 0.75rem;font-family:monospace;font-weight:700;color:#374151;">BM2</td>
@@ -5392,7 +5178,6 @@
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Carrier delay event detected</td>
           <td style="padding:0.65rem 0.75rem;color:#4b5563;">Seller sends or discards proactive draft</td>
           <td style="padding:0.65rem 0.75rem;text-align:center;"><span style="background:#e5e7eb;color:#374151;font-size:0.7rem;font-weight:700;padding:0.2rem 0.45rem;border-radius:4px;">P2</span></td>
-          <td style="padding:0.65rem 0.75rem;color:#4b5563;">~1,600/yr</td>
         </tr>
 
       </tbody>
@@ -5538,6 +5323,179 @@
         <tr style="border-top:1px solid var(--border); background:rgba(0,0,0,0.015);"><td style="padding:12px 16px; font-size:13px;">Buyer outreach / CX automation</td><td style="padding:12px 16px; text-align:center;"><span style="background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:500;">✗ None</span></td><td style="padding:12px 16px; text-align:center;"><span style="background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:500;">✗ None</span></td><td style="padding:12px 16px; text-align:center;"><span style="background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:500;">✗ None</span></td><td style="padding:12px 16px; text-align:center;"><span style="background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:500;">✗ None</span></td><td style="padding:12px 16px; text-align:center;"><span style="background:rgba(255,232,23,0.2); color:#7a6a00; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:600;">★ Unique</span></td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<!-- APPENDIX D — Entry points considered -->
+<section id="appendix-d">
+  <div class="section-header">
+    <h2><span class="num">D</span> Appendix D: Entry points considered</h2>
+    <p class="section-lede">Placements evaluated but deferred past v1. v1 ships just two entry points — the left-nav item and the subtle top-bar icon (see section 04). These are kept here for completeness and may return in v2 based on discovery data.</p>
+  </div>
+
+  <!-- A2: Command bar -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 — deferred</span>
+      <span class="mock-title">Top header command bar</span>
+      <span class="mock-sub">— ⌘K from anywhere · Linear, Glean pattern · high prominence but dominates the header</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">whatnot.com/dashboard/home</span></div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="command-pill highlight"><i class="ti ti-sparkles spark"></i><span class="ph">Ask Whatnot anything…</span><span class="kbd">⌘K</span></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-package"></i> Inventory</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Highly visible · signals primary feature</span>
+      <span class="cons"><i class="ti ti-x"></i> Dominates the header — competes with nav identity. Subtle icon (A) covers the same job for less.</span>
+    </div>
+  </div>
+
+  <!-- D: Round FAB -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 — deferred</span>
+      <span class="mock-title">Round FAB — bottom right</span>
+      <span class="mock-sub">— Intercom / Drift pattern · the fallback if the subtle icon isn't discovered</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">whatnot.com/dashboard/home</span></div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+          <button class="fab-round" aria-label="Ask Whatnot"><i class="ti ti-sparkles"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Familiar · high discoverability · works on every page</span>
+      <span class="cons"><i class="ti ti-x"></i> Reads as support chat · does the same job as the subtle icon — redundant in v1</span>
+    </div>
+  </div>
+
+  <!-- E: Labeled pill FAB -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v2">v2 — deferred</span>
+      <span class="mock-title">Labeled pill FAB</span>
+      <span class="mock-sub">— Arc / Raycast pattern · more legible than round FAB · shows shortcut</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">whatnot.com/dashboard/home</span></div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-plus"></i><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+          <div class="item"><i class="ti ti-chart-bar"></i> Analytics</div>
+        </div>
+        <div class="main-area">
+          <div class="greeting">Good morning, Ranidu</div>
+          <div class="metric-grid">
+            <div class="metric"><div class="label">GMV this week</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Avg viewers</div><div class="value">347</div></div>
+            <div class="metric"><div class="label">Sell-through</div><div class="value">71%</div></div>
+            <div class="metric"><div class="label">Repeat buyers</div><div class="value">42</div></div>
+          </div>
+          <button class="fab-pill"><i class="ti ti-sparkles spark"></i><span class="label">Ask Whatnot</span><span class="kbd">⌘K</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Branded, labeled, shortcut visible · clearer than round FAB</span>
+      <span class="cons"><i class="ti ti-x"></i> More footprint · pick one FAB style if shipped, not both</span>
+    </div>
+  </div>
+
+  <!-- F: Persistent right sidebar -->
+  <div class="mock">
+    <div class="mock-label">
+      <span class="pri pri-v3">v3 — defer</span>
+      <span class="mock-title">Persistent right sidebar</span>
+      <span class="mock-sub">— Cursor pattern · always docked, always proactive</span>
+    </div>
+    <div class="mock-frame">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">whatnot.com/dashboard/home</span></div>
+      <div class="app-header">
+        <div class="logo-block"><div class="logo-mark">W</div><div class="pill-dark">Seller Hub</div></div>
+        <div class="header-actions"><i class="ti ti-bell"></i><div class="avatar-circle">R</div></div>
+      </div>
+      <div class="app-body">
+        <div class="left-nav">
+          <div class="item active"><i class="ti ti-home"></i> Home</div>
+          <div class="item"><i class="ti ti-broadcast"></i> Shows</div>
+          <div class="item"><i class="ti ti-receipt"></i> Orders</div>
+        </div>
+        <div class="main-area" style="padding: 18px 16px;">
+          <div class="greeting" style="font-size: 16px;">Good morning, Ranidu</div>
+          <div class="metric-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="metric"><div class="label">GMV</div><div class="value">$18,420</div></div>
+            <div class="metric"><div class="label">Viewers</div><div class="value">347</div></div>
+          </div>
+        </div>
+        <div class="right-dock">
+          <div class="header">
+            <i class="ti ti-sparkles" style="color: #000; font-size: 14px;"></i>
+            <span class="title">Ask Whatnot</span>
+            <i class="ti ti-layout-sidebar-right-collapse" style="margin-left: auto; color: var(--text-tertiary);"></i>
+          </div>
+          <div class="body">
+            <div class="insight-card"><b>Insight:</b> Tuesday shows convert 2.3× higher.</div>
+            <div class="label-tag">SUGGESTED</div>
+            <div class="suggested">Why did viewers drop 8%?</div>
+            <div class="suggested">Top buyers last 30 days</div>
+          </div>
+          <div class="composer">
+            <div class="composer-pill">Ask anything…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <span class="pros"><i class="ti ti-check"></i> Always visible · always proactive · highest engagement</span>
+      <span class="cons"><i class="ti ti-x"></i> Eats 25% of screen · ship only after v1 usage proves demand</span>
+    </div>
   </div>
 </section>
 
