@@ -2375,7 +2375,7 @@
 <section id="answer">
   <div class="section-header">
     <h2><span class="num">06</span> Responses</h2>
-    <p class="section-lede">Every response the bot gives is one of two primitives — <b style="font-weight:600;color:var(--text);">text</b> or <b style="font-weight:600;color:var(--text);">an answer card</b>. Text is the foundation that scales to agentic. The answer card is the structured form for analytics queries. Most responses are one or the other; some combine both.</p>
+    <p class="section-lede">Every response is one of three primitives — <b style="font-weight:600;color:var(--text);">text</b> (the conversational foundation), <b style="font-weight:600;color:var(--text);">an answer card</b> (structured, for analytics queries), or a <b style="font-weight:600;color:var(--text);">knowledge answer</b> (grounded in Whatnot's official help content for "how-to" questions). A router picks the right one per question.</p>
   </div>
 
   <!-- Two-primitive callout — leads the section -->
@@ -2684,6 +2684,61 @@
         <i class="ti ti-alert-triangle" style="color: var(--amber-600);"></i>
         <span>6 weeks history · model confidence 54%</span>
         <i class="ti ti-chevron-down chev"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- THIRD PRIMITIVE — KNOWLEDGE -->
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--teal-600);color:#fff;padding:5px 12px;border-radius:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;">Primitive 3 · Knowledge answers</span></div>
+    <p style="font-size:14px;color:var(--text-secondary);margin:6px 0 24px;max-width:680px;">Not every seller question is about <em>their data</em>. A huge share are <b>"how do I…"</b> questions — shipping setup, payout policy, bonus rules — that live in Whatnot's Help Center, not in a database. This is the third response type: grounded answers from official documentation.</p>
+
+    <!-- v1 handoff -->
+    <div class="mock">
+      <div class="mock-label">
+        <span class="pri pri-v1">v1 — graceful handoff</span>
+        <span class="mock-title">When it's a how-to question</span>
+        <span class="mock-sub">— "How do I set up Media Mail shipping?"</span>
+      </div>
+      <div class="answer-card" style="max-width:560px;">
+        <div class="answer-header">
+          <div class="answer-label" style="display:flex;align-items:center;gap:6px;"><i class="ti ti-book-2" style="font-size:13px;"></i> How-to · from Whatnot Help</div>
+          <div style="font-size:14px;line-height:1.65;color:var(--text);margin-top:6px;">That's a <b>how-to question</b>, not an analytics one. I'm focused on your store data today — but this is covered in Whatnot's official Help Center:</div>
+          <a style="display:flex;align-items:center;gap:8px;margin-top:12px;background:var(--bg);border:0.5px solid var(--border-strong);border-radius:9px;padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--text);text-decoration:none;"><i class="ti ti-file-text" style="font-size:15px;"></i> Shipping profiles & Media Mail eligibility <i class="ti ti-external-link" style="font-size:12px;margin-left:auto;color:var(--text-tertiary);"></i></a>
+        </div>
+        <div class="answer-actions"><div class="feedback-row"><i class="ti ti-thumb-up"></i><i class="ti ti-thumb-down"></i></div></div>
+      </div>
+      <div class="mock-note"><b>Never a dead-end.</b> A how-to question shouldn't get "I can only do analytics." v1 recognizes the intent, points to the exact official article, and sets the expectation that native answers are coming — instead of leaving the seller stuck.</div>
+    </div>
+
+    <!-- v2 native -->
+    <div class="mock">
+      <div class="mock-label">
+        <span class="pri pri-v2">v2 — answered natively (RAG)</span>
+        <span class="mock-title">Grounded answer with citations</span>
+        <span class="mock-sub">— answered inline from Help Center + video guides</span>
+      </div>
+      <div class="answer-card" style="max-width:560px;border:1.5px solid var(--whatnot-yellow);">
+        <div class="answer-header">
+          <div class="answer-label" style="display:flex;align-items:center;gap:6px;"><i class="ti ti-sparkles" style="color:var(--whatnot-yellow);"></i> How-to · grounded answer</div>
+          <div style="font-size:14px;line-height:1.7;color:var(--text);margin-top:6px;">Media Mail only covers <b>books, recorded media, and printed material</b> — so it's <b>not eligible for trading cards, apparel, or sneakers</b>. To set it up for eligible items:<br><br>1. Go to <b>Shipments → Shipping profiles</b><br>2. Create a profile, choose <b>Media Mail</b> as the service<br>3. Assign it only to your eligible categories</div>
+        </div>
+        <div style="padding:0 16px 12px;display:flex;flex-direction:column;gap:6px;">
+          <a style="display:flex;align-items:center;gap:8px;background:var(--bg);border:0.5px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12px;font-weight:500;color:var(--text);text-decoration:none;"><i class="ti ti-file-text" style="font-size:14px;"></i> Help: Shipping profiles & Media Mail <i class="ti ti-external-link" style="font-size:11px;margin-left:auto;color:var(--text-tertiary);"></i></a>
+          <a style="display:flex;align-items:center;gap:8px;background:var(--bg);border:0.5px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12px;font-weight:500;color:var(--text);text-decoration:none;"><i class="ti ti-player-play" style="font-size:14px;"></i> Video: Setting up shipping · 2:14 <i class="ti ti-external-link" style="font-size:11px;margin-left:auto;color:var(--text-tertiary);"></i></a>
+        </div>
+        <div class="answer-provenance"><i class="ti ti-book-2"></i><span>Whatnot Help Center · 2 sources · updated 3 days ago</span></div>
+        <div class="answer-actions"><div class="feedback-row"><i class="ti ti-thumb-up"></i><i class="ti ti-thumb-down"></i></div></div>
+      </div>
+      <div class="mock-note">v2 answers inline — grounded strictly in official content, every claim cited (including the exact <b>video timestamp</b>), with "updated X ago" for freshness. If the docs don't cover it, the bot says "I don't know" rather than inventing policy.</div>
+    </div>
+
+    <!-- How it works -->
+    <div class="ship-box" style="margin-top:8px;">
+      <div class="title"><i class="ti ti-database-import"></i> What it takes — ingesting Whatnot's support content</div>
+      <div class="body">
+        A retrieval pipeline (RAG) over official content: <b>crawl Help Center, policy pages & Seller University</b> · <b>transcribe support videos</b> (speech-to-text, segmented by timestamp) · chunk, embed, and store with source metadata · on a question, <b>hybrid-search → rerank → answer only from retrieved passages, with citations</b>. Re-ingest on a webhook so a changed policy never produces a stale answer.<br><br>
+        <span style="color:rgba(255,255,255,0.7);">Why it matters: a large share of the <b style="color:#fff;">48,343 support tickets</b> are operational "how do I / what's the policy" questions that live in docs. Knowledge answers are the single biggest deflection lever — lower-lift than analytics SQL or agentic actions, and the same capability Sierra needs for CX. This is where the two products converge.</span>
       </div>
     </div>
   </div>
@@ -3686,6 +3741,7 @@
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Answer cards</b> — durable, cited, pinnable; never a chat bubble</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Threads</b> — saved, shareable, URL-addressable</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Honest by default</b> — provenance, "I don't know", disambiguation</li>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">How-to handoff</b> — points support questions to the right Help article</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Always reachable</b> — subtle entry point + side panel that doesn't navigate away</li>
       </ul>
     </div>
@@ -3699,6 +3755,7 @@
       <div class="phase-name">Reaches out before you ask</div>
       <div style="font-size: 12px; color: var(--text-secondary); margin: 6px 0 14px;">The bot turns from reactive to ambient — surfacing value and taking its first contextual actions.</div>
       <ul>
+        <li><i class="ti ti-check"></i> <b style="font-weight:600;">Knowledge answers</b> — how-to questions answered natively from Help Center + video guides, cited</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Proactive insights</b> — morning briefing, anomaly alerts</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Scheduling</b> — re-run threads, threshold alerts</li>
         <li><i class="ti ti-check"></i> <b style="font-weight:600;">Memory</b> — learns your business over time</li>
